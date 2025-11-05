@@ -49,7 +49,7 @@ cat SOFTWARE_QUALITY_METRICS_REPORT.md
 ### 3. Import to Android Studio
 ```bash
 # Open Android Studio
-# File → Open → Select SmartSalesAssistant_Complete folder
+# File → Open → Select SmartSalesAssistant_Final_Delivery folder
 # Wait for Gradle sync to complete
 ```
 
@@ -60,31 +60,30 @@ cat SOFTWARE_QUALITY_METRICS_REPORT.md
 # Run → Run 'app' (Shift+F10)
 ```
 
+### 🌐 Mainland China Tips
+- The project already registers Aliyun mirrors in `settings.gradle.kts`. If Gradle sync struggles, temporarily comment out `google()`/`mavenCentral()` or add a proxy in `gradle.properties`.
+- Use the bundled JDK 17 (`./jdk-17.0.9+9`) and set `org.gradle.java.home=./jdk-17.0.9+9` to avoid downloading toolchains from overseas mirrors.
+- Copy `local.properties.example` to `local.properties`, set `sdk.dir` to a locally mirrored Android SDK path, and populate Dashscope/Tingwu API keys.
+
 ---
 
 ## 📁 PACKAGE STRUCTURE
 
 ```
 SmartSalesAssistant_Final_Delivery/
-├── SOFTWARE_QUALITY_METRICS_REPORT.md    ⭐ QUALITY METRICS
+├── app/                                   📦 Android app module
+│   ├── build.gradle.kts                   🔧 Module build config
+│   └── src/main/
+│       ├── java/com/smartsales/           🎯 Source code (data, ui, bluetooth, di)
+│       ├── res/                           📱 Resources & themes
+│       └── AndroidManifest.xml            ⚙️ App config
+├── build.gradle.kts                       🔧 Project build config
+├── gradle/                                ⚙️ Wrapper files
+├── gradlew / gradlew.bat                  ▶️ Gradle launcher
+├── gradle.properties                      ⚙️ JVM + Android flags
 ├── README_DELIVERY.md                     📖 This file
 ├── VERIFICATION_CHECKLIST.md              ✅ Verification results
-├── SmartSalesAssistant_Complete/          📦 Complete app package
-│   ├── app/
-│   │   ├── src/main/
-│   │   │   ├── java/com/smartsales/      🎯 Source code
-│   │   │   │   ├── data/                  💾 Data layer
-│   │   │   │   ├── domain/                🧠 Business logic
-│   │   │   │   ├── ui/                    🎨 UI layer
-│   │   │   │   ├── network/               🌐 Network layer
-│   │   │   │   ├── business/              ⚙️ Managers
-│   │   │   │   └── di/                    💉 Dependency injection
-│   │   │   ├── res/                       📱 Resources
-│   │   │   └── AndroidManifest.xml        ⚙️ App config
-│   │   └── build.gradle.kts               🔧 Build config
-│   ├── build.gradle.kts                   🔧 Project config
-│   ├── settings.gradle.kts                ⚙️ Settings
-│   └── README.md                          📖 Project readme
+├── SOFTWARE_QUALITY_METRICS_REPORT.md     ⭐ Quality metrics
 └── Documentation/                         📚 All docs
     ├── README.md
     ├── QUICK_START.md

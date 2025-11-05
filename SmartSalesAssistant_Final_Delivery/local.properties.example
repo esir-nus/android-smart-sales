@@ -1,0 +1,9 @@
+# Android SDK location
+# sdk.dir=/path/to/Android/Sdk
+
+# Optional: custom Gradle cache directory
+# gradle.user.home=/path/to/.gradle
+
+# API keys for buildConfigField (values are injected at compile time)
+# DASHSCOPE_API_KEY=your_dashscope_api_key
+# TINGWU_API_KEY=your_tingwu_api_key

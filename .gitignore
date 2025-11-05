@@ -1,1 +1,13 @@
 SmartSalesAssistant_Complete/local.properties
+SmartSalesAssistant_Final_Delivery/local.properties
+SmartSalesAssistant_Final_Delivery/.gradle/
+SmartSalesAssistant_Final_Delivery/.gradle-cache/
+SmartSalesAssistant_Final_Delivery/app/build/
+SmartSalesAssistant_Final_Delivery/app/.cxx/
+SmartSalesAssistant_Final_Delivery/jdk-17.0.9+9/
+/.idea/
+/.vscode/
+*.iml
+SmartSalesAssistant_Final_Delivery/.idea/
+SmartSalesAssistant_Final_Delivery/build/
+.DS_Store
