@@ -38,6 +38,13 @@ Smart Sales Assistant is a modern Android application featuring AI-powered chat,
 - Room Database
 - Retrofit + OkHttp
 
+## Modules
+- `app` — Mother application combining AI chat, device connectivity, and data workflows.
+- `device-connectivity` — Shared BLE/Wi-Fi connectivity toolkit consumed by the app and connectivity tester.
+- `ai-core` — Shared Dashscope/Tingwu networking layer reused across AI surfaces.
+- `wifiBleTestApp` — Standalone connectivity tester for BLE pairing and gadget file browsing.
+- `aiFeatureTestApp` — Standalone AI playground covering Qwen chat and Tingwu transcription.
+
 ## Version
 1.0.0 - Initial Release
 

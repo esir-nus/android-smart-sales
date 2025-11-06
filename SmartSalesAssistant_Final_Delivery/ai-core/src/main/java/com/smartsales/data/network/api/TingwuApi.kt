@@ -1,6 +1,6 @@
 package com.smartsales.data.network.api
 
-import com.smartsales.data.network.ApiConfig
+import com.smartsales.data.network.AiApiConfig
 import com.smartsales.data.network.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,7 +35,7 @@ interface TingwuApi {
      * val response = api.createTranscriptionTask(request)
      * ```
      */
-    @POST(ApiConfig.Tingwu.CREATE_TASK)
+    @POST(AiApiConfig.Tingwu.CREATE_TASK)
     @Headers("Content-Type: application/json")
     suspend fun createTranscriptionTask(
         @Body request: TranscriptionRequest
@@ -47,7 +47,7 @@ interface TingwuApi {
      * Upload audio file directly (multipart/form-data)
      */
     @Multipart
-    @POST(ApiConfig.Tingwu.CREATE_TASK)
+    @POST(AiApiConfig.Tingwu.CREATE_TASK)
     suspend fun createTranscriptionTaskWithFile(
         @Part file: MultipartBody.Part,
         @Part("type") type: RequestBody,
@@ -68,7 +68,7 @@ interface TingwuApi {
      * }
      * ```
      */
-    @GET(ApiConfig.Tingwu.GET_TASK)
+    @GET(AiApiConfig.Tingwu.GET_TASK)
     suspend fun getTaskStatus(
         @Path("taskId") taskId: String
     ): Response<TranscriptionStatusResponse>
@@ -85,7 +85,7 @@ interface TingwuApi {
      * val segments = transcription.segments
      * ```
      */
-    @GET(ApiConfig.Tingwu.GET_RESULT)
+    @GET(AiApiConfig.Tingwu.GET_RESULT)
     suspend fun getTranscriptionResult(
         @Path("taskId") taskId: String
     ): Response<TranscriptionResultResponse>
@@ -95,7 +95,7 @@ interface TingwuApi {
      * 
      * Get result in specific format (json, srt, txt)
      */
-    @GET(ApiConfig.Tingwu.GET_RESULT)
+    @GET(AiApiConfig.Tingwu.GET_RESULT)
     suspend fun getTranscriptionResultWithFormat(
         @Path("taskId") taskId: String,
         @Query("format") format: String = "json" // "json", "srt", "txt"
@@ -106,7 +106,7 @@ interface TingwuApi {
      * 
      * Cancel a pending or processing task
      */
-    @DELETE(ApiConfig.Tingwu.GET_TASK)
+    @DELETE(AiApiConfig.Tingwu.GET_TASK)
     suspend fun cancelTask(
         @Path("taskId") taskId: String
     ): Response<Unit>

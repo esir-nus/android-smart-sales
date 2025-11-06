@@ -36,3 +36,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "SmartSalesAssistant"
 include(":app")
+include(":device-connectivity")
+include(":wifiBleTestApp")
+include(":ai-core")
+include(":aiFeatureTestApp")

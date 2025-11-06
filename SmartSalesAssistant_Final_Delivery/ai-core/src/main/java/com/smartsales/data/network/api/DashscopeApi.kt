@@ -1,6 +1,6 @@
 package com.smartsales.data.network.api
 
-import com.smartsales.data.network.ApiConfig
+import com.smartsales.data.network.AiApiConfig
 import com.smartsales.data.network.model.ChatRequest
 import com.smartsales.data.network.model.ChatResponse
 import okhttp3.ResponseBody
@@ -34,7 +34,7 @@ interface DashscopeApi {
      * val response = api.chatCompletion(request)
      * ```
      */
-    @POST(ApiConfig.Dashscope.CHAT_COMPLETION)
+    @POST(AiApiConfig.Dashscope.CHAT_COMPLETION)
     @Headers("Content-Type: application/json")
     suspend fun chatCompletion(
         @Body request: ChatRequest
@@ -58,10 +58,10 @@ interface DashscopeApi {
      * // Parse SSE stream manually
      * ```
      */
-    @POST(ApiConfig.Dashscope.CHAT_STREAM)
+    @POST(AiApiConfig.Dashscope.CHAT_STREAM)
     @Headers(
         "Content-Type: application/json",
-        "X-DashScope-SSE: enable"
+        "${AiApiConfig.HEADER_X_DASHSCOPE_SSE}: enable"
     )
     @Streaming
     suspend fun chatCompletionStream(
@@ -73,7 +73,7 @@ interface DashscopeApi {
      * 
      * Allows passing custom headers (e.g., for different models or parameters)
      */
-    @POST(ApiConfig.Dashscope.CHAT_COMPLETION)
+    @POST(AiApiConfig.Dashscope.CHAT_COMPLETION)
     suspend fun chatCompletionWithHeaders(
         @Body request: ChatRequest,
         @HeaderMap headers: Map<String, String>
@@ -236,9 +236,9 @@ object DashscopeApiHelper {
         
         // Check message length
         val totalLength = request.input.messages.sumOf { it.content.length }
-        if (totalLength > ApiConfig.MAX_CONTEXT_LENGTH) {
+        if (totalLength > AiApiConfig.MAX_CONTEXT_LENGTH) {
             return Result.failure(
-                Exception("Total message length exceeds limit: $totalLength > ${ApiConfig.MAX_CONTEXT_LENGTH}")
+                Exception("Total message length exceeds limit: $totalLength > ${AiApiConfig.MAX_CONTEXT_LENGTH}")
             )
         }
         

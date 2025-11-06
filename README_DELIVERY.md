@@ -14,6 +14,24 @@ This is the **COMPLETE, VERIFIED, and PRODUCTION-READY** Android application pac
 
 ---
 
+## 🧩 Child Project Builds
+
+- **Connectivity Tester (`:wifiBleTestApp`)**
+  ```bash
+  ./gradlew :wifiBleTestApp:assembleDebug
+  # → wifiBleTestApp/build/outputs/apk/debug/wifiBleTestApp-debug.apk
+  ```
+
+- **AI Playground (`:aiFeatureTestApp`)**
+  ```bash
+  ./gradlew :aiFeatureTestApp:assembleDebug
+  # → aiFeatureTestApp/build/outputs/apk/debug/aiFeatureTestApp-debug.apk
+  ```
+
+> Both child apps require the shared modules (`:device-connectivity`, `:ai-core`). Ensure `DASHSCOPE_API_KEY` and `TINGWU_API_KEY` are present in `local.properties` before exercising AI features.
+
+---
+
 ## 📊 QUALITY CERTIFICATION
 
 **Overall Quality Score**: **92/100** ✅ EXCELLENT  
@@ -71,12 +89,16 @@ cat SOFTWARE_QUALITY_METRICS_REPORT.md
 
 ```
 SmartSalesAssistant_Final_Delivery/
-├── app/                                   📦 Android app module
+├── app/                                   📦 Mother application module
 │   ├── build.gradle.kts                   🔧 Module build config
 │   └── src/main/
 │       ├── java/com/smartsales/           🎯 Source code (data, ui, bluetooth, di)
 │       ├── res/                           📱 Resources & themes
 │       └── AndroidManifest.xml            ⚙️ App config
+├── ai-core/                               🧠 Shared Dashscope/Tingwu networking layer
+├── device-connectivity/                   🔌 Shared BLE/Wi-Fi connectivity toolkit
+├── wifiBleTestApp/                        📡 Connectivity child app (BLE + HTTP)
+├── aiFeatureTestApp/                      🤖 AI child app (chat + transcription playground)
 ├── build.gradle.kts                       🔧 Project build config
 ├── gradle/                                ⚙️ Wrapper files
 ├── gradlew / gradlew.bat                  ▶️ Gradle launcher

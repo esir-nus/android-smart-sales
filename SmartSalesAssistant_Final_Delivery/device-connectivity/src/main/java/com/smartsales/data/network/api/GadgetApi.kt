@@ -1,6 +1,6 @@
 package com.smartsales.data.network.api
 
-import com.smartsales.data.network.ApiConfig
+import com.smartsales.data.network.ConnectivityApiConfig
 import com.smartsales.data.network.model.*
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -33,7 +33,7 @@ interface GadgetApi {
      * }
      * ```
      */
-    @GET(ApiConfig.Gadget.FILE_LIST)
+    @GET(ConnectivityApiConfig.Gadget.FILE_LIST)
     suspend fun getFileList(): Response<FileListResponse>
     
     /**
@@ -41,7 +41,7 @@ interface GadgetApi {
      * 
      * Filter files by type, date range, etc.
      */
-    @GET(ApiConfig.Gadget.FILE_LIST)
+    @GET(ConnectivityApiConfig.Gadget.FILE_LIST)
     suspend fun getFileListFiltered(
         @Query("type") type: String? = null, // "audio", "image"
         @Query("from") fromTimestamp: Long? = null,
@@ -60,7 +60,7 @@ interface GadgetApi {
      * val fileBytes = response.body()?.bytes()
      * ```
      */
-    @GET(ApiConfig.Gadget.FILE_DOWNLOAD)
+    @GET(ConnectivityApiConfig.Gadget.FILE_DOWNLOAD)
     @Streaming
     suspend fun downloadFile(
         @Query("file_id") fileId: String
@@ -69,7 +69,7 @@ interface GadgetApi {
     /**
      * Download File by Path
      */
-    @GET(ApiConfig.Gadget.FILE_DOWNLOAD)
+    @GET(ConnectivityApiConfig.Gadget.FILE_DOWNLOAD)
     @Streaming
     suspend fun downloadFileByPath(
         @Query("path") filePath: String
@@ -89,7 +89,7 @@ interface GadgetApi {
      * println("Deleted: ${response.deletedCount}")
      * ```
      */
-    @HTTP(method = "DELETE", path = ApiConfig.Gadget.FILE_DELETE, hasBody = true)
+    @HTTP(method = "DELETE", path = ConnectivityApiConfig.Gadget.FILE_DELETE, hasBody = true)
     suspend fun deleteFiles(
         @Body request: FileDeleteRequest
     ): Response<FileDeleteResponse>
@@ -97,7 +97,7 @@ interface GadgetApi {
     /**
      * Delete Single File
      */
-    @DELETE(ApiConfig.Gadget.FILE_DELETE)
+    @DELETE(ConnectivityApiConfig.Gadget.FILE_DELETE)
     suspend fun deleteFile(
         @Query("file_id") fileId: String
     ): Response<FileDeleteResponse>
@@ -114,7 +114,7 @@ interface GadgetApi {
      * println("Storage: ${status.getFormattedStorageUsed()} / ${status.getFormattedStorageTotal()}")
      * ```
      */
-    @GET(ApiConfig.Gadget.DEVICE_STATUS)
+    @GET(ConnectivityApiConfig.Gadget.DEVICE_STATUS)
     suspend fun getDeviceStatus(): Response<DeviceStatusResponse>
     
     /**
@@ -131,7 +131,7 @@ interface GadgetApi {
      * }
      * ```
      */
-    @GET(ApiConfig.Gadget.WIFI_STATUS)
+    @GET(ConnectivityApiConfig.Gadget.WIFI_STATUS)
     suspend fun getWifiStatus(): Response<WifiStatusResponse>
     
     /**
@@ -139,7 +139,7 @@ interface GadgetApi {
      * 
      * Simple ping to check if device is reachable
      */
-    @GET("api/ping")
+    @GET(ConnectivityApiConfig.Gadget.PING)
     suspend fun ping(): Response<Unit>
     
     /**
@@ -147,7 +147,7 @@ interface GadgetApi {
      * 
      * Update file's sync status on device
      */
-    @POST("api/files/mark-synced")
+    @POST(ConnectivityApiConfig.Gadget.MARK_SYNCED)
     suspend fun markFileSynced(
         @Query("file_id") fileId: String
     ): Response<Unit>

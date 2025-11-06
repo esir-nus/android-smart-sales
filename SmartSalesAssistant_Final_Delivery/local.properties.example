@@ -1,9 +1,5 @@
-# Android SDK location
-# sdk.dir=/path/to/Android/Sdk
-
-# Optional: custom Gradle cache directory
-# gradle.user.home=/path/to/.gradle
-
-# API keys for buildConfigField (values are injected at compile time)
-# DASHSCOPE_API_KEY=your_dashscope_api_key
-# TINGWU_API_KEY=your_tingwu_api_key
+sdk.dir=/home/cslh/Android/Sdk
+gradle.user.home=/home/cslh/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/.gradle-cache
+DASHSCOPE_API_KEY=sk-3617a0cf4daa4428a17c990e8307f09c
+TINGWU_API_KEY=DVi4nadRWfUuGj2g
+TINGWU_APP_KEY=DVi4nadRWfUuGj2g
