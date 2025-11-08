@@ -6,7 +6,7 @@ package com.smartsales.data.network
 object ConnectivityApiConfig {
 
     const val DEFAULT_SCHEME = "http"
-    const val DEFAULT_PORT = 8080
+    const val DEFAULT_PORT = 8000
 
     const val CONNECT_TIMEOUT_MS = 10_000L
     const val READ_TIMEOUT_MS = 30_000L

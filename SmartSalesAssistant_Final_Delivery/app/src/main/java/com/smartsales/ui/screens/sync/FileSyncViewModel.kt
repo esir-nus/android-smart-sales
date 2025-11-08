@@ -9,7 +9,6 @@ import com.smartsales.data.network.model.GadgetFile
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import java.io.File
 import javax.inject.Inject
 
 /**

@@ -1,5 +1,6 @@
 package com.smartsales.data.local.repository
 
+import android.content.Context
 import com.smartsales.data.local.dao.ConversationDao
 import com.smartsales.data.local.dao.CrmExportDao
 import com.smartsales.data.local.dao.DeviceSettingDao
@@ -8,6 +9,7 @@ import com.smartsales.data.local.dao.WifiConfigDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -33,10 +35,12 @@ object RepositoryModule {
     @Singleton
     fun provideDeviceRepository(
         deviceSettingDao: DeviceSettingDao,
-        wifiConfigDao: WifiConfigDao
+        wifiConfigDao: WifiConfigDao,
+        @ApplicationContext context: Context
     ): DeviceRepository = DeviceRepository(
         deviceSettingDao = deviceSettingDao,
-        wifiConfigDao = wifiConfigDao
+        wifiConfigDao = wifiConfigDao,
+        context = context
     )
 
     @Provides

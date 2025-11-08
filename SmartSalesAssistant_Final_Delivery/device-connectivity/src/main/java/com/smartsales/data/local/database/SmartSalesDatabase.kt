@@ -30,7 +30,7 @@ import java.util.concurrent.Executors
         CrmExportEntity::class
     ],
     version = 1,
-    exportSchema = true,
+    exportSchema = false,
     autoMigrations = []
 )
 @TypeConverters(Converters::class)

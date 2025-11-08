@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/res/xml/file_paths.xml
+---------------------------------------------------------
+- Namespace declaration is never used (at line 2)

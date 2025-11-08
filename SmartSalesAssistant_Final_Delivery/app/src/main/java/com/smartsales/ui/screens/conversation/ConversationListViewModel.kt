@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.smartsales.data.local.entity.ConversationEntity
 import com.smartsales.data.local.repository.ConversationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -30,13 +31,15 @@ class ConversationListViewModel @Inject constructor(
         ConversationListUiState.Loading
     )
     val uiState: StateFlow<ConversationListUiState> = _uiState.asStateFlow()
+    private var conversationsJob: Job? = null
     
     init {
         loadConversations()
     }
     
     private fun loadConversations() {
-        viewModelScope.launch {
+        conversationsJob?.cancel()
+        conversationsJob = viewModelScope.launch {
             conversationRepository.getAllConversations()
                 .catch { exception ->
                     _uiState.value = ConversationListUiState.Error(

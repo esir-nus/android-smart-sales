@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.smartsales.data.network
 
 import com.smartsales.data.network.interceptor.DashscopeAuthInterceptor
@@ -36,7 +38,7 @@ class AuthInterceptorTest {
         client.newCall(newRequest()).execute().close()
 
         val recorded = server.takeRequest()
-        assertEquals("Bearer dash-key", recorded.getHeader(ApiConfig.HEADER_AUTHORIZATION))
+        assertEquals("Bearer dash-key", recorded.getHeader(AiApiConfig.HEADER_AUTHORIZATION))
     }
 
     @Test
@@ -48,7 +50,7 @@ class AuthInterceptorTest {
         client.newCall(newRequest()).execute().close()
 
         val recorded = server.takeRequest()
-        assertEquals("Bearer tingwu-key", recorded.getHeader(ApiConfig.HEADER_AUTHORIZATION))
+        assertEquals("Bearer tingwu-key", recorded.getHeader(AiApiConfig.HEADER_AUTHORIZATION))
     }
 
     private fun newRequest(): Request {

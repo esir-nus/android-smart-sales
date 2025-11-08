@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/navigation/Screen.kt#2216
+-----------------------------------------------------------------------------------
+- Function "getItems" is never used (at line 96)

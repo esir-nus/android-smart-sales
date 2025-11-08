@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+------------------------------------------------------------------------
+- The application adaptive icon is missing a monochrome tag (at line 2)

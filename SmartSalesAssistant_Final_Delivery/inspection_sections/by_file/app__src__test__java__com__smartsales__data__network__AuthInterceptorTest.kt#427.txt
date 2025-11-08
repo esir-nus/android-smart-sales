@@ -1,0 +1,6 @@
+Inspection issues for app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427
+----------------------------------------------------------------------------------------------
+- Typo: In word 'Dashscope' (at line 31)
+- Typo: In word 'Tingwu' (at line 43)
+- Typo: In word 'tingwu' (at line 45)
+- Typo: In word 'tingwu' (at line 51)

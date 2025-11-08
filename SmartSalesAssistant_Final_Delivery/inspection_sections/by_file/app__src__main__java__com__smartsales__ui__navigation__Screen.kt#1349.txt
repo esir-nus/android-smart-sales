@@ -1,0 +1,4 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1349
+-----------------------------------------------------------------------------------
+- Property "screen" is never used (at line 67)
+- Property "title" is never used (at line 68)

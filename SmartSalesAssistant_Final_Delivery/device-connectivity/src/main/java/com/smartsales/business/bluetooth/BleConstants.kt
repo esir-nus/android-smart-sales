@@ -1,53 +1,73 @@
 package com.smartsales.business.bluetooth
 
 import java.nio.ByteBuffer
-import java.util.*
+import java.util.UUID
+
+data class BleServiceProfile(
+    val name: String,
+    val serviceUuid: UUID,
+    val wifiConfigCharacteristic: UUID?,
+    val commandCharacteristic: UUID?,
+    val displayControlCharacteristic: UUID?,
+    val notificationCharacteristic: UUID?,
+    val deviceStatusCharacteristic: UUID?
+)
 
 /**
  * BLE Constants and Protocol Definitions
- * 
+ *
  * IMPORTANT: Replace these UUIDs with your actual hardware's UUIDs
  * You can find these in your hardware's BLE specification
  */
 object BleConstants {
-    
-    // ===== SERVICE & CHARACTERISTIC UUIDs =====
-    
+
+    // ===== SERVICE PROFILES =====
+
+    private val LEGACY_PROFILE = BleServiceProfile(
+        name = "SmartSales",
+        serviceUuid = UUID.fromString("00001234-0000-1000-8000-00805f9b34fb"),
+        wifiConfigCharacteristic = UUID.fromString("00001235-0000-1000-8000-00805f9b34fb"),
+        commandCharacteristic = UUID.fromString("00001236-0000-1000-8000-00805f9b34fb"),
+        displayControlCharacteristic = UUID.fromString("00001238-0000-1000-8000-00805f9b34fb"),
+        notificationCharacteristic = UUID.fromString("00001239-0000-1000-8000-00805f9b34fb"),
+        deviceStatusCharacteristic = UUID.fromString("00001237-0000-1000-8000-00805f9b34fb")
+    )
+
+    private val UART_PROFILE = BleServiceProfile(
+        name = "SPP BLE UART",
+        serviceUuid = UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E"),
+        wifiConfigCharacteristic = UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"),
+        commandCharacteristic = UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"),
+        displayControlCharacteristic = UUID.fromString("6E400002-B5A3-F393-E0A9-E50E24DCCA9E"),
+        notificationCharacteristic = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E"),
+        deviceStatusCharacteristic = UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+    )
+
+    private val HM10_PROFILE = BleServiceProfile(
+        name = "HM-10 UART",
+        serviceUuid = UUID.fromString("0000FFE0-0000-1000-8000-00805F9B34FB"),
+        wifiConfigCharacteristic = UUID.fromString("0000FFE1-0000-1000-8000-00805F9B34FB"),
+        commandCharacteristic = UUID.fromString("0000FFE1-0000-1000-8000-00805F9B34FB"),
+        displayControlCharacteristic = UUID.fromString("0000FFE1-0000-1000-8000-00805F9B34FB"),
+        notificationCharacteristic = UUID.fromString("0000FFE1-0000-1000-8000-00805F9B34FB"),
+        deviceStatusCharacteristic = UUID.fromString("0000FFE1-0000-1000-8000-00805F9B34FB")
+    )
+
+    val SUPPORTED_SERVICE_PROFILES: List<BleServiceProfile> = listOf(
+        LEGACY_PROFILE,
+        UART_PROFILE,
+        HM10_PROFILE
+    )
+
     /**
-     * Primary GATT Service UUID
-     * This is the main service your device advertises
+     * Service UUIDs we allow during scanning. Keep empty so we can discover
+     * devices that do not advertise their primary service UUID (many UART modules).
      */
-    val SERVICE_UUID: UUID = UUID.fromString("00001234-0000-1000-8000-00805f9b34fb")
-    
-    /**
-     * WiFi Configuration Characteristic UUID
-     * Used to send WiFi credentials to the device
-     */
-    val CHAR_WIFI_CONFIG: UUID = UUID.fromString("00001235-0000-1000-8000-00805f9b34fb")
-    
-    /**
-     * Command Characteristic UUID
-     * Used to send control commands (start recording, show image, etc.)
-     */
-    val CHAR_COMMAND: UUID = UUID.fromString("00001236-0000-1000-8000-00805f9b34fb")
-    
-    /**
-     * Device Status Characteristic UUID
-     * Used to read device status (battery, WiFi connected, etc.)
-     */
-    val CHAR_DEVICE_STATUS: UUID = UUID.fromString("00001237-0000-1000-8000-00805f9b34fb")
-    
-    /**
-     * Display Control Characteristic UUID
-     * Used to send display commands (text/image)
-     */
-    val CHAR_DISPLAY_CONTROL: UUID = UUID.fromString("00001238-0000-1000-8000-00805f9b34fb")
-    
-    /**
-     * Notification Characteristic UUID
-     * Device sends notifications through this characteristic
-     */
-    val CHAR_NOTIFICATION: UUID = UUID.fromString("00001239-0000-1000-8000-00805f9b34fb")
+    val SCAN_SERVICE_UUIDS: List<UUID> = emptyList()
+
+    const val NETWORK_QUERY_COMMAND = "wifi#address#ip#name"
+    const val NETWORK_RESPONSE_PREFIX = "wifi#address#"
+    const val TARGET_DEVICE_NAME = "BT311"
     
     // ===== DESCRIPTOR UUIDs =====
     
@@ -60,9 +80,14 @@ object BleConstants {
     // ===== SCAN SETTINGS =====
     
     /**
-     * BLE scan timeout (milliseconds)
+     * Duration of each active scan window (milliseconds)
      */
-    const val SCAN_TIMEOUT_MS = 10_000L // 10 seconds
+    const val SCAN_WINDOW_MS = 6_000L
+
+    /**
+     * Delay between scan retries when target device is not found (milliseconds)
+     */
+    const val SCAN_RETRY_DELAY_MS = 2_000L
     
     /**
      * Device name prefix for filtering
@@ -100,10 +125,29 @@ object BleConstants {
     // ===== PACKET SIZES =====
     
     /**
-     * Maximum BLE packet size (bytes)
-     * Most BLE devices support 20 bytes MTU by default
+     * Default MTU size (bytes) negotiated by Android before requests
      */
-    const val MAX_PACKET_SIZE = 20
+    const val DEFAULT_MTU = 23
+
+    /**
+     * Preferred MTU we attempt to request from the gadget
+     */
+    const val PREFERRED_MTU = 185
+
+    /**
+     * MTU overhead for ATT protocol
+     */
+    const val GATT_MTU_OVERHEAD = 3
+
+    /**
+     * Default payload size when MTU negotiation is unavailable
+     */
+    const val DEFAULT_CHUNK_SIZE = DEFAULT_MTU - GATT_MTU_OVERHEAD
+
+    /**
+     * Delay between chunked writes (milliseconds)
+     */
+    const val CHUNK_WRITE_DELAY_MS = 40L
     
     /**
      * Maximum SSID length
@@ -128,28 +172,48 @@ object BleConstants {
     // ===== PROTOCOL DEFINITIONS =====
     
     /**
-     * Encode WiFi configuration into BLE packet
-     * 
-     * Packet format:
-     * [SSID_LENGTH(1)][SSID_BYTES][PASSWORD_LENGTH(1)][PASSWORD_BYTES]
+     * Encode WiFi configuration into JSON payload expected by gadget firmware.
      * 
      * @param ssid WiFi network name
      * @param password WiFi password
-     * @return Byte array ready to send
+     * @return Byte array ready to send over BLE
      */
     fun encodeWifiConfig(ssid: String, password: String): ByteArray {
-        val ssidTrimmed = ssid.take(MAX_SSID_LENGTH)
-        val passwordTrimmed = password.take(MAX_PASSWORD_LENGTH)
-        
-        val ssidBytes = ssidTrimmed.toByteArray(Charsets.UTF_8)
-        val passwordBytes = passwordTrimmed.toByteArray(Charsets.UTF_8)
-        
-        return ByteBuffer.allocate(2 + ssidBytes.size + passwordBytes.size)
-            .put(ssidBytes.size.toByte())
-            .put(ssidBytes)
-            .put(passwordBytes.size.toByte())
-            .put(passwordBytes)
-            .array()
+        val truncatedSsid = ssid.take(MAX_SSID_LENGTH)
+        val truncatedPassword = password.take(MAX_PASSWORD_LENGTH)
+        val payload = buildString {
+            append("{\"ssid\":\"")
+            append(escapeJsonValue(truncatedSsid))
+            append("\",\"password\":\"")
+            append(escapeJsonValue(truncatedPassword))
+            append("\"}")
+        }
+
+        return payload.toByteArray(Charsets.UTF_8)
+    }
+
+    private fun escapeJsonValue(value: String): String {
+        val builder = StringBuilder(value.length)
+        value.forEach { ch ->
+            when (ch) {
+                '\"' -> builder.append("\\\"")
+                '\\' -> builder.append("\\\\")
+                '\b' -> builder.append("\\b")
+                '\u000C' -> builder.append("\\f")
+                '\n' -> builder.append("\\n")
+                '\r' -> builder.append("\\r")
+                '\t' -> builder.append("\\t")
+                else -> {
+                    if (ch < ' ') {
+                        builder.append("\\u")
+                        builder.append(ch.code.toString(16).padStart(4, '0'))
+                    } else {
+                        builder.append(ch)
+                    }
+                }
+            }
+        }
+        return builder.toString()
     }
     
     /**
@@ -217,10 +281,10 @@ object BleConstants {
      * Split large data into BLE-sized chunks
      * 
      * @param data Data to split
-     * @param chunkSize Chunk size (default: MAX_PACKET_SIZE)
+     * @param chunkSize Chunk size (default: DEFAULT_CHUNK_SIZE)
      * @return List of byte arrays
      */
-    fun chunkData(data: ByteArray, chunkSize: Int = MAX_PACKET_SIZE): List<ByteArray> {
+    fun chunkData(data: ByteArray, chunkSize: Int = DEFAULT_CHUNK_SIZE): List<ByteArray> {
         return data.toList().chunked(chunkSize).map { it.toByteArray() }
     }
     

@@ -5,23 +5,32 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.text.Charsets
 
 class BleConstantsTest {
 
-    @Test
-    fun `encodeWifiConfig packs ssid and password with lengths`() {
-        val payload = BleConstants.encodeWifiConfig("SmartSales", "secret1")
+    private fun ByteArray.toWifiPayloadMap(): Map<String, String> {
+        val content = String(this, Charsets.UTF_8).trim()
+        if (content.isEmpty()) return emptyMap()
+        val body = content.removePrefix("{").removeSuffix("}")
+        if (body.isBlank()) return emptyMap()
+        return body.split(",")
+            .map { entry ->
+                val parts = entry.split(":", limit = 2)
+                val key = parts.getOrNull(0)?.trim()?.trim('"').orEmpty()
+                val value = parts.getOrNull(1)?.trim()?.trim('"').orEmpty()
+                key to value
+            }
+            .toMap()
+    }
 
-        assertEquals(10, payload[0].toInt() and 0xFF)
-        assertArrayEquals(
-            "SmartSales".toByteArray(),
-            payload.copyOfRange(1, 11)
-        )
-        assertEquals(7, payload[11].toInt() and 0xFF)
-        assertArrayEquals(
-            "secret1".toByteArray(),
-            payload.copyOfRange(12, payload.size)
-        )
+    @Test
+    fun `encodeWifiConfig builds json payload with ssid and password`() {
+        val payload = BleConstants.encodeWifiConfig("SmartSales", "secret1")
+        val json = payload.toWifiPayloadMap()
+
+        assertEquals("SmartSales", json["ssid"])
+        assertEquals("secret1", json["password"])
     }
 
     @Test
@@ -31,11 +40,10 @@ class BleConstantsTest {
 
         val payload = BleConstants.encodeWifiConfig(longSsid, longPassword)
 
-        assertEquals(BleConstants.MAX_SSID_LENGTH, payload[0].toInt() and 0xFF)
-        assertEquals(
-            BleConstants.MAX_PASSWORD_LENGTH,
-            payload[1 + BleConstants.MAX_SSID_LENGTH].toInt() and 0xFF
-        )
+        val json = payload.toWifiPayloadMap()
+
+        assertEquals(BleConstants.MAX_SSID_LENGTH, json["ssid"]?.length)
+        assertEquals(BleConstants.MAX_PASSWORD_LENGTH, json["password"]?.length)
     }
 
     @Test

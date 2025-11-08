@@ -321,41 +321,6 @@ object GadgetApiHelper {
         }
     }
     
-    /**
-     * Validate device connectivity
-     */
-    suspend fun validateConnectivity(api: GadgetApi): ConnectivityStatus {
-        return try {
-            // Check ping
-            val pingSuccess = isDeviceReachable(api, timeoutMs = 3000)
-            
-            if (!pingSuccess) {
-                return ConnectivityStatus(
-                    reachable = false,
-                    wifiConnected = false,
-                    error = "Device not reachable"
-                )
-            }
-            
-            // Check WiFi status
-            val wifiResponse = api.getWifiStatus()
-            val wifiConnected = wifiResponse.isSuccessful && 
-                                wifiResponse.body()?.connected == true
-            
-            ConnectivityStatus(
-                reachable = true,
-                wifiConnected = wifiConnected,
-                error = null
-            )
-            
-        } catch (e: Exception) {
-            ConnectivityStatus(
-                reachable = false,
-                wifiConnected = false,
-                error = e.message
-            )
-        }
-    }
 }
 
 /**

@@ -1,0 +1,5 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt
+-----------------------------------------------------------------------------------------------
+- Use the KTX extension function SharedPreferences.edit instead? (at line 100)
+- Use the KTX extension function SharedPreferences.edit instead? (at line 115)
+- Use the KTX extension function SharedPreferences.edit instead? (at line 82)

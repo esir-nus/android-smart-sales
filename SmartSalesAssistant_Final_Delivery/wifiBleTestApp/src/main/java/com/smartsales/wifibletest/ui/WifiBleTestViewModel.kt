@@ -1,25 +1,25 @@
 package com.smartsales.wifibletest.ui
 
 import android.bluetooth.BluetoothDevice
+import android.content.Context
+import android.net.wifi.WifiManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.smartsales.business.bluetooth.BleConnectionState
 import com.smartsales.business.bluetooth.BleManager
+import com.smartsales.business.bluetooth.BleTransportDirection
 import com.smartsales.data.network.ConnectivityApiConfig
-import com.smartsales.data.network.GadgetApiFactory
-import com.smartsales.data.network.api.GadgetApiHelper
-import com.smartsales.data.network.model.DeviceStatusResponse
-import com.smartsales.data.network.model.GadgetFile
-import com.smartsales.data.network.api.ConnectivityStatus
 import com.smartsales.wifibletest.data.SavedWifiConfig
 import com.smartsales.wifibletest.data.WifiConfigRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.text.Charsets
 import javax.inject.Inject
 
 data class WifiBleTestUiState(
@@ -31,18 +31,28 @@ data class WifiBleTestUiState(
     val isSendingWifi: Boolean = false,
     val deviceIp: String = "",
     val devicePort: String = ConnectivityApiConfig.DEFAULT_PORT.toString(),
-    val files: List<GadgetFile> = emptyList(),
-    val isLoadingFiles: Boolean = false,
-    val fileErrorMessage: String? = null,
-    val connectionStatus: ConnectivityStatus? = null,
-    val httpDeviceStatus: DeviceStatusResponse? = null
+    val gadgetWifiName: String? = null,
+    val phoneWifiName: String? = null,
+    val wifiNetworkMatch: Boolean? = null,
+    val isQueryingNetwork: Boolean = false,
+    val transportLog: List<BleTransportLogEntry> = emptyList(),
+    val webConsoleUrl: String? = null,
+    val webConsoleError: String? = null
+)
+
+data class BleTransportLogEntry(
+    val id: Long,
+    val direction: BleTransportDirection,
+    val textPreview: String,
+    val hexPreview: String,
+    val timestamp: Long
 )
 
 @HiltViewModel
 class WifiBleTestViewModel @Inject constructor(
     private val bleManager: BleManager,
     private val wifiConfigRepository: WifiConfigRepository,
-    private val gadgetApiFactory: GadgetApiFactory
+    @ApplicationContext private val appContext: Context
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(WifiBleTestUiState())
@@ -52,10 +62,13 @@ class WifiBleTestViewModel @Inject constructor(
     val deviceStatus = bleManager.deviceStatus
 
     init {
+        refreshPhoneWifiName()
         observeDiscoveredDevices()
         observeConnectionState()
         observeWifiConfigs()
         observeDeviceEndpoint()
+        observeTransportEvents()
+        observeNetworkInfo()
     }
 
     private fun observeDiscoveredDevices() {
@@ -115,7 +128,78 @@ class WifiBleTestViewModel @Inject constructor(
         }
     }
 
+    private fun observeTransportEvents() {
+        viewModelScope.launch {
+            bleManager.transportEvents.collect { event ->
+                val textPreview = event.payload
+                    .toString(Charsets.UTF_8)
+                    .replace("\n", "\\n")
+                    .replace("\r", "")
+                    .ifBlank { "(binary)" }
+                    .take(80)
+                val hexPreview = event.payload.joinToString(" ") {
+                    it.toUByte().toString(16).padStart(2, '0')
+                }.take(120)
+
+                val entry = BleTransportLogEntry(
+                    id = event.timestamp,
+                    direction = event.direction,
+                    textPreview = textPreview,
+                    hexPreview = hexPreview,
+                    timestamp = event.timestamp
+                )
+
+                _uiState.update { state ->
+                    val updated = (listOf(entry) + state.transportLog).take(20)
+                    state.copy(transportLog = updated)
+                }
+            }
+        }
+    }
+
+    private fun observeNetworkInfo() {
+        viewModelScope.launch {
+            bleManager.networkInfo.collect { info ->
+                val parsed = parseGadgetAddress(info.httpIp)
+                val host = parsed.host.ifBlank { info.httpIp }
+                val port = parsed.port ?: ConnectivityApiConfig.DEFAULT_PORT
+
+                wifiConfigRepository.updateDeviceEndpoint(host, port)
+
+                val phoneWifiName = resolvePhoneWifiName() ?: _uiState.value.phoneWifiName
+                val gadgetWifiName = info.wifiName.ifBlank { null }
+                val matchResult = when {
+                    phoneWifiName.isNullOrBlank() || gadgetWifiName.isNullOrBlank() -> null
+                    else -> gadgetWifiName.equals(phoneWifiName, ignoreCase = true)
+                }
+                val mismatchMessage = if (matchResult == false && phoneWifiName != null && gadgetWifiName != null) {
+                    "设备 WiFi 名称 ($gadgetWifiName) 与手机 ($phoneWifiName) 不一致，请重新输入。"
+                } else {
+                    null
+                }
+                _uiState.update {
+                    it.copy(
+                        deviceIp = host,
+                        devicePort = port.toString(),
+                        gadgetWifiName = gadgetWifiName,
+                        phoneWifiName = phoneWifiName,
+                        wifiNetworkMatch = matchResult,
+                        infoMessage = "设备网络: http://$host:$port/",
+                        errorMessage = mismatchMessage ?: it.errorMessage
+                    )
+                }
+            }
+        }
+    }
+
     fun startScan() {
+        if (!bleManager.hasScanPermission()) {
+            _uiState.update { state ->
+                state.copy(errorMessage = "请先授予蓝牙扫描权限")
+            }
+            return
+        }
+
         if (!bleManager.isBluetoothEnabled()) {
             _uiState.update { state ->
                 state.copy(errorMessage = "请先开启蓝牙")
@@ -123,7 +207,7 @@ class WifiBleTestViewModel @Inject constructor(
             return
         }
         bleManager.startScan()
-        _uiState.update { it.copy(infoMessage = "正在扫描附近设备...", errorMessage = null) }
+        _uiState.update { it.copy(infoMessage = "正在搜索 BT311...", errorMessage = null) }
     }
 
     fun stopScan() {
@@ -141,18 +225,31 @@ class WifiBleTestViewModel @Inject constructor(
         _uiState.update { it.copy(infoMessage = "已断开连接") }
     }
 
-    fun sendWifiConfig(ssid: String, password: String) {
+    fun queryNetworkInfo() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(isQueryingNetwork = true, errorMessage = null) }
+            val result = bleManager.queryNetworkInfo()
+            _uiState.update { it.copy(isQueryingNetwork = false) }
+            result.onFailure { throwable ->
+                _uiState.update {
+                    it.copy(errorMessage = "查询网络失败: ${throwable.message ?: "未知错误"}")
+                }
+            }
+        }
+    }
+
+    fun sendWifiConfig(wifiName: String, password: String) {
         viewModelScope.launch {
             _uiState.update { it.copy(isSendingWifi = true, errorMessage = null) }
 
-            val result = bleManager.sendWifiConfig(ssid, password)
+            val result = bleManager.sendWifiAccountCredentials(wifiName, password)
 
             result.onSuccess {
-                wifiConfigRepository.saveWifiConfig(ssid, password, setAsDefault = true)
+                wifiConfigRepository.saveWifiConfig(wifiName, password, setAsDefault = true)
                 _uiState.update {
                     it.copy(
                         isSendingWifi = false,
-                        infoMessage = "WiFi 配置已发送",
+                        infoMessage = "WiFi 名称已下发",
                         errorMessage = null
                     )
                 }
@@ -178,77 +275,39 @@ class WifiBleTestViewModel @Inject constructor(
         _uiState.update { it.copy(devicePort = sanitized) }
     }
 
-    fun loadDeviceFiles() {
+    fun openWebConsole(): String? {
         val currentState = _uiState.value
-        val ip = currentState.deviceIp.trim()
+        val parsedInput = parseGadgetAddress(currentState.deviceIp)
+        val ip = parsedInput.host.ifBlank { currentState.deviceIp.trim() }
         if (ip.isBlank()) {
-            _uiState.update { it.copy(fileErrorMessage = "请先输入设备 IP 地址") }
-            return
+            _uiState.update { it.copy(webConsoleError = "请先输入设备 IP 地址") }
+            return null
         }
 
-        val port = currentState.devicePort.toIntOrNull()
-            ?.takeIf { it in 1..65535 }
+        val prioritizedPort = parsedInput.port ?: currentState.devicePort.toIntOrNull()
+        val port = prioritizedPort?.takeIf { it in 1..65535 }
             ?: ConnectivityApiConfig.DEFAULT_PORT
 
+        val url = ConnectivityApiConfig.buildBaseUrl(ip, port)
+
         viewModelScope.launch {
-            _uiState.update {
-                it.copy(
-                    isLoadingFiles = true,
-                    fileErrorMessage = null,
-                    infoMessage = null
-                )
-            }
-
             wifiConfigRepository.updateDeviceEndpoint(ip, port)
-
-            val api = gadgetApiFactory.create(ip, port)
-
-            try {
-                val connectivity = GadgetApiHelper.validateConnectivity(api)
-                _uiState.update { it.copy(connectionStatus = connectivity) }
-
-                if (!connectivity.reachable) {
-                    _uiState.update {
-                        it.copy(
-                            isLoadingFiles = false,
-                            fileErrorMessage = connectivity.error ?: "设备不可达"
-                        )
-                    }
-                    return@launch
-                }
-
-                val fileResponse = api.getFileList()
-                val files = if (fileResponse.isSuccessful) {
-                    fileResponse.body()?.files ?: emptyList()
-                } else {
-                    emptyList()
-                }
-
-                val statusResponse = api.getDeviceStatus()
-                val deviceStatus = if (statusResponse.isSuccessful) {
-                    statusResponse.body()
-                } else null
-
-                _uiState.update {
-                    it.copy(
-                        isLoadingFiles = false,
-                        files = files,
-                        httpDeviceStatus = deviceStatus,
-                        fileErrorMessage = if (fileResponse.isSuccessful) null else "获取文件失败: ${fileResponse.code()}",
-                        infoMessage = if (fileResponse.isSuccessful) {
-                            "文件列表已更新（${files.size}）"
-                        } else it.infoMessage
-                    )
-                }
-            } catch (e: Exception) {
-                _uiState.update {
-                    it.copy(
-                        isLoadingFiles = false,
-                        fileErrorMessage = e.message ?: "加载失败"
-                    )
-                }
-            }
         }
+
+        _uiState.update {
+            it.copy(
+                deviceIp = ip,
+                devicePort = port.toString(),
+                webConsoleUrl = url,
+                webConsoleError = null
+            )
+        }
+
+        return url
+    }
+
+    fun closeWebConsole() {
+        _uiState.update { it.copy(webConsoleUrl = null) }
     }
 
     fun clearMessages() {
@@ -256,9 +315,56 @@ class WifiBleTestViewModel @Inject constructor(
             it.copy(
                 infoMessage = null,
                 errorMessage = null,
-                fileErrorMessage = null
+                webConsoleError = null
             )
         }
+    }
+
+    private fun refreshPhoneWifiName(): String? {
+        val wifiName = resolvePhoneWifiName()
+        _uiState.update { state ->
+            if (state.phoneWifiName == wifiName) state else state.copy(phoneWifiName = wifiName)
+        }
+        return wifiName
+    }
+
+    private fun resolvePhoneWifiName(): String? {
+        return try {
+            val wifiManager = appContext.applicationContext
+                .getSystemService(Context.WIFI_SERVICE) as? WifiManager
+            val ssid = wifiManager?.connectionInfo?.ssid?.trim('"')
+            if (ssid.isNullOrBlank() || ssid == WifiManager.UNKNOWN_SSID) {
+                null
+            } else {
+                ssid
+            }
+        } catch (securityException: SecurityException) {
+            null
+        }
+    }
+
+    private data class GadgetAddress(
+        val host: String,
+        val port: Int?
+    )
+
+    private fun parseGadgetAddress(raw: String): GadgetAddress {
+        val trimmed = raw.trim()
+        if (trimmed.isEmpty()) return GadgetAddress("", null)
+
+        val withoutScheme = when {
+            trimmed.startsWith("http://", ignoreCase = true) -> trimmed.substringAfter("://")
+            trimmed.startsWith("https://", ignoreCase = true) -> trimmed.substringAfter("://")
+            else -> trimmed
+        }
+
+        val hostPort = withoutScheme.substringBefore("/")
+        val host = hostPort.substringBefore(":").trim()
+        val port = hostPort.substringAfter(":", "")
+            .takeIf { it.isNotBlank() }
+            ?.toIntOrNull()
+
+        return GadgetAddress(host = host, port = port)
     }
 
     override fun onCleared() {

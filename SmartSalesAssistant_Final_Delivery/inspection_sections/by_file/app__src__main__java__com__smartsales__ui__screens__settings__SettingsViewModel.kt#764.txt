@@ -1,0 +1,4 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#764
+---------------------------------------------------------------------------------------------------
+- The annotation is only applied to the parameter. An explicit annotation use-site target is recommended. (at line 30)
+- Typo: In word 'snackbar' (at line 133)

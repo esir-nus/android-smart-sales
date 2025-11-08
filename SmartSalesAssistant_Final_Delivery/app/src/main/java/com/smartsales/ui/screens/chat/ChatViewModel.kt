@@ -10,6 +10,7 @@ import com.smartsales.data.network.model.ChatMessage
 import com.smartsales.data.network.model.createSimpleChatRequest
 import com.smartsales.data.network.model.getAssistantMessage
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,7 +34,7 @@ data class ChatUiState(
 @HiltViewModel
 class ChatViewModel @Inject constructor(
     private val conversationRepository: ConversationRepository,
-    private val dashscopeApi: DashscopeApi
+    private val dashScopeApi: DashscopeApi
 ) : ViewModel() {
     
     private val _uiState = MutableStateFlow(ChatUiState())
@@ -43,12 +44,14 @@ class ChatViewModel @Inject constructor(
     val inputText: StateFlow<String> = _inputText.asStateFlow()
     
     private var currentConversation: ConversationEntity? = null
+    private var messagesJob: Job? = null
     
     /**
      * Load existing conversation
      */
     fun loadConversation(conversationId: Long) {
-        viewModelScope.launch {
+        messagesJob?.cancel()
+        messagesJob = viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true, error = null) }
             
             try {
@@ -143,6 +146,8 @@ class ChatViewModel @Inject constructor(
             _uiState.update { it.copy(isSending = true, error = null) }
             
             try {
+                val outboundHistory = buildOutgoingHistory(text)
+
                 // Add user message
                 conversationRepository.addMessage(
                     conversationId = conversationId,
@@ -154,7 +159,7 @@ class ChatViewModel @Inject constructor(
                 _inputText.value = ""
                 
                 // Get AI response
-                getAiResponse(conversationId)
+                getAiResponse(conversationId, outboundHistory)
                 
             } catch (e: Exception) {
                 _uiState.update {
@@ -170,19 +175,11 @@ class ChatViewModel @Inject constructor(
     /**
      * Get AI response from Dashscope
      */
-    private suspend fun getAiResponse(conversationId: Long) {
+    private suspend fun getAiResponse(conversationId: Long, history: List<ChatMessage>) {
         try {
-            // Build message history
-            val messages = _uiState.value.messages.map { message ->
-                ChatMessage(
-                    role = message.role,
-                    content = message.content
-                )
-            }
-            
             // Call Dashscope API
-            val request = createSimpleChatRequest(messages)
-            val response = dashscopeApi.chatCompletion(request)
+            val request = createSimpleChatRequest(history)
+            val response = dashScopeApi.chatCompletion(request)
             
             if (response.isSuccessful) {
                 val chatResponse = response.body()
@@ -197,7 +194,7 @@ class ChatViewModel @Inject constructor(
                     )
                     
                     // Update title if this is the first exchange
-                    if (_uiState.value.messages.size <= 2) {
+                    if (history.size <= 2) {
                         updateConversationTitle(conversationId, assistantMessage)
                     }
                 }
@@ -222,6 +219,16 @@ class ChatViewModel @Inject constructor(
             }
         }
     }
+
+    private fun buildOutgoingHistory(latestUserMessage: String): List<ChatMessage> {
+        val existing = _uiState.value.messages.map { message ->
+            ChatMessage(
+                role = message.role,
+                content = message.content
+            )
+        }
+        return existing + ChatMessage(role = "user", content = latestUserMessage)
+    }
     
     /**
      * Update conversation title based on first message
@@ -232,6 +239,7 @@ class ChatViewModel @Inject constructor(
             val title = firstMessage.take(30) + if (firstMessage.length > 30) "..." else ""
             conversationRepository.updateTitle(conversationId, title)
             
+            currentConversation = currentConversation?.withTitle(title)
             _uiState.update { it.copy(conversationTitle = title) }
         } catch (e: Exception) {
             // Ignore title update errors
@@ -249,6 +257,7 @@ class ChatViewModel @Inject constructor(
                 // Mark as analyzed
                 conversationRepository.markAsAnalyzed(conversationId)
                 
+                currentConversation = currentConversation?.markAnalyzed()
                 _uiState.update { it.copy(isAnalyzed = true) }
                 
                 // TODO: Implement actual customer analysis with AI

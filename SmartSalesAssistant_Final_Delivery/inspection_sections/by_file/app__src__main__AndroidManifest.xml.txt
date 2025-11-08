@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/AndroidManifest.xml
+------------------------------------------------------
+- Typo: In word 'fileprovider' (at line 64)

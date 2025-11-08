@@ -1,6 +1,7 @@
 package com.smartsales.ui.screens.settings
 
 import android.content.Context
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +28,7 @@ data class SettingsUiState(
  */
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) : ViewModel() {
     
     private val preferences = context.getSharedPreferences(
@@ -79,9 +80,9 @@ class SettingsViewModel @Inject constructor(
      */
     fun saveApiKey(apiKey: String) {
         viewModelScope.launch {
-            preferences.edit()
-                .putString("api_key", apiKey)
-                .apply()
+            preferences.edit {
+                putString("api_key", apiKey)
+            }
             
             _uiState.update {
                 it.copy(
@@ -97,9 +98,9 @@ class SettingsViewModel @Inject constructor(
      */
     fun setAutoSync(enabled: Boolean) {
         viewModelScope.launch {
-            preferences.edit()
-                .putBoolean("auto_sync", enabled)
-                .apply()
+            preferences.edit {
+                putBoolean("auto_sync", enabled)
+            }
             
             _uiState.update {
                 it.copy(autoSync = enabled)
@@ -112,9 +113,9 @@ class SettingsViewModel @Inject constructor(
      */
     fun setDeleteAfterSync(enabled: Boolean) {
         viewModelScope.launch {
-            preferences.edit()
-                .putBoolean("delete_after_sync", enabled)
-                .apply()
+            preferences.edit {
+                putBoolean("delete_after_sync", enabled)
+            }
             
             _uiState.update {
                 it.copy(deleteAfterSync = enabled)
@@ -130,7 +131,7 @@ class SettingsViewModel @Inject constructor(
             try {
                 context.cacheDir.deleteRecursively()
                 
-                // Show success message (you can add a snackbar state)
+                // Show success message (you can add a Snackbar state)
                 
             } catch (e: Exception) {
                 // Show error message

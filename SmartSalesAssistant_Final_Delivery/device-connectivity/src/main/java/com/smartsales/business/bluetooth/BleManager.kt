@@ -1,11 +1,29 @@
 package com.smartsales.business.bluetooth
 
+import android.Manifest
 import android.annotation.SuppressLint
-import android.bluetooth.*
-import android.bluetooth.le.*
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGatt
+import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattDescriptor
+import android.bluetooth.BluetoothGattCallback
+import android.bluetooth.BluetoothProfile
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothStatusCodes
+import android.bluetooth.le.BluetoothLeScanner
+import android.bluetooth.le.ScanCallback
+import android.bluetooth.le.ScanFilter
+import android.bluetooth.le.ScanResult
+import android.bluetooth.le.ScanSettings
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.ParcelUuid
 import android.util.Log
+import java.nio.charset.Charset
+import java.util.UUID
+import kotlin.text.Charsets
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -65,6 +83,19 @@ class BleManager @Inject constructor(
     private val bluetoothLeScanner: BluetoothLeScanner? by lazy {
         bluetoothAdapter?.bluetoothLeScanner
     }
+
+    fun hasConnectPermission(): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S ||
+            context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
+    }
+
+    fun hasScanPermission(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            context.checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED
+        } else {
+            context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        }
+    }
     
     // ===== STATE MANAGEMENT =====
     
@@ -78,11 +109,24 @@ class BleManager @Inject constructor(
     
     private val _deviceStatus = MutableStateFlow<DeviceStatus?>(null)
     val deviceStatus: StateFlow<DeviceStatus?> = _deviceStatus.asStateFlow()
+
+    private val _transportEvents = MutableSharedFlow<BleTransportEvent>(
+        extraBufferCapacity = 64
+    )
+    val transportEvents: SharedFlow<BleTransportEvent> = _transportEvents.asSharedFlow()
+
+    private val _networkInfo = MutableSharedFlow<BleNetworkInfo>(
+        extraBufferCapacity = 4
+    )
+    val networkInfo: SharedFlow<BleNetworkInfo> = _networkInfo.asSharedFlow()
     
     // ===== GATT CONNECTION =====
     
     private var bluetoothGatt: BluetoothGatt? = null
     private var currentDevice: BluetoothDevice? = null
+
+    private var negotiatedMtu: Int = BleConstants.DEFAULT_MTU
+    private var activeProfile: BleServiceProfile? = null
     
     // ===== COROUTINE SCOPE =====
     
@@ -92,6 +136,15 @@ class BleManager @Inject constructor(
     
     private var scanJob: Job? = null
     private val scanResults = mutableMapOf<String, BluetoothDevice>()
+
+    private fun isTargetDeviceName(name: String?): Boolean {
+        return name
+            ?.trim()
+            ?.equals(BleConstants.TARGET_DEVICE_NAME, ignoreCase = true)
+            ?: false
+    }
+
+    private fun targetDeviceFound(): Boolean = scanResults.isNotEmpty()
     
     /**
      * Scan callback for device discovery
@@ -99,18 +152,18 @@ class BleManager @Inject constructor(
     private val scanCallback = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             val device = result.device
+            val name = device.name ?: result.scanRecord?.deviceName ?: return
+            if (!isTargetDeviceName(name)) return
+
             val address = device.address
-            
-            // Add to results if not already present
             if (!scanResults.containsKey(address)) {
                 scanResults[address] = device
                 _discoveredDevices.value = scanResults.values.toList()
-                
-                Log.d(TAG, "Device found: ${device.name ?: "Unknown"} ($address)")
-                
-                // Update scanning state with count
+
+                Log.d(TAG, "Target device found: $name ($address)")
+
                 if (_connectionState.value is BleConnectionState.Scanning) {
-                    _connectionState.value = BleConnectionState.Scanning(scanResults.size)
+                    _connectionState.value = BleConnectionState.Scanning(devicesFound = 1)
                 }
             }
         }
@@ -149,6 +202,10 @@ class BleManager @Inject constructor(
                     
                     // Discover services
                     scope.launch {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            val requested = gatt.requestMtu(BleConstants.PREFERRED_MTU)
+                            Log.d(TAG, "MTU request (${BleConstants.PREFERRED_MTU}) initiated: $requested")
+                        }
                         delay(500) // Small delay before service discovery
                         gatt.discoverServices()
                     }
@@ -176,10 +233,13 @@ class BleManager @Inject constructor(
                 Log.d(TAG, "Services discovered")
                 
                 // Verify required service exists
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                if (service != null) {
+                val profile = BleConstants.SUPPORTED_SERVICE_PROFILES.firstOrNull { candidate ->
+                    gatt.getService(candidate.serviceUuid) != null
+                }
+                if (profile != null) {
+                    activeProfile = profile
                     _connectionState.value = BleConnectionState.Ready(gatt.device)
-                    Log.d(TAG, "Device ready for operations")
+                    Log.d(TAG, "Device ready for operations using profile: ${profile.name}")
                     
                     // Enable notifications
                     scope.launch {
@@ -199,7 +259,17 @@ class BleManager @Inject constructor(
                 )
             }
         }
+
+        override fun onMtuChanged(gatt: BluetoothGatt, mtu: Int, status: Int) {
+            if (status == BluetoothGatt.GATT_SUCCESS) {
+                negotiatedMtu = mtu
+                Log.d(TAG, "MTU updated to $mtu")
+            } else {
+                Log.w(TAG, "MTU change failed with status: $status")
+            }
+        }
         
+        @Suppress("OVERRIDE_DEPRECATION")
         override fun onCharacteristicWrite(
             gatt: BluetoothGatt,
             characteristic: BluetoothGattCharacteristic,
@@ -212,6 +282,7 @@ class BleManager @Inject constructor(
             }
         }
         
+        @Suppress("DEPRECATION", "OVERRIDE_DEPRECATION")
         override fun onCharacteristicRead(
             gatt: BluetoothGatt,
             characteristic: BluetoothGattCharacteristic,
@@ -219,36 +290,42 @@ class BleManager @Inject constructor(
         ) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 val data = characteristic.value
-                Log.d(TAG, "Characteristic read: ${data.contentToString()}")
+                Log.d(TAG, "Characteristic read: ${data?.contentToString()}")
                 
                 // Handle device status response
-                if (characteristic.uuid == BleConstants.CHAR_DEVICE_STATUS) {
-                    val status = BleConstants.decodeDeviceStatus(data)
-                    _deviceStatus.value = status
-                    Log.d(TAG, "Device status: ${status.getSummary()}")
+                if (characteristic.uuid == activeProfile?.deviceStatusCharacteristic && data != null) {
+                    val deviceStatus = BleConstants.decodeDeviceStatus(data)
+                    _deviceStatus.value = deviceStatus
+                    Log.d(TAG, "Device status: ${deviceStatus.getSummary()}")
                 }
             } else {
                 Log.e(TAG, "Characteristic read failed: $status")
             }
         }
         
+        @Suppress("DEPRECATION", "OVERRIDE_DEPRECATION")
         override fun onCharacteristicChanged(
             gatt: BluetoothGatt,
             characteristic: BluetoothGattCharacteristic
         ) {
             val data = characteristic.value
-            Log.d(TAG, "Notification received: ${data.contentToString()}")
+            Log.d(TAG, "Notification received: ${data?.contentToString()}")
+            
+            if (data == null) return
             
             // Handle notifications
             when (characteristic.uuid) {
-                BleConstants.CHAR_DEVICE_STATUS -> {
-                    val status = BleConstants.decodeDeviceStatus(data)
-                    _deviceStatus.value = status
+                activeProfile?.deviceStatusCharacteristic -> {
+                    val deviceStatus = BleConstants.decodeDeviceStatus(data)
+                    _deviceStatus.value = deviceStatus
                 }
-                BleConstants.CHAR_NOTIFICATION -> {
+                activeProfile?.notificationCharacteristic -> {
                     handleDeviceNotification(data)
                 }
             }
+
+            recordTransportEvent(BleTransportDirection.RECEIVED, data)
+            processNetworkResponse(data)
         }
     }
     
@@ -265,6 +342,16 @@ class BleManager @Inject constructor(
      * Start BLE scan for devices
      */
     fun startScan() {
+        if (!hasScanPermission()) {
+            _connectionState.value = BleConnectionState.Error(
+                "Bluetooth scan permission is not granted",
+                BleError.PermissionDenied(Manifest.permission.BLUETOOTH_SCAN.takeIf {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                } ?: Manifest.permission.ACCESS_FINE_LOCATION)
+            )
+            return
+        }
+
         if (!isBluetoothEnabled()) {
             _connectionState.value = BleConnectionState.Error(
                 "Bluetooth is not enabled",
@@ -273,35 +360,46 @@ class BleManager @Inject constructor(
             return
         }
         
-        // Clear previous results
+        scanJob?.cancel()
+        bluetoothLeScanner?.stopScan(scanCallback)
+
         scanResults.clear()
         _discoveredDevices.value = emptyList()
-        _connectionState.value = BleConnectionState.Scanning(0)
+        _connectionState.value = BleConnectionState.Scanning(devicesFound = 0)
         
         // Build scan filter
-        val scanFilter = ScanFilter.Builder()
-            .setServiceUuid(ParcelUuid(BleConstants.SERVICE_UUID))
-            .build()
+        val scanFilters = BleConstants.SCAN_SERVICE_UUIDS
+            .distinct()
+            .map { uuid ->
+                ScanFilter.Builder()
+                    .setServiceUuid(ParcelUuid(uuid))
+                    .build()
+            }
+            .ifEmpty {
+                listOf(ScanFilter.Builder().build())
+            }
         
         // Build scan settings
         val scanSettings = ScanSettings.Builder()
             .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
             .build()
         
-        // Start scan
-        bluetoothLeScanner?.startScan(
-            listOf(scanFilter),
-            scanSettings,
-            scanCallback
-        )
-        
-        Log.d(TAG, "BLE scan started")
-        
-        // Auto-stop scan after timeout
-        scanJob?.cancel()
         scanJob = scope.launch {
-            delay(BleConstants.SCAN_TIMEOUT_MS)
-            stopScan()
+            while (isActive && currentDevice == null) {
+                bluetoothLeScanner?.startScan(scanFilters, scanSettings, scanCallback)
+                Log.d(TAG, "BLE scan window started (target: ${BleConstants.TARGET_DEVICE_NAME})")
+
+                delay(BleConstants.SCAN_WINDOW_MS)
+
+                bluetoothLeScanner?.stopScan(scanCallback)
+
+                if (!targetDeviceFound()) {
+                    _connectionState.value = BleConnectionState.Scanning(devicesFound = 0)
+                    Log.d(TAG, "Target not found in this window, retrying...")
+                }
+
+                delay(BleConstants.SCAN_RETRY_DELAY_MS)
+            }
         }
     }
     
@@ -312,11 +410,11 @@ class BleManager @Inject constructor(
         bluetoothLeScanner?.stopScan(scanCallback)
         scanJob?.cancel()
         
-        if (_connectionState.value is BleConnectionState.Scanning) {
+        if (_connectionState.value is BleConnectionState.Scanning && !_connectionState.value.isConnected()) {
             _connectionState.value = BleConnectionState.Disconnected
         }
         
-        Log.d(TAG, "BLE scan stopped (${scanResults.size} devices found)")
+        Log.d(TAG, "BLE scan stopped (${scanResults.size} target devices cached)")
     }
     
     /**
@@ -330,6 +428,8 @@ class BleManager @Inject constructor(
         disconnect()
         
         currentDevice = device
+        negotiatedMtu = BleConstants.DEFAULT_MTU
+        activeProfile = null
         _connectionState.value = BleConnectionState.Connecting(device)
         
         Log.d(TAG, "Connecting to ${device.name ?: device.address}")
@@ -365,6 +465,8 @@ class BleManager @Inject constructor(
         bluetoothGatt?.disconnect()
         bluetoothGatt?.close()
         bluetoothGatt = null
+        negotiatedMtu = BleConstants.DEFAULT_MTU
+        activeProfile = null
         _connectionState.value = BleConnectionState.Disconnected
         _deviceStatus.value = null
         
@@ -387,19 +489,22 @@ class BleManager @Inject constructor(
                     BleError.General("GATT connection not available")
                 )
                 
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                val characteristic = service?.getCharacteristic(BleConstants.CHAR_WIFI_CONFIG)
+                val characteristic = getCharacteristic(gatt) { it.wifiConfigCharacteristic }
                 
                 if (characteristic == null) {
                     return@withContext Result.failure(BleError.CharacteristicNotFound())
                 }
                 
-                val data = BleConstants.encodeWifiConfig(ssid, password)
-                characteristic.value = data
-                
-                val success = gatt.writeCharacteristic(characteristic)
-                
+                val payload = BleConstants.encodeWifiConfig(ssid, password)
+                val success = writeCharacteristicPayload(
+                    gatt = gatt,
+                    characteristic = characteristic,
+                    data = payload,
+                    writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                )
+
                 if (success) {
+                    recordTransportEvent(BleTransportDirection.SENT, payload)
                     Log.d(TAG, "WiFi config sent successfully")
                     Result.success(Unit)
                 } else {
@@ -413,6 +518,35 @@ class BleManager @Inject constructor(
         }
     }
     
+    /**
+     * Send WiFi name/password using BLE text payload (wifi#connect#name#password)
+     */
+    suspend fun sendWifiAccountCredentials(
+        wifiName: String,
+        password: String,
+        appendNewline: Boolean = true
+    ): Result<Unit> {
+        val sanitizedAccount = wifiName.replace("#", "").trim()
+        val sanitizedPassword = password.replace("#", "")
+        val payload = "wifi#connect#$sanitizedAccount#$sanitizedPassword"
+        return sendTextPayload(
+            text = payload,
+            appendNewline = appendNewline,
+            writeWithoutResponse = false
+        )
+    }
+
+    /**
+     * Request latest HTTP IP/Wi-Fi account info from gadget.
+     */
+    suspend fun queryNetworkInfo(): Result<Unit> {
+        return sendTextPayload(
+            text = BleConstants.NETWORK_QUERY_COMMAND,
+            appendNewline = true,
+            writeWithoutResponse = false
+        )
+    }
+
     /**
      * Send command to device
      */
@@ -429,18 +563,22 @@ class BleManager @Inject constructor(
                     BleError.General("GATT connection not available")
                 )
                 
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                val characteristic = service?.getCharacteristic(BleConstants.CHAR_COMMAND)
+                val characteristic = getCharacteristic(gatt) { it.commandCharacteristic }
                 
                 if (characteristic == null) {
                     return@withContext Result.failure(BleError.CharacteristicNotFound())
                 }
                 
-                characteristic.value = command.toByteArray()
-                
-                val success = gatt.writeCharacteristic(characteristic)
+                val commandPayload = command.toByteArray()
+                val success = writeCharacteristicPayload(
+                    gatt = gatt,
+                    characteristic = characteristic,
+                    data = commandPayload,
+                    writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                )
                 
                 if (success) {
+                    recordTransportEvent(BleTransportDirection.SENT, commandPayload)
                     Log.d(TAG, "Command sent: ${command.description}")
                     Result.success(Unit)
                 } else {
@@ -452,6 +590,67 @@ class BleManager @Inject constructor(
                 Result.failure(e)
             }
         }
+    }
+
+    /**
+     * Send arbitrary payload bytes to the connected device.
+     * Useful for debugging custom protocols or sending JSON blobs.
+     */
+    suspend fun sendRawPayload(
+        payload: ByteArray,
+        writeWithoutResponse: Boolean = false
+    ): Result<Unit> = withContext(Dispatchers.IO) {
+        try {
+            if (!_connectionState.value.isReady()) {
+                return@withContext Result.failure(BleError.General("Device not ready"))
+            }
+
+            val gatt = bluetoothGatt ?: return@withContext Result.failure(
+                BleError.General("GATT connection not available")
+            )
+
+            val characteristic = getWritableCharacteristic(gatt)
+                ?: return@withContext Result.failure(BleError.CharacteristicNotFound())
+
+            val writeType = if (writeWithoutResponse) {
+                BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE
+            } else {
+                BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+            }
+
+            val success = writeCharacteristicPayload(
+                gatt = gatt,
+                characteristic = characteristic,
+                data = payload,
+                writeType = writeType
+            )
+
+            if (success) {
+                recordTransportEvent(BleTransportDirection.SENT, payload)
+                Result.success(Unit)
+            } else {
+                Result.failure(BleError.WriteOperationFailed())
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to send raw payload", e)
+            Result.failure(e)
+        }
+    }
+
+    /**
+     * Convenience helper for sending UTF-8 text (strings or JSON) to the gadget.
+     */
+    suspend fun sendTextPayload(
+        text: String,
+        charset: Charset = Charsets.UTF_8,
+        appendNewline: Boolean = false,
+        writeWithoutResponse: Boolean = false
+    ): Result<Unit> {
+        val payload = buildString {
+            append(text)
+            if (appendNewline) append('\n')
+        }.toByteArray(charset)
+        return sendRawPayload(payload, writeWithoutResponse)
     }
     
     /**
@@ -468,19 +667,22 @@ class BleManager @Inject constructor(
                     BleError.General("GATT connection not available")
                 )
                 
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                val characteristic = service?.getCharacteristic(BleConstants.CHAR_DISPLAY_CONTROL)
+                val characteristic = getCharacteristic(gatt) { it.displayControlCharacteristic }
                 
                 if (characteristic == null) {
                     return@withContext Result.failure(BleError.CharacteristicNotFound())
                 }
                 
                 val data = BleConstants.encodeDisplayText(text)
-                characteristic.value = data
-                
-                val success = gatt.writeCharacteristic(characteristic)
+                val success = writeCharacteristicPayload(
+                    gatt = gatt,
+                    characteristic = characteristic,
+                    data = data,
+                    writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                )
                 
                 if (success) {
+                    recordTransportEvent(BleTransportDirection.SENT, data)
                     Log.d(TAG, "Display text sent: $text")
                     Result.success(Unit)
                 } else {
@@ -508,19 +710,22 @@ class BleManager @Inject constructor(
                     BleError.General("GATT connection not available")
                 )
                 
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                val characteristic = service?.getCharacteristic(BleConstants.CHAR_DISPLAY_CONTROL)
+                val characteristic = getCharacteristic(gatt) { it.displayControlCharacteristic }
                 
                 if (characteristic == null) {
                     return@withContext Result.failure(BleError.CharacteristicNotFound())
                 }
                 
                 val data = BleConstants.encodeDisplayImage(fileName)
-                characteristic.value = data
-                
-                val success = gatt.writeCharacteristic(characteristic)
+                val success = writeCharacteristicPayload(
+                    gatt = gatt,
+                    characteristic = characteristic,
+                    data = data,
+                    writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
+                )
                 
                 if (success) {
+                    recordTransportEvent(BleTransportDirection.SENT, data)
                     Log.d(TAG, "Display image sent: $fileName")
                     Result.success(Unit)
                 } else {
@@ -548,8 +753,7 @@ class BleManager @Inject constructor(
                     BleError.General("GATT connection not available")
                 )
                 
-                val service = gatt.getService(BleConstants.SERVICE_UUID)
-                val characteristic = service?.getCharacteristic(BleConstants.CHAR_DEVICE_STATUS)
+                val characteristic = getCharacteristic(gatt) { it.deviceStatusCharacteristic }
                 
                 if (characteristic == null) {
                     return@withContext Result.failure(BleError.CharacteristicNotFound())
@@ -574,10 +778,100 @@ class BleManager @Inject constructor(
     }
     
     // ===== PRIVATE HELPERS =====
+
+    private suspend fun writeCharacteristicPayload(
+        gatt: BluetoothGatt,
+        characteristic: BluetoothGattCharacteristic,
+        data: ByteArray,
+        writeType: Int
+    ): Boolean {
+        if (data.isEmpty()) return true
+
+        val payloadSize = (negotiatedMtu - BleConstants.GATT_MTU_OVERHEAD)
+            .coerceAtLeast(BleConstants.DEFAULT_CHUNK_SIZE)
+
+        val chunks = BleConstants.chunkData(data, payloadSize)
+        for ((index, chunk) in chunks.withIndex()) {
+            val success = writeCharacteristicChunk(gatt, characteristic, chunk, writeType)
+            if (!success) {
+                Log.e(TAG, "Failed to write BLE chunk ${index + 1}/${chunks.size}")
+                return false
+            }
+            if (chunks.size > 1) {
+                delay(BleConstants.CHUNK_WRITE_DELAY_MS)
+            }
+        }
+        return true
+    }
+
+    @Suppress("DEPRECATION")
+    private fun writeCharacteristicChunk(
+        gatt: BluetoothGatt,
+        characteristic: BluetoothGattCharacteristic,
+        chunk: ByteArray,
+        writeType: Int
+    ): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            gatt.writeCharacteristic(characteristic, chunk, writeType) == BluetoothStatusCodes.SUCCESS
+        } else {
+            characteristic.writeType = writeType
+            characteristic.value = chunk
+            gatt.writeCharacteristic(characteristic)
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun writeDescriptorCompat(
+        gatt: BluetoothGatt,
+        descriptor: BluetoothGattDescriptor,
+        value: ByteArray
+    ): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            gatt.writeDescriptor(descriptor, value) == BluetoothStatusCodes.SUCCESS
+        } else {
+            descriptor.value = value
+            gatt.writeDescriptor(descriptor)
+        }
+    }
+
+    private fun getCharacteristic(
+        gatt: BluetoothGatt,
+        selector: (BleServiceProfile) -> UUID?
+    ): BluetoothGattCharacteristic? {
+        val profile = activeProfile ?: return null
+        val characteristicUuid = selector(profile) ?: return null
+        val service = gatt.getService(profile.serviceUuid) ?: return null
+        return service.getCharacteristic(characteristicUuid)
+    }
+
+    private fun getWritableCharacteristic(gatt: BluetoothGatt): BluetoothGattCharacteristic? {
+        return getCharacteristic(gatt) { it.commandCharacteristic }
+            ?: getCharacteristic(gatt) { it.wifiConfigCharacteristic }
+            ?: getCharacteristic(gatt) { it.displayControlCharacteristic }
+    }
+
+    private fun recordTransportEvent(direction: BleTransportDirection, payload: ByteArray) {
+        val snapshot = payload.copyOf()
+        scope.launch {
+            _transportEvents.emit(BleTransportEvent(direction, snapshot))
+        }
+    }
+
+    private fun processNetworkResponse(payload: ByteArray) {
+        val message = payload.toString(Charsets.UTF_8).trim()
+        if (!message.startsWith(BleConstants.NETWORK_RESPONSE_PREFIX)) return
+        val parts = message.split("#")
+        if (parts.size < 4) return
+        val ip = parts[2].trim()
+        val wifiName = parts[3].trim()
+        if (ip.isEmpty()) return
+        scope.launch {
+            _networkInfo.emit(BleNetworkInfo(ip, wifiName))
+        }
+    }
     
     private fun enableNotifications(gatt: BluetoothGatt) {
-        val service = gatt.getService(BleConstants.SERVICE_UUID) ?: return
-        val characteristic = service.getCharacteristic(BleConstants.CHAR_NOTIFICATION) ?: return
+        val characteristic = getCharacteristic(gatt) { it.notificationCharacteristic } ?: return
         
         // Enable local notifications
         gatt.setCharacteristicNotification(characteristic, true)
@@ -585,9 +879,16 @@ class BleManager @Inject constructor(
         // Enable remote notifications
         val descriptor = characteristic.getDescriptor(BleConstants.DESCRIPTOR_CLIENT_CONFIG)
         if (descriptor != null) {
-            descriptor.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
-            gatt.writeDescriptor(descriptor)
-            Log.d(TAG, "Notifications enabled")
+            val success = writeDescriptorCompat(
+                gatt,
+                descriptor,
+                BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
+            )
+            if (success) {
+                Log.d(TAG, "Notifications enabled")
+            } else {
+                Log.w(TAG, "Failed to enable notifications on descriptor ${descriptor.uuid}")
+            }
         }
     }
     

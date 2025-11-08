@@ -6,6 +6,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -31,11 +33,20 @@ fun ConversationListScreen(
     viewModel: ConversationListViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    var conversationToDelete by remember { mutableStateOf<ConversationEntity?>(null) }
     
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("对话列表") },
+                actions = {
+                    IconButton(onClick = { viewModel.refreshConversations() }) {
+                        Icon(
+                            imageVector = Icons.Default.Refresh,
+                            contentDescription = "刷新列表"
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary
@@ -75,6 +86,9 @@ fun ConversationListScreen(
                     ConversationList(
                         conversations = state.conversations,
                         onConversationClick = onConversationClick,
+                        onDeleteConversation = { conversation ->
+                            conversationToDelete = conversation
+                        },
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(paddingValues)
@@ -92,12 +106,39 @@ fun ConversationListScreen(
             }
         }
     }
+
+    val pendingDeletion = conversationToDelete
+    if (pendingDeletion != null) {
+        AlertDialog(
+            onDismissRequest = { conversationToDelete = null },
+            title = { Text("删除对话") },
+            text = {
+                Text("确定要删除对话 \"${pendingDeletion.title}\" 吗？")
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        viewModel.deleteConversation(pendingDeletion.id)
+                        conversationToDelete = null
+                    }
+                ) {
+                    Text("删除")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { conversationToDelete = null }) {
+                    Text("取消")
+                }
+            }
+        )
+    }
 }
 
 @Composable
 private fun ConversationList(
     conversations: List<ConversationEntity>,
     onConversationClick: (Long) -> Unit,
+    onDeleteConversation: (ConversationEntity) -> Unit,
     modifier: Modifier = Modifier
 ) {
     // Group conversations by date
@@ -134,7 +175,8 @@ private fun ConversationList(
                 ) { conversation ->
                     ConversationItem(
                         conversation = conversation,
-                        onClick = { onConversationClick(conversation.id) }
+                        onClick = { onConversationClick(conversation.id) },
+                        onDelete = { onDeleteConversation(conversation) }
                     )
                 }
             }
@@ -145,7 +187,8 @@ private fun ConversationList(
 @Composable
 private fun ConversationItem(
     conversation: ConversationEntity,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onDelete: () -> Unit
 ) {
     Surface(
         modifier = Modifier
@@ -208,6 +251,16 @@ private fun ConversationItem(
                     text = conversation.getRelativeTimeString(),
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Spacer(modifier = Modifier.width(8.dp))
+
+            IconButton(onClick = onDelete) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "删除对话",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }

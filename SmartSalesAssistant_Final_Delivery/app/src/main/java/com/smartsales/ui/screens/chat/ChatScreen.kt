@@ -16,7 +16,6 @@ import com.smartsales.data.local.entity.MessageEntity
 import com.smartsales.ui.components.LoadingIndicator
 import com.smartsales.ui.components.MessageBubble
 import com.smartsales.ui.components.TypingIndicator
-import kotlinx.coroutines.launch
 
 /**
  * Chat Screen
@@ -34,7 +33,7 @@ fun ChatScreen(
     val uiState by viewModel.uiState.collectAsState()
     val inputText by viewModel.inputText.collectAsState()
     
-    var showMenu by remember { mutableStateOf(false) }
+    val showMenu = remember { mutableStateOf(false) }
     
     LaunchedEffect(conversationId) {
         if (conversationId > 0) {
@@ -72,7 +71,7 @@ fun ChatScreen(
                 },
                 actions = {
                     // More options menu
-                    IconButton(onClick = { showMenu = true }) {
+                    IconButton(onClick = { showMenu.value = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
                             contentDescription = "更多"
@@ -80,13 +79,13 @@ fun ChatScreen(
                     }
                     
                     DropdownMenu(
-                        expanded = showMenu,
-                        onDismissRequest = { showMenu = false }
+                        expanded = showMenu.value,
+                        onDismissRequest = { showMenu.value = false }
                     ) {
                         DropdownMenuItem(
                             text = { Text("分析客户") },
                             onClick = {
-                                showMenu = false
+                                showMenu.value = false
                                 viewModel.analyzeCustomer()
                             },
                             leadingIcon = {
@@ -97,7 +96,7 @@ fun ChatScreen(
                         DropdownMenuItem(
                             text = { Text("导出对话") },
                             onClick = {
-                                showMenu = false
+                                showMenu.value = false
                                 uiState.conversationId?.let { onExportClick(it) }
                             },
                             leadingIcon = {
@@ -108,7 +107,7 @@ fun ChatScreen(
                         DropdownMenuItem(
                             text = { Text("清空对话") },
                             onClick = {
-                                showMenu = false
+                                showMenu.value = false
                                 viewModel.clearMessages()
                             },
                             leadingIcon = {
@@ -175,14 +174,12 @@ private fun MessageList(
     modifier: Modifier = Modifier
 ) {
     val listState = rememberLazyListState()
-    val coroutineScope = rememberCoroutineScope()
     
     // Auto-scroll to bottom when new messages arrive
     LaunchedEffect(messages.size) {
-        if (messages.isNotEmpty()) {
-            coroutineScope.launch {
-                listState.animateScrollToItem(messages.size)
-            }
+        val lastIndex = messages.lastIndex
+        if (lastIndex >= 0) {
+            listState.animateScrollToItem(lastIndex)
         }
     }
     

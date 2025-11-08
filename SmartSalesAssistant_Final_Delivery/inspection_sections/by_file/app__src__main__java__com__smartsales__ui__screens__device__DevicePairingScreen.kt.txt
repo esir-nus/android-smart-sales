@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt
+-----------------------------------------------------------------------------------------------
+- Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with checkPermission) or explicitly handle a potential SecurityException (at line 255)

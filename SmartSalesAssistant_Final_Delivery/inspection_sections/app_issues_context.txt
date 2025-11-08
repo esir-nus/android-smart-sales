@@ -1,0 +1,1298 @@
+45357730-<ol class="tree">
+45357731-</ol>
+45357732-</ol>
+45357733-<li><label for="2050878108">file&nbsp;<b>DevicePairingScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;error&nbsp;</span></label><input type="checkbox" onclick="navigate(2050878108)" id="2050878108">
+45357734-<div id="d2050878108" style="display:none">
+45357735:<p class="problem-description-group">Location</p><div class="location"><b>DevicePairingScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.device</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt">DevicePairingScreen.kt</a></code> in <code>com.smartsales.ui.screens.device</code></div>
+45357736-<p class="problem-description-group">Problem synopsis</p>
+45357737-<div class="problem-description">
+45357738-<ul>
+45357739:<li>Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with <code>checkPermission</code>) or explicitly handle a potential <code>SecurityException</code> (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#8640">255</a>)
+45357740-</ul>
+45357741-</div></div>
+45357742-<ol class="tree">
+45357743-<li><label for="1182202507"><span style="margin:1px;background:#ffabab">ERROR</span>&nbsp;Call&nbsp;requires&nbsp;permission&nbsp;which&nbsp;may&nbsp;be&nbsp;rejected&nbsp;by&nbsp;user:&nbsp;code&nbsp;should&nbsp;explicitly&nbsp;check&nbsp;to&nbsp;see&nbsp;if&nbsp;permission&nbsp;is&nbsp;available&nbsp;(with&nbsp;checkPermission)&nbsp;or&nbsp;explicitly&nbsp;handle&nbsp;a&nbsp;potential&nbsp;SecurityException&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1182202507)" id="1182202507">
+45357744-<div id="d1182202507" style="display:none">
+45357745:<p class="problem-description-group">Location</p><div class="location"><b>DevicePairingScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.device</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt">DevicePairingScreen.kt</a></code> in <code>com.smartsales.ui.screens.device</code></div>
+45357746-<p class="problem-description-group">Problem synopsis</p>
+45357747-<div class="problem-description">
+45357748-<ul>
+45357749:<li>Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with <code>checkPermission</code>) or explicitly handle a potential <code>SecurityException</code> (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#8640">255</a>)
+45357750-</ul>
+45357751-</div></div>
+45357752-<ol class="tree">
+45357753-</ol>
+45357754-</ol>
+45357755-<li><label for="1267906118">file&nbsp;<b>DevicePairingViewModel.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;error&nbsp;</span></label><input type="checkbox" onclick="navigate(1267906118)" id="1267906118">
+45357756-<div id="d1267906118" style="display:none">
+45357757:<p class="problem-description-group">Location</p><div class="location"><b>DevicePairingViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.device</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt">DevicePairingViewModel.kt</a></code> in <code>com.smartsales.ui.screens.device</code></div>
+45357758-<p class="problem-description-group">Problem synopsis</p>
+45357759-<div class="problem-description">
+45357760-<ul>
+45357761:<li>Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with <code>checkPermission</code>) or explicitly handle a potential <code>SecurityException</code> (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt#3684">134</a>)
+45357762-</ul>
+45357763-</div></div>
+45357764-<ol class="tree">
+45357765-<li><label for="1686805946"><span style="margin:1px;background:#ffabab">ERROR</span>&nbsp;Call&nbsp;requires&nbsp;permission&nbsp;which&nbsp;may&nbsp;be&nbsp;rejected&nbsp;by&nbsp;user:&nbsp;code&nbsp;should&nbsp;explicitly&nbsp;check&nbsp;to&nbsp;see&nbsp;if&nbsp;permission&nbsp;is&nbsp;available&nbsp;(with&nbsp;checkPermission)&nbsp;or&nbsp;explicitly&nbsp;handle&nbsp;a&nbsp;potential&nbsp;SecurityException&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1686805946)" id="1686805946">
+45357766-<div id="d1686805946" style="display:none">
+45357767:<p class="problem-description-group">Location</p><div class="location"><b>DevicePairingViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.device</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt">DevicePairingViewModel.kt</a></code> in <code>com.smartsales.ui.screens.device</code></div>
+45357768-<p class="problem-description-group">Problem synopsis</p>
+45357769-<div class="problem-description">
+45357770-<ul>
+45357771:<li>Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with <code>checkPermission</code>) or explicitly handle a potential <code>SecurityException</code> (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt#3684">134</a>)
+45357772-</ul>
+45357773-</div></div>
+45357774-<ol class="tree">
+45357775-</ol>
+45357776-</ol>
+--
+45361099-<ol class="tree">
+45361100-</ol>
+45361101-</ol>
+45361102-<li><label for="1446286437">dir&nbsp;<b>mipmap&#8209;anydpi&#8209;v26</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(1446286437)" id="1446286437">
+45361103-<div id="d1446286437" style="display:none">
+45361104:<p class="problem-description-group">Location</p><div class="location"><br>in directory&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26">…/app/src/main/res/mipmap-anydpi-v26 [SmartSalesAssistant.app.main]</a></div>
+45361105-<p class="problem-description-group">Problem synopsis</p>
+45361106-<div class="problem-description">
+45361107-<ul>
+45361108-<li>This folder configuration (<code>v26</code>) is unnecessary; <code>minSdkVersion</code> is 26. Merge all the resources in this folder into <code>mipmap-anydpi</code>.
+45361109-</ul>
+45361110-</div></div>
+45361111-<ol class="tree">
+45361112-<li><label for="411271251"><span style="margin:1px;"></span>&nbsp;This&nbsp;folder&nbsp;configuration&nbsp;(v26)&nbsp;is&nbsp;unnecessary;&nbsp;minSdkVersion&nbsp;is&nbsp;26.&nbsp;Merge&nbsp;all&nbsp;the&nbsp;resources&nbsp;in&nbsp;this&nbsp;folder&nbsp;into&nbsp;mipmap&#8209;anydpi.&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(411271251)" id="411271251">
+45361113-<div id="d411271251" style="display:none">
+45361114:<p class="problem-description-group">Location</p><div class="location"><br>in directory&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26">…/app/src/main/res/mipmap-anydpi-v26 [SmartSalesAssistant.app.main]</a></div>
+45361115-<p class="problem-description-group">Problem synopsis</p>
+45361116-<div class="problem-description">
+45361117-<ul>
+45361118-<li>This folder configuration (<code>v26</code>) is unnecessary; <code>minSdkVersion</code> is 26. Merge all the resources in this folder into <code>mipmap-anydpi</code>.
+45361119-</ul>
+--
+45361182-<ol class="tree">
+45361183-<li><label for="1453714855"><b>Use&nbsp;KTX&nbsp;extension&nbsp;function</b>&nbsp;inspection&nbsp;<span class="grayout">&nbsp;&nbsp;3&nbsp;warnings&nbsp;</span></label><input type="checkbox" checked onclick="navigate(1453714855)" id="1453714855">
+45361184-<ol class="tree">
+45361185-<li><label for="947099975">file&nbsp;<b>SettingsViewModel.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;3&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(947099975)" id="947099975">
+45361186-<div id="d947099975" style="display:none">
+45361187:<p class="problem-description-group">Location</p><div class="location"><b>SettingsViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt">SettingsViewModel.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45361188-<p class="problem-description-group">Problem synopsis</p>
+45361189-<div class="problem-description">
+45361190-<ul>
+45361191:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2530">82</a>)
+45361192:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2951">100</a>)
+45361193:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#3303">115</a>)
+45361194-</ul>
+45361195-</div></div>
+45361196-<ol class="tree">
+45361197-<li><label for="1663920824"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Use&nbsp;the&nbsp;KTX&nbsp;extension&nbsp;function&nbsp;SharedPreferences.edit&nbsp;instead?&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1663920824)" id="1663920824">
+45361198-<div id="d1663920824" style="display:none">
+45361199:<p class="problem-description-group">Location</p><div class="location"><b>SettingsViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt">SettingsViewModel.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45361200-<p class="problem-description-group">Problem synopsis</p>
+45361201-<div class="problem-description">
+45361202-<ul>
+45361203:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2530">82</a>)
+45361204:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2951">100</a>)
+45361205:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#3303">115</a>)
+45361206-</ul>
+45361207-</div></div>
+45361208-<ol class="tree">
+45361209-</ol>
+45361210-<li><label for="443603374"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Use&nbsp;the&nbsp;KTX&nbsp;extension&nbsp;function&nbsp;SharedPreferences.edit&nbsp;instead?&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(443603374)" id="443603374">
+45361211-<div id="d443603374" style="display:none">
+45361212:<p class="problem-description-group">Location</p><div class="location"><b>SettingsViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt">SettingsViewModel.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45361213-<p class="problem-description-group">Problem synopsis</p>
+45361214-<div class="problem-description">
+45361215-<ul>
+45361216:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2530">82</a>)
+45361217:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2951">100</a>)
+45361218:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#3303">115</a>)
+45361219-</ul>
+45361220-</div></div>
+45361221-<ol class="tree">
+45361222-</ol>
+45361223-<li><label for="1570199909"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Use&nbsp;the&nbsp;KTX&nbsp;extension&nbsp;function&nbsp;SharedPreferences.edit&nbsp;instead?&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1570199909)" id="1570199909">
+45361224-<div id="d1570199909" style="display:none">
+45361225:<p class="problem-description-group">Location</p><div class="location"><b>SettingsViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt">SettingsViewModel.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45361226-<p class="problem-description-group">Problem synopsis</p>
+45361227-<div class="problem-description">
+45361228-<ul>
+45361229:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2530">82</a>)
+45361230:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#2951">100</a>)
+45361231:<li>Use the KTX extension function <code>SharedPreferences.edit</code> instead? (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#3303">115</a>)
+45361232-</ul>
+45361233-</div></div>
+45361234-<ol class="tree">
+45361235-</ol>
+45361236-</ol>
+--
+45361316-<ol class="tree">
+45361317-<li><label for="48738483"><b>Monochrome&nbsp;icon&nbsp;is&nbsp;not&nbsp;defined</b>&nbsp;inspection&nbsp;<span class="grayout">&nbsp;&nbsp;2&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(48738483)" id="48738483">
+45361318-<ol class="tree">
+45361319-<li><label for="1095994924">file&nbsp;<b>ic_launcher.xml</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(1095994924)" id="1095994924">
+45361320-<div id="d1095994924" style="display:none">
+45361321:<p class="problem-description-group">Location</p><div class="location"><b>ic_launcher.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">…/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml [SmartSalesAssistant.app.main]</a></div>
+45361322-<p class="problem-description-group">Problem synopsis</p>
+45361323-<div class="problem-description">
+45361324-<ul>
+45361325:<li>The application adaptive icon is missing a monochrome tag (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml#39">2</a>)
+45361326-</ul>
+45361327-</div></div>
+45361328-<ol class="tree">
+45361329-<li><label for="409354128"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;The&nbsp;application&nbsp;adaptive&nbsp;icon&nbsp;is&nbsp;missing&nbsp;a&nbsp;monochrome&nbsp;tag&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(409354128)" id="409354128">
+45361330-<div id="d409354128" style="display:none">
+45361331:<p class="problem-description-group">Location</p><div class="location"><b>ic_launcher.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">…/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml [SmartSalesAssistant.app.main]</a></div>
+45361332-<p class="problem-description-group">Problem synopsis</p>
+45361333-<div class="problem-description">
+45361334-<ul>
+45361335:<li>The application adaptive icon is missing a monochrome tag (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml#39">2</a>)
+45361336-</ul>
+45361337-</div></div>
+45361338-<ol class="tree">
+45361339-</ol>
+45361340-</ol>
+45361341-<li><label for="285643203">file&nbsp;<b>ic_launcher_round.xml</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(285643203)" id="285643203">
+45361342-<div id="d285643203" style="display:none">
+45361343:<p class="problem-description-group">Location</p><div class="location"><b>ic_launcher_round.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">…/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml [SmartSalesAssistant.app.main]</a></div>
+45361344-<p class="problem-description-group">Problem synopsis</p>
+45361345-<div class="problem-description">
+45361346-<ul>
+45361347:<li>The application adaptive roundIcon is missing a monochrome tag (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml#39">2</a>)
+45361348-</ul>
+45361349-</div></div>
+45361350-<ol class="tree">
+45361351-<li><label for="223606118"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;The&nbsp;application&nbsp;adaptive&nbsp;roundIcon&nbsp;is&nbsp;missing&nbsp;a&nbsp;monochrome&nbsp;tag&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(223606118)" id="223606118">
+45361352-<div id="d223606118" style="display:none">
+45361353:<p class="problem-description-group">Location</p><div class="location"><b>ic_launcher_round.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">…/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml [SmartSalesAssistant.app.main]</a></div>
+45361354-<p class="problem-description-group">Problem synopsis</p>
+45361355-<div class="problem-description">
+45361356-<ul>
+45361357:<li>The application adaptive roundIcon is missing a monochrome tag (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml#39">2</a>)
+45361358-</ul>
+45361359-</div></div>
+45361360-<ol class="tree">
+45361361-</ol>
+45361362-</ol>
+--
+45361682-<div id="d690669695" style="display:none">
+45361683-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>ApiConfigTest</code></b><br>in package&nbsp;<code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361684-<ol class="tree">
+45361685-<li><label for="1921883272">method&nbsp;<b>buildDashscopeAuth&nbsp;wraps&nbsp;key&nbsp;in&nbsp;bearer&nbsp;token()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1921883272)" id="1921883272">
+45361686-<div id="d1921883272" style="display:none">
+45361687:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>buildDashscopeAuth wraps key in bearer token</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361688-<ol class="tree">
+45361689-</ol>
+45361690-<li><label for="1365083023">method&nbsp;<b>buildTingwuAuth&nbsp;wraps&nbsp;key&nbsp;in&nbsp;bearer&nbsp;token()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1365083023)" id="1365083023">
+45361691-<div id="d1365083023" style="display:none">
+45361692:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>buildTingwuAuth wraps key in bearer token</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361693-<ol class="tree">
+45361694-</ol>
+45361695-<li><label for="535482099">method&nbsp;<b>getGadgetBaseUrl&nbsp;allows&nbsp;custom&nbsp;port()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(535482099)" id="535482099">
+45361696-<div id="d535482099" style="display:none">
+45361697:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>getGadgetBaseUrl allows custom port</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361698-<ol class="tree">
+45361699-</ol>
+45361700-<li><label for="1270704388">method&nbsp;<b>getGadgetBaseUrl&nbsp;builds&nbsp;http&nbsp;url&nbsp;with&nbsp;default&nbsp;port()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1270704388)" id="1270704388">
+45361701-<div id="d1270704388" style="display:none">
+45361702:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>getGadgetBaseUrl builds http url with default port</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361703-<ol class="tree">
+45361704-</ol>
+45361705-</ol>
+45361706-<li><label for="459048355">class&nbsp;<b>AttachmentDao</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(459048355)" id="459048355">
+45361707-<div id="d459048355" style="display:none">
+--
+45361712-<div id="d2068955294" style="display:none">
+45361713-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>AuthInterceptorTest</code></b><br>in package&nbsp;<code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361714-<ol class="tree">
+45361715-<li><label for="805206502">method&nbsp;<b>DashscopeAuthInterceptor&nbsp;adds&nbsp;bearer&nbsp;header()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(805206502)" id="805206502">
+45361716-<div id="d805206502" style="display:none">
+45361717:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>DashscopeAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361718-<ol class="tree">
+45361719-</ol>
+45361720-<li><label for="1837936368">method&nbsp;<b>setUp()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1837936368)" id="1837936368">
+45361721-<div id="d1837936368" style="display:none">
+45361722:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>setUp</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361723-<ol class="tree">
+45361724-</ol>
+45361725-<li><label for="98738623">method&nbsp;<b>tearDown()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(98738623)" id="98738623">
+45361726-<div id="d98738623" style="display:none">
+45361727:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>tearDown</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361728-<ol class="tree">
+45361729-</ol>
+45361730-<li><label for="1568634123">method&nbsp;<b>TingwuAuthInterceptor&nbsp;adds&nbsp;bearer&nbsp;header()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1568634123)" id="1568634123">
+45361731-<div id="d1568634123" style="display:none">
+45361732:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>TingwuAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45361733-<ol class="tree">
+45361734-</ol>
+45361735-</ol>
+45361736-<li><label for="1321152101">class&nbsp;<b>BleCommandTest</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1321152101)" id="1321152101">
+45361737-<div id="d1321152101" style="display:none">
+45361738-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>BleCommandTest</code></b><br>in package&nbsp;<code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361739-<ol class="tree">
+45361740-<li><label for="1134221751">method&nbsp;<b>fromByte&nbsp;resolves&nbsp;matching&nbsp;command()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1134221751)" id="1134221751">
+45361741-<div id="d1134221751" style="display:none">
+45361742:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>fromByte resolves matching command</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361743-<ol class="tree">
+45361744-</ol>
+45361745-<li><label for="1829025337">method&nbsp;<b>fromByte&nbsp;returns&nbsp;null&nbsp;for&nbsp;unknown&nbsp;value()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1829025337)" id="1829025337">
+45361746-<div id="d1829025337" style="display:none">
+45361747:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>fromByte returns null for unknown value</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361748-<ol class="tree">
+45361749-</ol>
+45361750-<li><label for="1180623956">method&nbsp;<b>getEstimatedExecutionTime&nbsp;returns&nbsp;documented&nbsp;durations()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1180623956)" id="1180623956">
+45361751-<div id="d1180623956" style="display:none">
+45361752:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>getEstimatedExecutionTime returns documented durations</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361753-<ol class="tree">
+45361754-</ol>
+45361755-<li><label for="903180107">method&nbsp;<b>isDestructive&nbsp;true&nbsp;for&nbsp;device&nbsp;reset&nbsp;commands()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(903180107)" id="903180107">
+45361756-<div id="d903180107" style="display:none">
+45361757:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>isDestructive true for device reset commands</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361758-<ol class="tree">
+45361759-</ol>
+45361760-<li><label for="507710745">method&nbsp;<b>isValidCommand&nbsp;matches&nbsp;defined&nbsp;values()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(507710745)" id="507710745">
+45361761-<div id="d507710745" style="display:none">
+45361762:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>isValidCommand matches defined values</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361763-<ol class="tree">
+45361764-</ol>
+45361765-<li><label for="135520776">method&nbsp;<b>requiresParameters&nbsp;true&nbsp;only&nbsp;for&nbsp;display&nbsp;commands()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(135520776)" id="135520776">
+45361766-<div id="d135520776" style="display:none">
+45361767:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>requiresParameters true only for display commands</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361768-<ol class="tree">
+45361769-</ol>
+45361770-<li><label for="872753080">method&nbsp;<b>toByteArray&nbsp;emits&nbsp;enum&nbsp;value()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(872753080)" id="872753080">
+45361771-<div id="d872753080" style="display:none">
+45361772:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>toByteArray emits enum value</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361773-<ol class="tree">
+45361774-</ol>
+45361775-<li><label for="551329147">method&nbsp;<b>toByteArrayWithParam&nbsp;prefixes&nbsp;command()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(551329147)" id="551329147">
+45361776-<div id="d551329147" style="display:none">
+45361777:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>toByteArrayWithParam prefixes command</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361778-<ol class="tree">
+45361779-</ol>
+45361780-<li><label for="996888026">method&nbsp;<b>toByteArrayWithParams&nbsp;handles&nbsp;multiple&nbsp;values()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(996888026)" id="996888026">
+45361781-<div id="d996888026" style="display:none">
+45361782:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>toByteArrayWithParams handles multiple values</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleCommandTest.kt#295" qualifiedname="com.smartsales.business.bluetooth.BleCommandTest">BleCommandTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361783-<ol class="tree">
+45361784-</ol>
+45361785-</ol>
+45361786-<li><label for="1888317333">class&nbsp;<b>BleConstantsTest</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1888317333)" id="1888317333">
+45361787-<div id="d1888317333" style="display:none">
+45361788-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>BleConstantsTest</code></b><br>in package&nbsp;<code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361789-<ol class="tree">
+45361790-<li><label for="1478259263">method&nbsp;<b>calculateChecksum&nbsp;sums&nbsp;byte&nbsp;values()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1478259263)" id="1478259263">
+45361791-<div id="d1478259263" style="display:none">
+45361792:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>calculateChecksum sums byte values</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361793-<ol class="tree">
+45361794-</ol>
+45361795-<li><label for="1866264766">method&nbsp;<b>chunkData&nbsp;splits&nbsp;bytes&nbsp;into&nbsp;requested&nbsp;chunk&nbsp;size()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1866264766)" id="1866264766">
+45361796-<div id="d1866264766" style="display:none">
+45361797:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>chunkData splits bytes into requested chunk size</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361798-<ol class="tree">
+45361799-</ol>
+45361800-<li><label for="274886645">method&nbsp;<b>decodeDeviceStatus&nbsp;parses&nbsp;battery&nbsp;wifi&nbsp;and&nbsp;recording&nbsp;flags()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(274886645)" id="274886645">
+45361801-<div id="d274886645" style="display:none">
+45361802:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>decodeDeviceStatus parses battery wifi and recording flags</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p>
+45361803-<p class="problem-description-group">Call chain</p><ul><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7504">isWifiConnected</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7452">batteryLevel</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7538">isRecording</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li></ul></div>
+45361804-<ol class="tree">
+45361805-</ol>
+45361806-<li><label for="1302326082">method&nbsp;<b>decodeDeviceStatus&nbsp;returns&nbsp;unknown&nbsp;when&nbsp;insufficient&nbsp;data()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1302326082)" id="1302326082">
+45361807-<div id="d1302326082" style="display:none">
+45361808:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>decodeDeviceStatus returns unknown when insufficient data</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p>
+45361809-<p class="problem-description-group">Call chain</p><ul><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7504">isWifiConnected</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7452">batteryLevel</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li><li>Parameter&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7538">isRecording</a></code> in constructor&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7442">DeviceStatus(int, boolean, boolean, long)</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/device-connectivity/src/main/java/com/smartsales/business/bluetooth/BleConstants.kt#7430" qualifiedname="com.smartsales.business.bluetooth.DeviceStatus">DeviceStatus</a></code></li></ul></div>
+45361810-<ol class="tree">
+45361811-</ol>
+45361812-<li><label for="665358009">method&nbsp;<b>DeviceStatus&nbsp;flags&nbsp;report&nbsp;low&nbsp;and&nbsp;critical&nbsp;battery&nbsp;states()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(665358009)" id="665358009">
+45361813-<div id="d665358009" style="display:none">
+45361814:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>DeviceStatus flags report low and critical battery states</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361815-<ol class="tree">
+45361816-</ol>
+45361817-<li><label for="1545765479">method&nbsp;<b>DeviceStatus&nbsp;summary&nbsp;reflects&nbsp;battery&nbsp;wifi&nbsp;and&nbsp;recording&nbsp;status()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1545765479)" id="1545765479">
+45361818-<div id="d1545765479" style="display:none">
+45361819:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>DeviceStatus summary reflects battery wifi and recording status</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361820-<ol class="tree">
+45361821-</ol>
+45361822-<li><label for="955433044">method&nbsp;<b>encodeDisplayImage&nbsp;prefixes&nbsp;command&nbsp;and&nbsp;length()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(955433044)" id="955433044">
+45361823-<div id="d955433044" style="display:none">
+45361824:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeDisplayImage prefixes command and length</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361825-<ol class="tree">
+45361826-</ol>
+45361827-<li><label for="822337451">method&nbsp;<b>encodeDisplayImage&nbsp;trims&nbsp;filename&nbsp;beyond&nbsp;max&nbsp;length()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(822337451)" id="822337451">
+45361828-<div id="d822337451" style="display:none">
+45361829:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeDisplayImage trims filename beyond max length</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361830-<ol class="tree">
+45361831-</ol>
+45361832-<li><label for="1130713976">method&nbsp;<b>encodeDisplayText&nbsp;prefixes&nbsp;command&nbsp;and&nbsp;length()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1130713976)" id="1130713976">
+45361833-<div id="d1130713976" style="display:none">
+45361834:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeDisplayText prefixes command and length</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361835-<ol class="tree">
+45361836-</ol>
+45361837-<li><label for="1201752249">method&nbsp;<b>encodeDisplayText&nbsp;trims&nbsp;text&nbsp;beyond&nbsp;max&nbsp;length()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1201752249)" id="1201752249">
+45361838-<div id="d1201752249" style="display:none">
+45361839:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeDisplayText trims text beyond max length</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361840-<ol class="tree">
+45361841-</ol>
+45361842-<li><label for="2085694861">method&nbsp;<b>encodeWifiConfig&nbsp;packs&nbsp;ssid&nbsp;and&nbsp;password&nbsp;with&nbsp;lengths()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(2085694861)" id="2085694861">
+45361843-<div id="d2085694861" style="display:none">
+45361844:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeWifiConfig packs ssid and password with lengths</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361845-<ol class="tree">
+45361846-</ol>
+45361847-<li><label for="162353727">method&nbsp;<b>encodeWifiConfig&nbsp;trims&nbsp;values&nbsp;beyond&nbsp;max&nbsp;protocol&nbsp;length()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(162353727)" id="162353727">
+45361848-<div id="d162353727" style="display:none">
+45361849:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>encodeWifiConfig trims values beyond max protocol length</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361850-<ol class="tree">
+45361851-</ol>
+45361852-<li><label for="1733177063">method&nbsp;<b>verifyChecksum&nbsp;rejects&nbsp;invalid&nbsp;checksum()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1733177063)" id="1733177063">
+45361853-<div id="d1733177063" style="display:none">
+45361854:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>verifyChecksum rejects invalid checksum</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361855-<ol class="tree">
+45361856-</ol>
+45361857-<li><label for="679521636">method&nbsp;<b>verifyChecksum&nbsp;validates&nbsp;checksum&nbsp;at&nbsp;end&nbsp;of&nbsp;payload()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(679521636)" id="679521636">
+45361858-<div id="d679521636" style="display:none">
+45361859:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>verifyChecksum validates checksum at end of payload</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/business/bluetooth/BleConstantsTest.kt#222" qualifiedname="com.smartsales.business.bluetooth.BleConstantsTest">BleConstantsTest</a></code> in <code>com.smartsales.business.bluetooth</code></div><p class="problem-description-group">No problems found</p></div>
+45361860-<ol class="tree">
+45361861-</ol>
+45361862-</ol>
+45361863-<li><label for="1087609298">class&nbsp;<b>BleModule</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1087609298)" id="1087609298">
+45361864-<div id="d1087609298" style="display:none">
+--
+45361977-<div id="d884375239" style="display:none">
+45361978-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>EmptyStateTest</code></b><br>in package&nbsp;<code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45361979-<ol class="tree">
+45361980-<li><label for="1685023528">method&nbsp;<b>noConversationsEmptyState_showsMessageAndButton()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1685023528)" id="1685023528">
+45361981-<div id="d1685023528" style="display:none">
+45361982:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>noConversationsEmptyState_showsMessageAndButton</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/androidTest/java/com/smartsales/ui/components/EmptyStateTest.kt#486" qualifiedname="com.smartsales.ui.components.EmptyStateTest">EmptyStateTest</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45361983-<ol class="tree">
+45361984-</ol>
+45361985-<li><label for="433659171">method&nbsp;<b>noDevicesEmptyState_showsScanAction()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(433659171)" id="433659171">
+45361986-<div id="d433659171" style="display:none">
+45361987:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>noDevicesEmptyState_showsScanAction</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/androidTest/java/com/smartsales/ui/components/EmptyStateTest.kt#486" qualifiedname="com.smartsales.ui.components.EmptyStateTest">EmptyStateTest</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45361988-<ol class="tree">
+45361989-</ol>
+45361990-</ol>
+45361991-<li><label for="159857720">class&nbsp;<b>MainActivity</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(159857720)" id="159857720">
+45361992-<div id="d159857720" style="display:none">
+--
+45362007-<div id="d1541193073" style="display:none">
+45362008-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>MessageBubbleTest</code></b><br>in package&nbsp;<code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45362009-<ol class="tree">
+45362010-<li><label for="1764446754">method&nbsp;<b>assistantMessage_hidesAttachmentBadge()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1764446754)" id="1764446754">
+45362011-<div id="d1764446754" style="display:none">
+45362012:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>assistantMessage_hidesAttachmentBadge</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/androidTest/java/com/smartsales/ui/components/MessageBubbleTest.kt#616" qualifiedname="com.smartsales.ui.components.MessageBubbleTest">MessageBubbleTest</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45362013-<ol class="tree">
+45362014-</ol>
+45362015-<li><label for="1973892800">method&nbsp;<b>userMessage_showsAttachmentsBadge()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1973892800)" id="1973892800">
+45362016-<div id="d1973892800" style="display:none">
+45362017:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>userMessage_showsAttachmentsBadge</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/androidTest/java/com/smartsales/ui/components/MessageBubbleTest.kt#616" qualifiedname="com.smartsales.ui.components.MessageBubbleTest">MessageBubbleTest</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45362018-<ol class="tree">
+45362019-</ol>
+45362020-</ol>
+45362021-<li><label for="1513559255">class&nbsp;<b>NavGraphTest</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1513559255)" id="1513559255">
+45362022-<div id="d1513559255" style="display:none">
+45362023-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>NavGraphTest</code></b><br>in package&nbsp;<code>com.smartsales.ui.navigation</code></div><p class="problem-description-group">No problems found</p></div>
+45362024-<ol class="tree">
+45362025-<li><label for="777043941">method&nbsp;<b>conversationToChatAndExportFlow_navigatesBetweenDestinations()</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(777043941)" id="777043941">
+45362026-<div id="d777043941" style="display:none">
+45362027:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>conversationToChatAndExportFlow_navigatesBetweenDestinations</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/androidTest/java/com/smartsales/ui/navigation/NavGraphTest.kt#902" qualifiedname="com.smartsales.ui.navigation.NavGraphTest">NavGraphTest</a></code> in <code>com.smartsales.ui.navigation</code></div><p class="problem-description-group">No problems found</p></div>
+45362028-<ol class="tree">
+45362029-</ol>
+45362030-</ol>
+45362031-<li><label for="751423420">class&nbsp;<b>RepositoryModule</b>&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(751423420)" id="751423420">
+45362032-<div id="d751423420" style="display:none">
+--
+45362133-</ol>
+45362134-</ol>
+45362135-</ol>
+45362136-<li><label for="644349694">file&nbsp;<b>MessageBubble.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(644349694)" id="644349694">
+45362137-<div id="d644349694" style="display:none">
+45362138:<p class="problem-description-group">Location</p><div class="location"><b>MessageBubble.kt</b><br>in package&nbsp;<code>com.smartsales.ui.components</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/MessageBubble.kt">MessageBubble.kt</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45362139-<ol class="tree">
+45362140-<li><label for="1419667247">method&nbsp;<b>AttachmentsIndicator(int,&nbsp;boolean)</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(1419667247)" id="1419667247">
+45362141-<div id="d1419667247" style="display:none">
+45362142-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>AttachmentsIndicator</b>(int count, boolean isUser)</code><br>in </div><p class="problem-description-group">No problems found</p></div>
+45362143-<ol class="tree">
+--
+45362249-<ol class="tree">
+45362250-<li><label for="1720970791"><b>Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read</b>&nbsp;inspection&nbsp;<span class="grayout">&nbsp;&nbsp;14&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(1720970791)" id="1720970791">
+45362251-<ol class="tree">
+45362252-<li><label for="2113695877">file&nbsp;<b>ChatScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;4&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(2113695877)" id="2113695877">
+45362253-<div id="d2113695877" style="display:none">
+45362254:<p class="problem-description-group">Location</p><div class="location"><b>ChatScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.chat</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt">ChatScreen.kt</a></code> in <code>com.smartsales.ui.screens.chat</code></div><p class="problem-description-group">No problems found</p></div>
+45362255-<ol class="tree">
+45362256-<li><label for="1186144559"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1186144559)" id="1186144559">
+45362257-<div id="d1186144559" style="display:none">
+45362258-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ChatScreen</b>(long conversationId, Function0&lt;Unit&gt; onNavigateBack, Function1&lt;? super Long, Unit&gt; onExportClick, ChatViewModel viewModel)</code><br>in </div>
+45362259-<p class="problem-description-group">Problem synopsis</p>
+45362260-<div class="problem-description">
+45362261-<ul>
+45362262:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#2936">84</a>)
+45362263:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3167">89</a>)
+45362264:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3635">100</a>)
+45362265:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#4124">111</a>)
+45362266-</ul>
+45362267-</div></div>
+45362268-<ol class="tree">
+45362269-</ol>
+45362270-<li><label for="2084067581"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(2084067581)" id="2084067581">
+45362271-<div id="d2084067581" style="display:none">
+45362272-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ChatScreen</b>(long conversationId, Function0&lt;Unit&gt; onNavigateBack, Function1&lt;? super Long, Unit&gt; onExportClick, ChatViewModel viewModel)</code><br>in </div>
+45362273-<p class="problem-description-group">Problem synopsis</p>
+45362274-<div class="problem-description">
+45362275-<ul>
+45362276:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#2936">84</a>)
+45362277:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3167">89</a>)
+45362278:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3635">100</a>)
+45362279:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#4124">111</a>)
+45362280-</ul>
+45362281-</div></div>
+45362282-<ol class="tree">
+45362283-</ol>
+45362284-<li><label for="1677422489"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1677422489)" id="1677422489">
+45362285-<div id="d1677422489" style="display:none">
+45362286-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ChatScreen</b>(long conversationId, Function0&lt;Unit&gt; onNavigateBack, Function1&lt;? super Long, Unit&gt; onExportClick, ChatViewModel viewModel)</code><br>in </div>
+45362287-<p class="problem-description-group">Problem synopsis</p>
+45362288-<div class="problem-description">
+45362289-<ul>
+45362290:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#2936">84</a>)
+45362291:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3167">89</a>)
+45362292:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3635">100</a>)
+45362293:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#4124">111</a>)
+45362294-</ul>
+45362295-</div></div>
+45362296-<ol class="tree">
+45362297-</ol>
+45362298-<li><label for="1293899402"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1293899402)" id="1293899402">
+45362299-<div id="d1293899402" style="display:none">
+45362300-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ChatScreen</b>(long conversationId, Function0&lt;Unit&gt; onNavigateBack, Function1&lt;? super Long, Unit&gt; onExportClick, ChatViewModel viewModel)</code><br>in </div>
+45362301-<p class="problem-description-group">Problem synopsis</p>
+45362302-<div class="problem-description">
+45362303-<ul>
+45362304:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#2936">84</a>)
+45362305:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3167">89</a>)
+45362306:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#3635">100</a>)
+45362307:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt#4124">111</a>)
+45362308-</ul>
+45362309-</div></div>
+45362310-<ol class="tree">
+45362311-</ol>
+45362312-</ol>
+45362313-<li><label for="2100206581">file&nbsp;<b>DevicePairingScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;2&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(2100206581)" id="2100206581">
+45362314-<div id="d2100206581" style="display:none">
+45362315:<p class="problem-description-group">Location</p><div class="location"><b>DevicePairingScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.device</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt">DevicePairingScreen.kt</a></code> in <code>com.smartsales.ui.screens.device</code></div><p class="problem-description-group">No problems found</p></div>
+45362316-<ol class="tree">
+45362317-<li><label for="779001799"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(779001799)" id="779001799">
+45362318-<div id="d779001799" style="display:none">
+45362319-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>DevicePairingScreen</b>(Function0&lt;Unit&gt; onNavigateBack, DevicePairingViewModel viewModel)</code><br>in </div>
+45362320-<p class="problem-description-group">Problem synopsis</p>
+45362321-<div class="problem-description">
+45362322-<ul>
+45362323:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#4973">137</a>)
+45362324:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#5130">140</a>)
+45362325-</ul>
+45362326-</div></div>
+45362327-<ol class="tree">
+45362328-</ol>
+45362329-<li><label for="1430392134"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1430392134)" id="1430392134">
+45362330-<div id="d1430392134" style="display:none">
+45362331-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>DevicePairingScreen</b>(Function0&lt;Unit&gt; onNavigateBack, DevicePairingViewModel viewModel)</code><br>in </div>
+45362332-<p class="problem-description-group">Problem synopsis</p>
+45362333-<div class="problem-description">
+45362334-<ul>
+45362335:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#4973">137</a>)
+45362336:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt#5130">140</a>)
+45362337-</ul>
+45362338-</div></div>
+45362339-<ol class="tree">
+45362340-</ol>
+45362341-</ol>
+45362342-<li><label for="343273293">file&nbsp;<b>FileSyncScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;5&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(343273293)" id="343273293">
+45362343-<div id="d343273293" style="display:none">
+45362344:<p class="problem-description-group">Location</p><div class="location"><b>FileSyncScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.sync</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt">FileSyncScreen.kt</a></code> in <code>com.smartsales.ui.screens.sync</code></div><p class="problem-description-group">No problems found</p></div>
+45362345-<ol class="tree">
+45362346-<li><label for="1418063072"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1418063072)" id="1418063072">
+45362347-<div id="d1418063072" style="display:none">
+45362348-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>FileSyncScreen</b>(Function0&lt;Unit&gt; onNavigateBack, FileSyncViewModel viewModel)</code><br>in </div>
+45362349-<p class="problem-description-group">Problem synopsis</p>
+45362350-<div class="problem-description">
+45362351-<ul>
+45362352:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#4810">136</a>)
+45362353:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5146">143</a>)
+45362354:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5195">144</a>)
+45362355:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5435">153</a>)
+45362356:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5484">154</a>)
+45362357-</ul>
+45362358-</div></div>
+45362359-<ol class="tree">
+45362360-</ol>
+45362361-<li><label for="1781742004"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1781742004)" id="1781742004">
+45362362-<div id="d1781742004" style="display:none">
+45362363-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>FileSyncScreen</b>(Function0&lt;Unit&gt; onNavigateBack, FileSyncViewModel viewModel)</code><br>in </div>
+45362364-<p class="problem-description-group">Problem synopsis</p>
+45362365-<div class="problem-description">
+45362366-<ul>
+45362367:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#4810">136</a>)
+45362368:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5146">143</a>)
+45362369:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5195">144</a>)
+45362370:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5435">153</a>)
+45362371:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5484">154</a>)
+45362372-</ul>
+45362373-</div></div>
+45362374-<ol class="tree">
+45362375-</ol>
+45362376-<li><label for="929983085"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(929983085)" id="929983085">
+45362377-<div id="d929983085" style="display:none">
+45362378-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>FileSyncScreen</b>(Function0&lt;Unit&gt; onNavigateBack, FileSyncViewModel viewModel)</code><br>in </div>
+45362379-<p class="problem-description-group">Problem synopsis</p>
+45362380-<div class="problem-description">
+45362381-<ul>
+45362382:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#4810">136</a>)
+45362383:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5146">143</a>)
+45362384:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5195">144</a>)
+45362385:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5435">153</a>)
+45362386:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5484">154</a>)
+45362387-</ul>
+45362388-</div></div>
+45362389-<ol class="tree">
+45362390-</ol>
+45362391-<li><label for="531096668"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(531096668)" id="531096668">
+45362392-<div id="d531096668" style="display:none">
+45362393-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>FileSyncScreen</b>(Function0&lt;Unit&gt; onNavigateBack, FileSyncViewModel viewModel)</code><br>in </div>
+45362394-<p class="problem-description-group">Problem synopsis</p>
+45362395-<div class="problem-description">
+45362396-<ul>
+45362397:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#4810">136</a>)
+45362398:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5146">143</a>)
+45362399:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5195">144</a>)
+45362400:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5435">153</a>)
+45362401:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5484">154</a>)
+45362402-</ul>
+45362403-</div></div>
+45362404-<ol class="tree">
+45362405-</ol>
+45362406-<li><label for="478117993"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(478117993)" id="478117993">
+45362407-<div id="d478117993" style="display:none">
+45362408-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>FileSyncScreen</b>(Function0&lt;Unit&gt; onNavigateBack, FileSyncViewModel viewModel)</code><br>in </div>
+45362409-<p class="problem-description-group">Problem synopsis</p>
+45362410-<div class="problem-description">
+45362411-<ul>
+45362412:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#4810">136</a>)
+45362413:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5146">143</a>)
+45362414:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5195">144</a>)
+45362415:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5435">153</a>)
+45362416:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#5484">154</a>)
+45362417-</ul>
+45362418-</div></div>
+45362419-<ol class="tree">
+45362420-</ol>
+45362421-</ol>
+45362422-<li><label for="988254473">file&nbsp;<b>SettingsScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;3&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(988254473)" id="988254473">
+45362423-<div id="d988254473" style="display:none">
+45362424:<p class="problem-description-group">Location</p><div class="location"><b>SettingsScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt">SettingsScreen.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div><p class="problem-description-group">No problems found</p></div>
+45362425-<ol class="tree">
+45362426-<li><label for="404224244"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(404224244)" id="404224244">
+45362427-<div id="d404224244" style="display:none">
+45362428-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>SettingsScreen</b>(Function0&lt;Unit&gt; onNavigateBack, SettingsViewModel viewModel)</code><br>in </div>
+45362429-<p class="problem-description-group">Problem synopsis</p>
+45362430-<div class="problem-description">
+45362431-<ul>
+45362432:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4719">139</a>)
+45362433:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4855">142</a>)
+45362434:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#5037">151</a>)
+45362435-</ul>
+45362436-</div></div>
+45362437-<ol class="tree">
+45362438-</ol>
+45362439-<li><label for="1190271994"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1190271994)" id="1190271994">
+45362440-<div id="d1190271994" style="display:none">
+45362441-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>SettingsScreen</b>(Function0&lt;Unit&gt; onNavigateBack, SettingsViewModel viewModel)</code><br>in </div>
+45362442-<p class="problem-description-group">Problem synopsis</p>
+45362443-<div class="problem-description">
+45362444-<ul>
+45362445:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4719">139</a>)
+45362446:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4855">142</a>)
+45362447:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#5037">151</a>)
+45362448-</ul>
+45362449-</div></div>
+45362450-<ol class="tree">
+45362451-</ol>
+45362452-<li><label for="1784031382"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Assigned&nbsp;value&nbsp;is&nbsp;never&nbsp;read&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1784031382)" id="1784031382">
+45362453-<div id="d1784031382" style="display:none">
+45362454-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>SettingsScreen</b>(Function0&lt;Unit&gt; onNavigateBack, SettingsViewModel viewModel)</code><br>in </div>
+45362455-<p class="problem-description-group">Problem synopsis</p>
+45362456-<div class="problem-description">
+45362457-<ul>
+45362458:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4719">139</a>)
+45362459:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#4855">142</a>)
+45362460:<li>Assigned value is never read (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#5037">151</a>)
+45362461-</ul>
+45362462-</div></div>
+45362463-<ol class="tree">
+45362464-</ol>
+45362465-</ol>
+--
+45362499-<div id="d600264138" style="display:none">
+45362500-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>SettingsViewModel</code></b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code></div><p class="problem-description-group">No problems found</p></div>
+45362501-<ol class="tree">
+45362502-<li><label for="436601633"><span style="margin:1px;">WEAK WARNING</span>&nbsp;The&nbsp;annotation&nbsp;is&nbsp;only&nbsp;applied&nbsp;to&nbsp;the&nbsp;parameter.&nbsp;An&nbsp;explicit&nbsp;annotation&nbsp;use&#8209;site&nbsp;target&nbsp;is&nbsp;recommended.&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(436601633)" id="436601633">
+45362503-<div id="d436601633" style="display:none">
+45362504:<p class="problem-description-group">Location</p><div class="location">public&nbsp;constructor&nbsp;<code><b>SettingsViewModel</b>(Context context)</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#764" qualifiedname="com.smartsales.ui.screens.settings.SettingsViewModel">SettingsViewModel</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45362505-<p class="problem-description-group">Problem synopsis</p>
+45362506-<div class="problem-description">
+45362507-<ul>
+45362508:<li>The annotation is only applied to the parameter. An explicit annotation use-site target is recommended. (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#807">30</a>)
+45362509-</ul>
+45362510-</div></div>
+45362511-<ol class="tree">
+45362512-</ol>
+45362513-</ol>
+--
+45362723-<div id="d1958399168" style="display:none">
+45362724-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>SmartSalesApplication</code></b><br>in package&nbsp;<code>com.smartsales</code></div>
+45362725-<p class="problem-description-group">Problem synopsis</p>
+45362726-<div class="problem-description">
+45362727-<ul>
+45362728:<li>Redundant empty class body (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/SmartSalesApplication.kt#114">7</a>)
+45362729-</ul>
+45362730-</div></div>
+45362731-<ol class="tree">
+45362732-<li><label for="1357638586"><span style="margin:1px;">WEAK WARNING</span>&nbsp;Redundant&nbsp;empty&nbsp;class&nbsp;body&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1357638586)" id="1357638586">
+45362733-<div id="d1357638586" style="display:none">
+45362734-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>SmartSalesApplication</code></b><br>in package&nbsp;<code>com.smartsales</code></div>
+45362735-<p class="problem-description-group">Problem synopsis</p>
+45362736-<div class="problem-description">
+45362737-<ul>
+45362738:<li>Redundant empty class body (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/SmartSalesApplication.kt#114">7</a>)
+45362739-</ul>
+45362740-</div></div>
+45362741-<ol class="tree">
+45362742-</ol>
+45362743-</ol>
+45362744-</ol>
+45362745-<li><label for="1537327656"><b>Unused&nbsp;import&nbsp;directive</b>&nbsp;inspection&nbsp;<span class="grayout">&nbsp;&nbsp;2&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(1537327656)" id="1537327656">
+45362746-<ol class="tree">
+45362747-<li><label for="2027156880">file&nbsp;<b>FileSyncScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(2027156880)" id="2027156880">
+45362748-<div id="d2027156880" style="display:none">
+45362749:<p class="problem-description-group">Location</p><div class="location"><b>FileSyncScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.sync</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt">FileSyncScreen.kt</a></code> in <code>com.smartsales.ui.screens.sync</code></div>
+45362750-<p class="problem-description-group">Problem synopsis</p>
+45362751-<div class="problem-description">
+45362752-<ul>
+45362753:<li>Unused import directive (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#609">16</a>)
+45362754-</ul>
+45362755-</div></div>
+45362756-<ol class="tree">
+45362757-<li><label for="1347731592"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Unused&nbsp;import&nbsp;directive&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1347731592)" id="1347731592">
+45362758-<div id="d1347731592" style="display:none">
+45362759:<p class="problem-description-group">Location</p><div class="location"><b>FileSyncScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.sync</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt">FileSyncScreen.kt</a></code> in <code>com.smartsales.ui.screens.sync</code></div>
+45362760-<p class="problem-description-group">Problem synopsis</p>
+45362761-<div class="problem-description">
+45362762-<ul>
+45362763:<li>Unused import directive (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt#609">16</a>)
+45362764-</ul>
+45362765-</div></div>
+45362766-<ol class="tree">
+45362767-</ol>
+45362768-</ol>
+45362769-<li><label for="1322155290">file&nbsp;<b>FileSyncViewModel.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(1322155290)" id="1322155290">
+45362770-<div id="d1322155290" style="display:none">
+45362771:<p class="problem-description-group">Location</p><div class="location"><b>FileSyncViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.sync</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncViewModel.kt">FileSyncViewModel.kt</a></code> in <code>com.smartsales.ui.screens.sync</code></div>
+45362772-<p class="problem-description-group">Problem synopsis</p>
+45362773-<div class="problem-description">
+45362774-<ul>
+45362775:<li>Unused import directive (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncViewModel.kt#451">12</a>)
+45362776-</ul>
+45362777-</div></div>
+45362778-<ol class="tree">
+45362779-<li><label for="1515381591"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Unused&nbsp;import&nbsp;directive&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1515381591)" id="1515381591">
+45362780-<div id="d1515381591" style="display:none">
+45362781:<p class="problem-description-group">Location</p><div class="location"><b>FileSyncViewModel.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.sync</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncViewModel.kt">FileSyncViewModel.kt</a></code> in <code>com.smartsales.ui.screens.sync</code></div>
+45362782-<p class="problem-description-group">Problem synopsis</p>
+45362783-<div class="problem-description">
+45362784-<ul>
+45362785:<li>Unused import directive (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/sync/FileSyncViewModel.kt#451">12</a>)
+45362786-</ul>
+45362787-</div></div>
+45362788-<ol class="tree">
+45362789-</ol>
+45362790-</ol>
+--
+45363353-<div id="d629287725" style="display:none">
+45363354-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Abstract&nbsp;class&nbsp;<b><code>BottomNavItem</code></b><br>in package&nbsp;<code>com.smartsales.ui.navigation</code></div><p class="problem-description-group">No problems found</p></div>
+45363355-<ol class="tree">
+45363356-<li><label for="598854013"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;screen&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(598854013)" id="598854013">
+45363357-<div id="d598854013" style="display:none">
+45363358:<p class="problem-description-group">Location</p><div class="location">private&nbsp;constructor&nbsp;<code><b>BottomNavItem</b>(Screen screen, String title, int icon)</code><br>in abstract&nbsp;class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1349" qualifiedname="com.smartsales.ui.navigation.BottomNavItem">BottomNavItem</a></code> in <code>com.smartsales.ui.navigation</code></div>
+45363359-<p class="problem-description-group">Problem synopsis</p>
+45363360-<div class="problem-description">
+45363361-<ul>
+45363362:<li>Property &quot;screen&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1368">67</a>)
+45363363:<li>Property &quot;title&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1392">68</a>)
+45363364-</ul>
+45363365-</div></div>
+45363366-<ol class="tree">
+45363367-</ol>
+45363368-<li><label for="134951710"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;title&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(134951710)" id="134951710">
+45363369-<div id="d134951710" style="display:none">
+45363370:<p class="problem-description-group">Location</p><div class="location">private&nbsp;constructor&nbsp;<code><b>BottomNavItem</b>(Screen screen, String title, int icon)</code><br>in abstract&nbsp;class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1349" qualifiedname="com.smartsales.ui.navigation.BottomNavItem">BottomNavItem</a></code> in <code>com.smartsales.ui.navigation</code></div>
+45363371-<p class="problem-description-group">Problem synopsis</p>
+45363372-<div class="problem-description">
+45363373-<ul>
+45363374:<li>Property &quot;screen&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1368">67</a>)
+45363375:<li>Property &quot;title&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1392">68</a>)
+45363376-</ul>
+45363377-</div></div>
+45363378-<ol class="tree">
+45363379-</ol>
+45363380-<li><label for="1829564450"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;getItems&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1829564450)" id="1829564450">
+45363381-<div id="d1829564450" style="display:none">
+45363382:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>List&lt;BottomNavItem&gt;&nbsp;<b>getItems</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#2216" qualifiedname="com.smartsales.ui.navigation.BottomNavItem.Companion">Companion</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1349" qualifiedname="com.smartsales.ui.navigation.BottomNavItem">BottomNavItem</a></code></div>
+45363383-<p class="problem-description-group">Problem synopsis</p>
+45363384-<div class="problem-description">
+45363385-<ul>
+45363386:<li>Function &quot;getItems&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#2233">96</a>)
+45363387-</ul>
+45363388-</div></div>
+45363389-<ol class="tree">
+45363390-</ol>
+45363391-</ol>
+--
+45363508-<ol class="tree">
+45363509-</ol>
+45363510-</ol>
+45363511-<li><label for="1729349976">file&nbsp;<b>Color.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;17&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(1729349976)" id="1729349976">
+45363512-<div id="d1729349976" style="display:none">
+45363513:<p class="problem-description-group">Location</p><div class="location"><b>Color.kt</b><br>in package&nbsp;<code>com.smartsales.ui.theme</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt">Color.kt</a></code> in <code>com.smartsales.ui.theme</code></div><p class="problem-description-group">No problems found</p></div>
+45363514-<ol class="tree">
+45363515-<li><label for="1676387466"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;UserMessageBackground&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1676387466)" id="1676387466">
+45363516-<div id="d1676387466" style="display:none">
+45363517-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>UserMessageBackground</b></code><br>in </div>
+45363518-<p class="problem-description-group">Problem synopsis</p>
+45363519-<div class="problem-description">
+45363520-<ul>
+45363521:<li>Property &quot;UserMessageBackground&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1349">56</a>)
+45363522-</ul>
+45363523-</div></div>
+45363524-<ol class="tree">
+45363525-</ol>
+45363526-<li><label for="441074890"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;AssistantMessageBackground&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(441074890)" id="441074890">
+45363527-<div id="d441074890" style="display:none">
+45363528-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>AssistantMessageBackground</b></code><br>in </div>
+45363529-<p class="problem-description-group">Problem synopsis</p>
+45363530-<div class="problem-description">
+45363531-<ul>
+45363532:<li>Property &quot;AssistantMessageBackground&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1395">57</a>)
+45363533-</ul>
+45363534-</div></div>
+45363535-<ol class="tree">
+45363536-</ol>
+45363537-<li><label for="1577822437"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;UserMessageText&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1577822437)" id="1577822437">
+45363538-<div id="d1577822437" style="display:none">
+45363539-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>UserMessageText</b></code><br>in </div>
+45363540-<p class="problem-description-group">Problem synopsis</p>
+45363541-<div class="problem-description">
+45363542-<ul>
+45363543:<li>Property &quot;UserMessageText&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1446">58</a>)
+45363544-</ul>
+45363545-</div></div>
+45363546-<ol class="tree">
+45363547-</ol>
+45363548-<li><label for="1430011066"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;AssistantMessageText&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1430011066)" id="1430011066">
+45363549-<div id="d1430011066" style="display:none">
+45363550-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>AssistantMessageText</b></code><br>in </div>
+45363551-<p class="problem-description-group">Problem synopsis</p>
+45363552-<div class="problem-description">
+45363553-<ul>
+45363554:<li>Property &quot;AssistantMessageText&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1486">59</a>)
+45363555-</ul>
+45363556-</div></div>
+45363557-<ol class="tree">
+45363558-</ol>
+45363559-<li><label for="1399104660"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;SuccessColor&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1399104660)" id="1399104660">
+45363560-<div id="d1399104660" style="display:none">
+45363561-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>SuccessColor</b></code><br>in </div>
+45363562-<p class="problem-description-group">Problem synopsis</p>
+45363563-<div class="problem-description">
+45363564-<ul>
+45363565:<li>Property &quot;SuccessColor&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1532">61</a>)
+45363566-</ul>
+45363567-</div></div>
+45363568-<ol class="tree">
+45363569-</ol>
+45363570-<li><label for="2106094488"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;WarningColor&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(2106094488)" id="2106094488">
+45363571-<div id="d2106094488" style="display:none">
+45363572-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>WarningColor</b></code><br>in </div>
+45363573-<p class="problem-description-group">Problem synopsis</p>
+45363574-<div class="problem-description">
+45363575-<ul>
+45363576:<li>Property &quot;WarningColor&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1569">62</a>)
+45363577-</ul>
+45363578-</div></div>
+45363579-<ol class="tree">
+45363580-</ol>
+45363581-<li><label for="1543834929"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;InfoColor&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1543834929)" id="1543834929">
+45363582-<div id="d1543834929" style="display:none">
+45363583-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>InfoColor</b></code><br>in </div>
+45363584-<p class="problem-description-group">Problem synopsis</p>
+45363585-<div class="problem-description">
+45363586-<ul>
+45363587:<li>Property &quot;InfoColor&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1606">63</a>)
+45363588-</ul>
+45363589-</div></div>
+45363590-<ol class="tree">
+45363591-</ol>
+45363592-<li><label for="857852595"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;BatteryLow&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(857852595)" id="857852595">
+45363593-<div id="d857852595" style="display:none">
+45363594-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>BatteryLow</b></code><br>in </div>
+45363595-<p class="problem-description-group">Problem synopsis</p>
+45363596-<div class="problem-description">
+45363597-<ul>
+45363598:<li>Property &quot;BatteryLow&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1641">65</a>)
+45363599-</ul>
+45363600-</div></div>
+45363601-<ol class="tree">
+45363602-</ol>
+45363603-<li><label for="664454732"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;BatteryMedium&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(664454732)" id="664454732">
+45363604-<div id="d664454732" style="display:none">
+45363605-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>BatteryMedium</b></code><br>in </div>
+45363606-<p class="problem-description-group">Problem synopsis</p>
+45363607-<div class="problem-description">
+45363608-<ul>
+45363609:<li>Property &quot;BatteryMedium&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1676">66</a>)
+45363610-</ul>
+45363611-</div></div>
+45363612-<ol class="tree">
+45363613-</ol>
+45363614-<li><label for="1147636071"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;BatteryGood&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1147636071)" id="1147636071">
+45363615-<div id="d1147636071" style="display:none">
+45363616-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>BatteryGood</b></code><br>in </div>
+45363617-<p class="problem-description-group">Problem synopsis</p>
+45363618-<div class="problem-description">
+45363619-<ul>
+45363620:<li>Property &quot;BatteryGood&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1714">67</a>)
+45363621-</ul>
+45363622-</div></div>
+45363623-<ol class="tree">
+45363624-</ol>
+45363625-<li><label for="1922573956"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;RecordingActive&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1922573956)" id="1922573956">
+45363626-<div id="d1922573956" style="display:none">
+45363627-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>RecordingActive</b></code><br>in </div>
+45363628-<p class="problem-description-group">Problem synopsis</p>
+45363629-<div class="problem-description">
+45363630-<ul>
+45363631:<li>Property &quot;RecordingActive&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1751">69</a>)
+45363632-</ul>
+45363633-</div></div>
+45363634-<ol class="tree">
+45363635-</ol>
+45363636-<li><label for="252836967"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;Connected&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(252836967)" id="252836967">
+45363637-<div id="d252836967" style="display:none">
+45363638-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>Connected</b></code><br>in </div>
+45363639-<p class="problem-description-group">Problem synopsis</p>
+45363640-<div class="problem-description">
+45363641-<ul>
+45363642:<li>Property &quot;Connected&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1791">70</a>)
+45363643-</ul>
+45363644-</div></div>
+45363645-<ol class="tree">
+45363646-</ol>
+45363647-<li><label for="269594327"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;Disconnected&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(269594327)" id="269594327">
+45363648-<div id="d269594327" style="display:none">
+45363649-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>Disconnected</b></code><br>in </div>
+45363650-<p class="problem-description-group">Problem synopsis</p>
+45363651-<div class="problem-description">
+45363652-<ul>
+45363653:<li>Property &quot;Disconnected&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#1825">71</a>)
+45363654-</ul>
+45363655-</div></div>
+45363656-<ol class="tree">
+45363657-</ol>
+45363658-<li><label for="1541650658"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;UserMessageBackgroundDark&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1541650658)" id="1541650658">
+45363659-<div id="d1541650658" style="display:none">
+45363660-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>UserMessageBackgroundDark</b></code><br>in </div>
+45363661-<p class="problem-description-group">Problem synopsis</p>
+45363662-<div class="problem-description">
+45363663-<ul>
+45363664:<li>Property &quot;UserMessageBackgroundDark&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#2893">106</a>)
+45363665-</ul>
+45363666-</div></div>
+45363667-<ol class="tree">
+45363668-</ol>
+45363669-<li><label for="1698098709"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;AssistantMessageBackgroundDark&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1698098709)" id="1698098709">
+45363670-<div id="d1698098709" style="display:none">
+45363671-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>AssistantMessageBackgroundDark</b></code><br>in </div>
+45363672-<p class="problem-description-group">Problem synopsis</p>
+45363673-<div class="problem-description">
+45363674-<ul>
+45363675:<li>Property &quot;AssistantMessageBackgroundDark&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#2943">107</a>)
+45363676-</ul>
+45363677-</div></div>
+45363678-<ol class="tree">
+45363679-</ol>
+45363680-<li><label for="277978875"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;UserMessageTextDark&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(277978875)" id="277978875">
+45363681-<div id="d277978875" style="display:none">
+45363682-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>UserMessageTextDark</b></code><br>in </div>
+45363683-<p class="problem-description-group">Problem synopsis</p>
+45363684-<div class="problem-description">
+45363685-<ul>
+45363686:<li>Property &quot;UserMessageTextDark&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#2998">108</a>)
+45363687-</ul>
+45363688-</div></div>
+45363689-<ol class="tree">
+45363690-</ol>
+45363691-<li><label for="1138613535"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;AssistantMessageTextDark&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1138613535)" id="1138613535">
+45363692-<div id="d1138613535" style="display:none">
+45363693-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>long&nbsp;<b>AssistantMessageTextDark</b></code><br>in </div>
+45363694-<p class="problem-description-group">Problem synopsis</p>
+45363695-<div class="problem-description">
+45363696-<ul>
+45363697:<li>Property &quot;AssistantMessageTextDark&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Color.kt#3042">109</a>)
+45363698-</ul>
+45363699-</div></div>
+45363700-<ol class="tree">
+45363701-</ol>
+45363702-</ol>
+--
+45363830-<div id="d1492705283" style="display:none">
+45363831-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>ConversationListViewModel</code></b><br>in package&nbsp;<code>com.smartsales.ui.screens.conversation</code></div><p class="problem-description-group">No problems found</p></div>
+45363832-<ol class="tree">
+45363833-<li><label for="294435249"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;refreshConversations&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(294435249)" id="294435249">
+45363834-<div id="d294435249" style="display:none">
+45363835:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>refreshConversations</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt#749" qualifiedname="com.smartsales.ui.screens.conversation.ConversationListViewModel">ConversationListViewModel</a></code> in <code>com.smartsales.ui.screens.conversation</code></div>
+45363836-<p class="problem-description-group">Problem synopsis</p>
+45363837-<div class="problem-description">
+45363838-<ul>
+45363839:<li>Function &quot;refreshConversations&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt#1626">52</a>)
+45363840-</ul>
+45363841-</div></div>
+45363842-<ol class="tree">
+45363843-</ol>
+45363844-<li><label for="1355441241"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;deleteConversation&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1355441241)" id="1355441241">
+45363845-<div id="d1355441241" style="display:none">
+45363846:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>deleteConversation</b>(long id)</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt#749" qualifiedname="com.smartsales.ui.screens.conversation.ConversationListViewModel">ConversationListViewModel</a></code> in <code>com.smartsales.ui.screens.conversation</code></div>
+45363847-<p class="problem-description-group">Problem synopsis</p>
+45363848-<div class="problem-description">
+45363849-<ul>
+45363850:<li>Function &quot;deleteConversation&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt#1698">56</a>)
+45363851-</ul>
+45363852-</div></div>
+45363853-<ol class="tree">
+45363854-</ol>
+45363855-</ol>
+--
+45364812-<ol class="tree">
+45364813-</ol>
+45364814-</ol>
+45364815-<li><label for="1706198192">file&nbsp;<b>ErrorState.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;2&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(1706198192)" id="1706198192">
+45364816-<div id="d1706198192" style="display:none">
+45364817:<p class="problem-description-group">Location</p><div class="location"><b>ErrorState.kt</b><br>in package&nbsp;<code>com.smartsales.ui.components</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt">ErrorState.kt</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45364818-<ol class="tree">
+45364819-<li><label for="1097276730"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;ErrorState&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1097276730)" id="1097276730">
+45364820-<div id="d1097276730" style="display:none">
+45364821-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ErrorState</b>(String message, Modifier modifier, Function0&lt;Unit&gt; onRetry)</code><br>in </div>
+45364822-<p class="problem-description-group">Problem synopsis</p>
+45364823-<div class="problem-description">
+45364824-<ul>
+45364825:<li>Function &quot;ErrorState&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt#460">17</a>)
+45364826-</ul>
+45364827-</div></div>
+45364828-<ol class="tree">
+45364829-</ol>
+45364830-<li><label for="464251020"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;ErrorSnackbar&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(464251020)" id="464251020">
+45364831-<div id="d464251020" style="display:none">
+45364832-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ErrorSnackbar</b>(String message, Function0&lt;Unit&gt; onDismiss)</code><br>in </div>
+45364833-<p class="problem-description-group">Problem synopsis</p>
+45364834-<div class="problem-description">
+45364835-<ul>
+45364836:<li>Function &quot;ErrorSnackbar&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt#1476">55</a>)
+45364837-</ul>
+45364838-</div></div>
+45364839-<ol class="tree">
+45364840-</ol>
+45364841-</ol>
+--
+45365068-<ol class="tree">
+45365069-</ol>
+45365070-</ol>
+45365071-<li><label for="1031030583">file&nbsp;<b>LoadingIndicator.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;2&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(1031030583)" id="1031030583">
+45365072-<div id="d1031030583" style="display:none">
+45365073:<p class="problem-description-group">Location</p><div class="location"><b>LoadingIndicator.kt</b><br>in package&nbsp;<code>com.smartsales.ui.components</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/LoadingIndicator.kt">LoadingIndicator.kt</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45365074-<ol class="tree">
+45365075-<li><label for="1803132338"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;LoadingDialog&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1803132338)" id="1803132338">
+45365076-<div id="d1803132338" style="display:none">
+45365077-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>LoadingDialog</b>(String message, Function0&lt;Unit&gt; onDismissRequest)</code><br>in </div>
+45365078-<p class="problem-description-group">Problem synopsis</p>
+45365079-<div class="problem-description">
+45365080-<ul>
+45365081:<li>Function &quot;LoadingDialog&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/LoadingIndicator.kt#978">40</a>)
+45365082-</ul>
+45365083-</div></div>
+45365084-<ol class="tree">
+45365085-</ol>
+45365086-<li><label for="2123714235"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;LinearLoadingIndicator&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(2123714235)" id="2123714235">
+45365087-<div id="d2123714235" style="display:none">
+45365088-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>LinearLoadingIndicator</b>(float progress, Modifier modifier, String message)</code><br>in </div>
+45365089-<p class="problem-description-group">Problem synopsis</p>
+45365090-<div class="problem-description">
+45365091-<ul>
+45365092:<li>Function &quot;LinearLoadingIndicator&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/LoadingIndicator.kt#1577">64</a>)
+45365093-</ul>
+45365094-</div></div>
+45365095-<ol class="tree">
+45365096-</ol>
+45365097-</ol>
+--
+45365236-<div id="d645222094" style="display:none">
+45365237-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Abstract&nbsp;class&nbsp;<b><code>Screen</code></b><br>in package&nbsp;<code>com.smartsales.ui.navigation</code></div><p class="problem-description-group">No problems found</p></div>
+45365238-<ol class="tree">
+45365239-<li><label for="1880633105"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Function&nbsp;&quot;getBottomNavScreens&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1880633105)" id="1880633105">
+45365240-<div id="d1880633105" style="display:none">
+45365241:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>List&lt;Screen&gt;&nbsp;<b>getBottomNavScreens</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#997" qualifiedname="com.smartsales.ui.navigation.Screen.Companion">Companion</a></code> in <code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#126" qualifiedname="com.smartsales.ui.navigation.Screen">Screen</a></code></div>
+45365242-<p class="problem-description-group">Problem synopsis</p>
+45365243-<div class="problem-description">
+45365244-<ul>
+45365245:<li>Function &quot;getBottomNavScreens&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/navigation/Screen.kt#1083">52</a>)
+45365246-</ul>
+45365247-</div></div>
+45365248-<ol class="tree">
+45365249-</ol>
+45365250-</ol>
+45365251-<li><label for="621037427">file&nbsp;<b>Shape.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;3&nbsp;warnings&nbsp;</span></label><input type="checkbox" onclick="navigate(621037427)" id="621037427">
+45365252-<div id="d621037427" style="display:none">
+45365253:<p class="problem-description-group">Location</p><div class="location"><b>Shape.kt</b><br>in package&nbsp;<code>com.smartsales.ui.theme</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Shape.kt">Shape.kt</a></code> in <code>com.smartsales.ui.theme</code></div><p class="problem-description-group">No problems found</p></div>
+45365254-<ol class="tree">
+45365255-<li><label for="854672040"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;CardShape&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(854672040)" id="854672040">
+45365256-<div id="d854672040" style="display:none">
+45365257-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>RoundedCornerShape&nbsp;<b>CardShape</b></code><br>in </div>
+45365258-<p class="problem-description-group">Problem synopsis</p>
+45365259-<div class="problem-description">
+45365260-<ul>
+45365261:<li>Property &quot;CardShape&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Shape.kt#989">45</a>)
+45365262-</ul>
+45365263-</div></div>
+45365264-<ol class="tree">
+45365265-</ol>
+45365266-<li><label for="1056793519"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;DialogShape&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1056793519)" id="1056793519">
+45365267-<div id="d1056793519" style="display:none">
+45365268-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>RoundedCornerShape&nbsp;<b>DialogShape</b></code><br>in </div>
+45365269-<p class="problem-description-group">Problem synopsis</p>
+45365270-<div class="problem-description">
+45365271-<ul>
+45365272:<li>Property &quot;DialogShape&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Shape.kt#1031">46</a>)
+45365273-</ul>
+45365274-</div></div>
+45365275-<ol class="tree">
+45365276-</ol>
+45365277-<li><label for="1960540881"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Property&nbsp;&quot;BottomSheetShape&quot;&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1960540881)" id="1960540881">
+45365278-<div id="d1960540881" style="display:none">
+45365279-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;field&nbsp;<code>RoundedCornerShape&nbsp;<b>BottomSheetShape</b></code><br>in </div>
+45365280-<p class="problem-description-group">Problem synopsis</p>
+45365281-<div class="problem-description">
+45365282-<ul>
+45365283:<li>Property &quot;BottomSheetShape&quot; is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/theme/Shape.kt#1075">47</a>)
+45365284-</ul>
+45365285-</div></div>
+45365286-<ol class="tree">
+45365287-</ol>
+45365288-</ol>
+--
+45370066-<ol class="tree">
+45370067-</ol>
+45370068-</ol>
+45370069-<li><label for="680766704">file&nbsp;<b>AndroidManifest.xml</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;typo&nbsp;</span></label><input type="checkbox" onclick="navigate(680766704)" id="680766704">
+45370070-<div id="d680766704" style="display:none">
+45370071:<p class="problem-description-group">Location</p><div class="location"><b>AndroidManifest.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml">…/app/src/main/AndroidManifest.xml [SmartSalesAssistant.app.main]</a></div>
+45370072-<p class="problem-description-group">Problem synopsis</p>
+45370073-<div class="problem-description">
+45370074-<ul>
+45370075:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml#descr:0"><code>fileprovider</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml#2823">64</a>)
+45370076-</ul>
+45370077-</div></div>
+45370078-<ol class="tree">
+45370079-<li><label for="603512834"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;fileprovider&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(603512834)" id="603512834">
+45370080-<div id="d603512834" style="display:none">
+45370081:<p class="problem-description-group">Location</p><div class="location"><b>AndroidManifest.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml">…/app/src/main/AndroidManifest.xml [SmartSalesAssistant.app.main]</a></div>
+45370082-<p class="problem-description-group">Problem synopsis</p>
+45370083-<div class="problem-description">
+45370084-<ul>
+45370085:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml#descr:0"><code>fileprovider</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/AndroidManifest.xml#2823">64</a>)
+45370086-</ul>
+45370087-</div></div>
+45370088-<ol class="tree">
+45370089-</ol>
+45370090-</ol>
+--
+45372842-<div id="d1032662681" style="display:none">
+45372843-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>ApiConfigTest</code></b><br>in package&nbsp;<code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45372844-<ol class="tree">
+45372845-<li><label for="1018715584"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Dashscope&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1018715584)" id="1018715584">
+45372846-<div id="d1018715584" style="display:none">
+45372847:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>buildDashscopeAuth wraps key in bearer token</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div>
+45372848-<p class="problem-description-group">Problem synopsis</p>
+45372849-<div class="problem-description">
+45372850-<ul>
+45372851:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#descr:0"><code>Dashscope</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#550">23</a>)
+45372852-</ul>
+45372853-</div></div>
+45372854-<ol class="tree">
+45372855-</ol>
+45372856-<li><label for="359397493"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Tingwu&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(359397493)" id="359397493">
+45372857-<div id="d359397493" style="display:none">
+45372858:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>buildTingwuAuth wraps key in bearer token</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#103" qualifiedname="com.smartsales.data.network.ApiConfigTest">ApiConfigTest</a></code> in <code>com.smartsales.data.network</code></div>
+45372859-<p class="problem-description-group">Problem synopsis</p>
+45372860-<div class="problem-description">
+45372861-<ul>
+45372862:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#descr:0"><code>Tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/ApiConfigTest.kt#704">28</a>)
+45372863-</ul>
+45372864-</div></div>
+45372865-<ol class="tree">
+45372866-</ol>
+45372867-</ol>
+--
+45374193-<div id="d299486258" style="display:none">
+45374194-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>AuthInterceptorTest</code></b><br>in package&nbsp;<code>com.smartsales.data.network</code></div><p class="problem-description-group">No problems found</p></div>
+45374195-<ol class="tree">
+45374196-<li><label for="1197742587"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Dashscope&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1197742587)" id="1197742587">
+45374197-<div id="d1197742587" style="display:none">
+45374198:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>DashscopeAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div>
+45374199-<p class="problem-description-group">Problem synopsis</p>
+45374200-<div class="problem-description">
+45374201-<ul>
+45374202:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:0"><code>Dashscope</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#723">31</a>)
+45374203-</ul>
+45374204-</div></div>
+45374205-<ol class="tree">
+45374206-</ol>
+45374207-<li><label for="706951125"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Tingwu&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(706951125)" id="706951125">
+45374208-<div id="d706951125" style="display:none">
+45374209:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>TingwuAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div>
+45374210-<p class="problem-description-group">Problem synopsis</p>
+45374211-<div class="problem-description">
+45374212-<ul>
+45374213:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:0"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1229">45</a>)
+45374214:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:1"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1412">51</a>)
+45374215:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:2"><code>Tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1122">43</a>)
+45374216-</ul>
+45374217-</div></div>
+45374218-<ol class="tree">
+45374219-</ol>
+45374220-<li><label for="1002117462"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;tingwu&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1002117462)" id="1002117462">
+45374221-<div id="d1002117462" style="display:none">
+45374222:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>TingwuAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div>
+45374223-<p class="problem-description-group">Problem synopsis</p>
+45374224-<div class="problem-description">
+45374225-<ul>
+45374226:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:0"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1229">45</a>)
+45374227:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:1"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1412">51</a>)
+45374228:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:2"><code>Tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1122">43</a>)
+45374229-</ul>
+45374230-</div></div>
+45374231-<ol class="tree">
+45374232-</ol>
+45374233-<li><label for="965338602"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;tingwu&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(965338602)" id="965338602">
+45374234-<div id="d965338602" style="display:none">
+45374235:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>TingwuAuthInterceptor adds bearer header</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#427" qualifiedname="com.smartsales.data.network.AuthInterceptorTest">AuthInterceptorTest</a></code> in <code>com.smartsales.data.network</code></div>
+45374236-<p class="problem-description-group">Problem synopsis</p>
+45374237-<div class="problem-description">
+45374238-<ul>
+45374239:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:0"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1229">45</a>)
+45374240:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:1"><code>tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1412">51</a>)
+45374241:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#descr:2"><code>Tingwu</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/test/java/com/smartsales/data/network/AuthInterceptorTest.kt#1122">43</a>)
+45374242-</ul>
+45374243-</div></div>
+45374244-<ol class="tree">
+45374245-</ol>
+45374246-</ol>
+--
+45381498-<div id="d762443762" style="display:none">
+45381499-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>ChatViewModel</code></b><br>in package&nbsp;<code>com.smartsales.ui.screens.chat</code></div><p class="problem-description-group">No problems found</p></div>
+45381500-<ol class="tree">
+45381501-<li><label for="1650151965"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;dashscope&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1650151965)" id="1650151965">
+45381502-<div id="d1650151965" style="display:none">
+45381503:<p class="problem-description-group">Location</p><div class="location">public&nbsp;constructor&nbsp;<code><b>ChatViewModel</b>(ConversationRepository conversationRepository, DashscopeApi dashscopeApi)</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatViewModel.kt#1045" qualifiedname="com.smartsales.ui.screens.chat.ChatViewModel">ChatViewModel</a></code> in <code>com.smartsales.ui.screens.chat</code></div>
+45381504-<p class="problem-description-group">Problem synopsis</p>
+45381505-<div class="problem-description">
+45381506-<ul>
+45381507:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatViewModel.kt#descr:0"><code>dashscope</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/chat/ChatViewModel.kt#1148">36</a>)
+45381508-</ul>
+45381509-</div></div>
+45381510-<ol class="tree">
+45381511-</ol>
+45381512-</ol>
+--
+45391816-<ol class="tree">
+45391817-</ol>
+45391818-</ol>
+45391819-<li><label for="283945469">file&nbsp;<b>ErrorState.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;typo&nbsp;</span></label><input type="checkbox" onclick="navigate(283945469)" id="283945469">
+45391820-<div id="d283945469" style="display:none">
+45391821:<p class="problem-description-group">Location</p><div class="location"><b>ErrorState.kt</b><br>in package&nbsp;<code>com.smartsales.ui.components</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt">ErrorState.kt</a></code> in <code>com.smartsales.ui.components</code></div><p class="problem-description-group">No problems found</p></div>
+45391822-<ol class="tree">
+45391823-<li><label for="806431313"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Snackbar&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(806431313)" id="806431313">
+45391824-<div id="d806431313" style="display:none">
+45391825-<p class="problem-description-group">Location</p><div class="location">public&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ErrorSnackbar</b>(String message, Function0&lt;Unit&gt; onDismiss)</code><br>in </div>
+45391826-<p class="problem-description-group">Problem synopsis</p>
+45391827-<div class="problem-description">
+45391828-<ul>
+45391829:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt#descr:0"><code>Snackbar</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/components/ErrorState.kt#1476">55</a>)
+45391830-</ul>
+45391831-</div></div>
+45391832-<ol class="tree">
+45391833-</ol>
+45391834-</ol>
+--
+45435768-<ol class="tree">
+45435769-</ol>
+45435770-</ol>
+45435771-<li><label for="559560270">file&nbsp;<b>SettingsScreen.kt</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;typo&nbsp;</span></label><input type="checkbox" onclick="navigate(559560270)" id="559560270">
+45435772-<div id="d559560270" style="display:none">
+45435773:<p class="problem-description-group">Location</p><div class="location"><b>SettingsScreen.kt</b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code>file&nbsp;&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt">SettingsScreen.kt</a></code> in <code>com.smartsales.ui.screens.settings</code></div><p class="problem-description-group">No problems found</p></div>
+45435774-<ol class="tree">
+45435775-<li><label for="1894183560"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;Dashscope&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(1894183560)" id="1894183560">
+45435776-<div id="d1894183560" style="display:none">
+45435777-<p class="problem-description-group">Location</p><div class="location">private&nbsp;static&nbsp;method&nbsp;<code>void&nbsp;<b>ApiKeyDialog</b>(String currentApiKey, Function0&lt;Unit&gt; onDismiss, Function1&lt;? super String, Unit&gt; onSave)</code><br>in </div>
+45435778-<p class="problem-description-group">Problem synopsis</p>
+45435779-<div class="problem-description">
+45435780-<ul>
+45435781:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#descr:0"><code>Dashscope</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt#8932">294</a>)
+45435782-</ul>
+45435783-</div></div>
+45435784-<ol class="tree">
+45435785-</ol>
+45435786-</ol>
+--
+45435788-<div id="d385223982" style="display:none">
+45435789-<p class="problem-description-group">Location</p><div class="location">public&nbsp;Class&nbsp;<b><code>SettingsViewModel</code></b><br>in package&nbsp;<code>com.smartsales.ui.screens.settings</code></div><p class="problem-description-group">No problems found</p></div>
+45435790-<ol class="tree">
+45435791-<li><label for="936724646"><span style="margin:1px;">TYPO</span>&nbsp;Typo:&nbsp;In&nbsp;word&nbsp;&#39;snackbar&#39;&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(936724646)" id="936724646">
+45435792-<div id="d936724646" style="display:none">
+45435793:<p class="problem-description-group">Location</p><div class="location">public&nbsp;method&nbsp;<code>void&nbsp;<b>clearCache</b>()</code><br>in class&nbsp;<code><a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#764" qualifiedname="com.smartsales.ui.screens.settings.SettingsViewModel">SettingsViewModel</a></code> in <code>com.smartsales.ui.screens.settings</code></div>
+45435794-<p class="problem-description-group">Problem synopsis</p>
+45435795-<div class="problem-description">
+45435796-<ul>
+45435797:<li>Typo: In word '<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#descr:0"><code>snackbar</code></a>' (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt#3728">133</a>)
+45435798-</ul>
+45435799-</div></div>
+45435800-<ol class="tree">
+45435801-</ol>
+45435802-</ol>
+--
+52648110-<ol class="tree">
+52648111-<li><label for="437710619"><b>Unused&nbsp;schema&nbsp;declaration</b>&nbsp;inspection&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(437710619)" id="437710619">
+52648112-<ol class="tree">
+52648113-<li><label for="353580610">file&nbsp;<b>file_paths.xml</b>&nbsp;<span class="grayout">&nbsp;&nbsp;1&nbsp;warning&nbsp;</span></label><input type="checkbox" onclick="navigate(353580610)" id="353580610">
+52648114-<div id="d353580610" style="display:none">
+52648115:<p class="problem-description-group">Location</p><div class="location"><b>file_paths.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/xml/file_paths.xml">…/app/src/main/res/xml/file_paths.xml [SmartSalesAssistant.app.main]</a></div>
+52648116-<p class="problem-description-group">Problem synopsis</p>
+52648117-<div class="problem-description">
+52648118-<ul>
+52648119:<li>Namespace declaration is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/xml/file_paths.xml#39">2</a>)
+52648120-</ul>
+52648121-</div></div>
+52648122-<ol class="tree">
+52648123-<li><label for="843139887"><span style="margin:1px;background:#f2f794">WARNING</span>&nbsp;Namespace&nbsp;declaration&nbsp;is&nbsp;never&nbsp;used&nbsp;<span class="grayout"></span></label><input type="checkbox" onclick="navigate(843139887)" id="843139887">
+52648124-<div id="d843139887" style="display:none">
+52648125:<p class="problem-description-group">Location</p><div class="location"><b>file_paths.xml</b><br>in file&nbsp;<a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/xml/file_paths.xml">…/app/src/main/res/xml/file_paths.xml [SmartSalesAssistant.app.main]</a></div>
+52648126-<p class="problem-description-group">Problem synopsis</p>
+52648127-<div class="problem-description">
+52648128-<ul>
+52648129:<li>Namespace declaration is never used (at line <a href="file:///home/cslh-frank/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/app/src/main/res/xml/file_paths.xml#39">2</a>)
+52648130-</ul>
+52648131-</div></div>
+52648132-<ol class="tree">
+52648133-</ol>
+52648134-</ol>

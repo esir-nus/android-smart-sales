@@ -1,6 +1,9 @@
 package com.smartsales.ui.screens.device
 
+import android.Manifest
 import android.bluetooth.BluetoothDevice
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,11 +14,14 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.core.content.ContextCompat
 import com.smartsales.business.bluetooth.BleConnectionState
 import com.smartsales.ui.components.LoadingIndicator
 import com.smartsales.ui.components.NoDevicesEmptyState
+import com.smartsales.R
 
 /**
  * Device Pairing Screen
@@ -31,7 +37,7 @@ fun DevicePairingScreen(
     val uiState by viewModel.uiState.collectAsState()
     val connectionState by viewModel.connectionState.collectAsState()
     
-    var showWifiDialog by remember { mutableStateOf(false) }
+    val showWifiDialog = remember { mutableStateOf(false) }
     var selectedDevice by remember { mutableStateOf<BluetoothDevice?>(null) }
     
     Scaffold(
@@ -87,7 +93,7 @@ fun DevicePairingScreen(
                 connectionState = connectionState,
                 onDisconnect = { viewModel.disconnect() },
                 onConfigureWifi = {
-                    showWifiDialog = true
+                    showWifiDialog.value = true
                     selectedDevice = connectionState.deviceOrNull()
                 }
             )
@@ -132,12 +138,12 @@ fun DevicePairingScreen(
     }
     
     // WiFi configuration dialog
-    if (showWifiDialog && selectedDevice != null) {
+    if (showWifiDialog.value && selectedDevice != null) {
         WifiConfigDialog(
-            onDismiss = { showWifiDialog = false },
+            onDismiss = { showWifiDialog.value = false },
             onConfirm = { ssid, password ->
                 viewModel.sendWifiConfig(ssid, password)
-                showWifiDialog = false
+                showWifiDialog.value = false
             }
         )
     }
@@ -231,6 +237,34 @@ private fun DeviceItem(
     device: BluetoothDevice,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+    val hasConnectPermission = remember(device) {
+        Build.VERSION.SDK_INT < Build.VERSION_CODES.S ||
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.BLUETOOTH_CONNECT
+            ) == PackageManager.PERMISSION_GRANTED
+    }
+    val deviceName = remember(device, hasConnectPermission) {
+        if (hasConnectPermission) {
+            runCatching { device.name }
+                .getOrNull()
+                ?.takeUnless { it.isNullOrBlank() }
+                ?: context.getString(R.string.device_unknown)
+        } else {
+            context.getString(R.string.bluetooth_permission_required)
+        }
+    }
+    val deviceAddress = remember(device, hasConnectPermission) {
+        if (hasConnectPermission) {
+            runCatching { device.address }
+                .getOrNull()
+                ?: context.getString(R.string.device_address_unavailable)
+        } else {
+            context.getString(R.string.bluetooth_permission_required)
+        }
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -252,14 +286,14 @@ private fun DeviceItem(
             
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = device.name ?: "Unknown Device",
+                    text = deviceName,
                     style = MaterialTheme.typography.titleMedium
                 )
                 
                 Spacer(modifier = Modifier.height(4.dp))
                 
                 Text(
-                    text = device.address,
+                    text = deviceAddress,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

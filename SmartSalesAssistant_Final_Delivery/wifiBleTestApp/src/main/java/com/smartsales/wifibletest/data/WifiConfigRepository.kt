@@ -33,9 +33,11 @@ class WifiConfigRepository @Inject constructor(
             buildList {
                 for (i in 0 until array.length()) {
                     val obj = array.getJSONObject(i)
+                    val storedName = obj.optString("wifiName")
+                        .ifBlank { obj.optString("ssid") }
                     add(
                         SavedWifiConfig(
-                            ssid = obj.getString("ssid"),
+                            wifiName = storedName,
                             password = obj.optString("password"),
                             isDefault = obj.optBoolean("isDefault"),
                             lastUsed = obj.optLong("lastUsed")
@@ -51,7 +53,8 @@ class WifiConfigRepository @Inject constructor(
         configs.forEach { config ->
             array.put(
                 JSONObject().apply {
-                    put("ssid", config.ssid)
+                    put("wifiName", config.wifiName)
+                    put("ssid", config.wifiName)
                     put("password", config.password)
                     put("isDefault", config.isDefault)
                     put("lastUsed", config.lastUsed)
@@ -64,49 +67,45 @@ class WifiConfigRepository @Inject constructor(
         }
     }
 
-    suspend fun saveWifiConfig(ssid: String, password: String, setAsDefault: Boolean) {
+    suspend fun saveWifiConfig(wifiName: String, password: String, setAsDefault: Boolean) {
         withContext(Dispatchers.IO) {
-            val updated = buildList {
-                val existing = _configs.value.associateBy { it.ssid }
-                val now = System.currentTimeMillis()
+            val now = System.currentTimeMillis()
+            val current = _configs.value.toMutableList()
+            val existingIndex = current.indexOfFirst { it.wifiName == wifiName }
 
-                existing.values.forEach { config ->
-                    val shouldBeDefault = setAsDefault && config.ssid == ssid
-                    add(
-                        config.copy(
-                            isDefault = shouldBeDefault,
-                            lastUsed = if (shouldBeDefault) now else config.lastUsed
-                        )
+            if (existingIndex >= 0) {
+                val existing = current[existingIndex]
+                current[existingIndex] = existing.copy(
+                    password = if (password.isNotEmpty()) password else existing.password,
+                    isDefault = if (setAsDefault) true else existing.isDefault,
+                    lastUsed = now
+                )
+            } else {
+                current.add(
+                    SavedWifiConfig(
+                        wifiName = wifiName,
+                        password = password,
+                        isDefault = setAsDefault,
+                        lastUsed = now
                     )
-                }
-
-                if (!existing.containsKey(ssid)) {
-                    add(
-                        SavedWifiConfig(
-                            ssid = ssid,
-                            password = password,
-                            isDefault = setAsDefault,
-                            lastUsed = now
-                        )
-                    )
-                } else if (setAsDefault) {
-                    // Update password if default config is overwritten
-                    val index = indexOfFirst { it.ssid == ssid }
-                    if (index >= 0) {
-                        this[index] = this[index].copy(password = password)
-                    }
-                }
-
-                if (setAsDefault) {
-                    replaceAll { config ->
-                        if (config.ssid == ssid) config.copy(isDefault = true, lastUsed = now)
-                        else config.copy(isDefault = false)
-                    }
-                }
+                )
             }
 
-            persistConfigs(updated)
-            _configs.value = updated.sortedByDescending { it.lastUsed }
+            val normalized = if (setAsDefault) {
+                current.map { config ->
+                    if (config.wifiName == wifiName) {
+                        config.copy(isDefault = true, lastUsed = now)
+                    } else {
+                        config.copy(isDefault = false)
+                    }
+                }
+            } else {
+                current
+            }
+
+            val sorted = normalized.sortedByDescending { it.lastUsed }
+            persistConfigs(sorted)
+            _configs.value = sorted
         }
     }
 

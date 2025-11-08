@@ -1,0 +1,3 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/navigation/Screen.kt#997
+----------------------------------------------------------------------------------
+- Function "getBottomNavScreens" is never used (at line 52)

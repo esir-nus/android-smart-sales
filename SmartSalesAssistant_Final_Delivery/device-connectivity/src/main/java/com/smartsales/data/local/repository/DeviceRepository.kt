@@ -1,9 +1,12 @@
 package com.smartsales.data.local.repository
 
+import android.content.Context
+import androidx.core.content.edit
 import com.smartsales.data.local.dao.DeviceSettingDao
 import com.smartsales.data.local.dao.WifiConfigDao
 import com.smartsales.data.local.entity.DeviceSettingEntity
 import com.smartsales.data.local.entity.WifiConfigEntity
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -13,9 +16,11 @@ import javax.inject.Singleton
 @Singleton
 class DeviceRepository @Inject constructor(
     private val deviceSettingDao: DeviceSettingDao,
-    private val wifiConfigDao: WifiConfigDao
+    private val wifiConfigDao: WifiConfigDao,
+    @ApplicationContext context: Context
 ) {
-    private val syncedFileIds = MutableStateFlow<Set<String>>(emptySet())
+    private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    private val syncedFileIds = MutableStateFlow(loadSyncedFileIds())
 
     // ===== DEVICE OPERATIONS =====
 
@@ -122,12 +127,10 @@ class DeviceRepository @Inject constructor(
         setAsDefault: Boolean = false
     ): Result<Long> {
         return try {
-            val config = WifiConfigEntity(
+            val config = WifiConfigEntity.create(
                 ssid = ssid,
                 password = password,
-                isDefault = setAsDefault,
-                lastUsed = System.currentTimeMillis(),
-                addedAt = System.currentTimeMillis()
+                isDefault = setAsDefault
             )
 
             // If setting as default, clear other defaults first
@@ -184,13 +187,12 @@ class DeviceRepository @Inject constructor(
      */
     suspend fun markWifiConfigAsUsed(id: Long): Result<Unit> {
         return try {
-            wifiConfigDao.getDefaultWifiConfig()?.let { config ->
-                if (config.id == id) {
-                    wifiConfigDao.updateWifiConfig(
-                        config.copy(lastUsed = System.currentTimeMillis())
-                    )
-                }
-            }
+            val config = wifiConfigDao.getWifiConfigById(id)
+                ?: return Result.failure(IllegalArgumentException("WiFi config not found: $id"))
+
+            wifiConfigDao.updateWifiConfig(
+                config.copy(lastUsed = System.currentTimeMillis())
+            )
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -202,6 +204,29 @@ class DeviceRepository @Inject constructor(
     }
 
     suspend fun markFileSynced(fileId: String) {
-        syncedFileIds.update { it + fileId }
+        syncedFileIds.update { current ->
+            if (current.contains(fileId)) {
+                current
+            } else {
+                val updated = current + fileId
+                persistSyncedIds(updated)
+                updated
+            }
+        }
+    }
+
+    private fun loadSyncedFileIds(): Set<String> {
+        return preferences.getStringSet(KEY_SYNCED_FILES, emptySet())?.toSet().orEmpty()
+    }
+
+    private fun persistSyncedIds(ids: Set<String>) {
+        preferences.edit {
+            putStringSet(KEY_SYNCED_FILES, ids.toMutableSet())
+        }
+    }
+
+    companion object {
+        private const val PREFS_NAME = "smart_sales_device_repo"
+        private const val KEY_SYNCED_FILES = "synced_files"
     }
 }

@@ -17,7 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -131,7 +131,7 @@ private fun ChatSection(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Divider()
+            HorizontalDivider()
 
             val scrollState = rememberScrollState()
             Box(
@@ -300,7 +300,7 @@ private fun TingwuSection(
             }
 
             state.tingwuResultText?.let { result ->
-                Divider()
+                HorizontalDivider()
                 Text("转写结果", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Medium)
                 Surface(
                     tonalElevation = 1.dp,

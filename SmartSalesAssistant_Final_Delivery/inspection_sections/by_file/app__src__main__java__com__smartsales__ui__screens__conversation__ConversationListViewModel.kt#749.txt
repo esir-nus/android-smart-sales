@@ -1,0 +1,4 @@
+Inspection issues for app/src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt#749
+---------------------------------------------------------------------------------------------------------------
+- Function "deleteConversation" is never used (at line 56)
+- Function "refreshConversations" is never used (at line 52)

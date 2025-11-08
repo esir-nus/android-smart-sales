@@ -72,6 +72,13 @@ class DevicePairingViewModel @Inject constructor(
      * Start BLE scan
      */
     fun startScan() {
+        if (!bleManager.hasScanPermission()) {
+            _uiState.update {
+                it.copy(error = "请先授予蓝牙扫描权限")
+            }
+            return
+        }
+
         if (!bleManager.isBluetoothEnabled()) {
             _uiState.update {
                 it.copy(error = "请先开启蓝牙")
@@ -128,17 +135,23 @@ class DevicePairingViewModel @Inject constructor(
      */
     private fun saveConnectedDevice(device: BluetoothDevice) {
         viewModelScope.launch {
-            try {
-                val deviceSetting = DeviceSettingEntity.create(
-                    deviceId = device.address,
-                    deviceName = device.name ?: "Unknown Device",
+            if (!bleManager.hasConnectPermission()) {
+                return@launch
+            }
+
+            runCatching {
+                val deviceId = device.address
+                val deviceName = device.name ?: "Unknown Device"
+
+                DeviceSettingEntity.create(
+                    deviceId = deviceId,
+                    deviceName = deviceName,
                     isPaired = true
                 )
-                
-                deviceRepository.saveDevice(deviceSetting)
-                
-            } catch (e: Exception) {
-                // Ignore save errors
+            }.onSuccess { deviceSetting ->
+                runCatching {
+                    deviceRepository.saveDevice(deviceSetting)
+                }
             }
         }
     }

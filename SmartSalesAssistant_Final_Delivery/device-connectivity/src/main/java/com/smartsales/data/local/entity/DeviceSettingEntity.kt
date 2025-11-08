@@ -225,14 +225,16 @@ data class DeviceSettingEntity(
      */
     fun getDisplaySummary(): String {
         return when {
-            currentImage != null && currentText != null ->
-                "Image: $currentImage, Text: ${currentText?.take(20)}..."
-            currentImage != null ->
-                "Image: $currentImage"
-            currentText != null ->
-                "Text: ${currentText?.take(50)}${if (currentText!!.length > 50) "..." else ""}"
-            else ->
-                "No display content"
+            currentImage != null && currentText != null -> {
+                val preview = currentText.take(20)
+                "Image: $currentImage, Text: $preview..."
+            }
+            currentImage != null -> "Image: $currentImage"
+            currentText != null -> {
+                val preview = currentText.take(50)
+                "Text: $preview${if (currentText.length > 50) "..." else ""}"
+            }
+            else -> "No display content"
         }
     }
 

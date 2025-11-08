@@ -20,6 +20,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
+private const val ROLE_USER = "user"
+private const val ROLE_ASSISTANT = "assistant"
+
+private const val DEFAULT_SYSTEM_PROMPT =
+    "你是智能销售助手，擅长总结对话、提取销售要点，并提供后续行动建议。"
+
+// Placeholder URL for documentation purposes; replace with a real, reachable audio asset when testing.
+private const val DEFAULT_AUDIO_URL =
+    "https://example.com/audio/sample.mp3"
+
 data class AiChatMessage(
     val role: String,
     val content: String
@@ -45,7 +55,7 @@ data class AiTestUiState(
 
 @HiltViewModel
 class AiTestViewModel @Inject constructor(
-    private val dashscopeApi: DashscopeApi,
+    private val dashScopeApi: DashscopeApi,
     private val tingwuApi: TingwuApi
 ) : ViewModel() {
 
@@ -96,7 +106,7 @@ class AiTestViewModel @Inject constructor(
                     parameters = ChatParameters.default()
                 )
 
-                val response = dashscopeApi.chatCompletion(request)
+                val response = dashScopeApi.chatCompletion(request)
 
                 if (response.isSuccessful) {
                     val body = response.body()
@@ -312,17 +322,5 @@ class AiTestViewModel @Inject constructor(
                 isTingwuProcessing = false
             )
         }
-    }
-
-    companion object {
-        private const val ROLE_USER = "user"
-        private const val ROLE_ASSISTANT = "assistant"
-
-        private const val DEFAULT_SYSTEM_PROMPT =
-            "你是智能销售助手，擅长总结对话、提取销售要点，并提供后续行动建议。"
-
-        // Placeholder URL for documentation purposes; replace with a real, reachable audio asset when testing.
-        private const val DEFAULT_AUDIO_URL =
-            "https://example.com/audio/sample.mp3"
     }
 }

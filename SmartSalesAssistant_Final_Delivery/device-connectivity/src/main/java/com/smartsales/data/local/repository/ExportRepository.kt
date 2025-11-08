@@ -35,10 +35,8 @@ class ExportRepository @Inject constructor(
     /**
      * Get exports by type (csv or pdf)
      */
-    suspend fun getExportsByType(exportType: String): List<CrmExportEntity> {
-        return crmExportDao.getAllExports()
-            .toString() // This is a flow, need to collect
-            .let { emptyList<CrmExportEntity>() } // Placeholder - needs proper implementation
+    fun getExportsByType(exportType: String): Flow<List<CrmExportEntity>> {
+        return crmExportDao.getExportsByType(exportType)
     }
 
     /**
@@ -126,12 +124,6 @@ class ExportRepository @Inject constructor(
      * Count total successful exports
      */
     suspend fun getSuccessfulExportCount(): Int {
-        return try {
-            // Note: This needs proper Flow collection
-            // For now, returning 0 as placeholder
-            0
-        } catch (e: Exception) {
-            0
-        }
+        return crmExportDao.getSuccessfulExportCount()
     }
 }

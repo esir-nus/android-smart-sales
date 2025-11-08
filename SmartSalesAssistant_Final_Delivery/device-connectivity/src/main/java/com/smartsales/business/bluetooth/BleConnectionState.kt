@@ -123,7 +123,7 @@ sealed class BleConnectionState {
     fun getStatusMessage(): String {
         return when (this) {
             is Disconnected -> "Not connected"
-            is Scanning -> "Searching for devices..."
+            is Scanning -> if (devicesFound > 0) "BT311 已找到" else "Searching"
             is Connecting -> "Connecting to ${device.name ?: "device"}..."
             is Connected -> "Connected"
             is Ready -> "Ready to use"

@@ -13,7 +13,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.smartsales.data.network.model.GadgetFile
-import com.smartsales.ui.components.LinearLoadingIndicator
 import com.smartsales.ui.components.LoadingIndicator
 import com.smartsales.ui.components.NoFilesEmptyState
 

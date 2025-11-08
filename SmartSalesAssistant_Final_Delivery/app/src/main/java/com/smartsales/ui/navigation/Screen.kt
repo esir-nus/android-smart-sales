@@ -49,6 +49,7 @@ sealed class Screen(val route: String) {
         /**
          * Get all bottom navigation screens
          */
+        @Suppress("unused")
         fun getBottomNavScreens(): List<Screen> {
             return listOf(
                 ConversationList,
@@ -63,6 +64,7 @@ sealed class Screen(val route: String) {
 /**
  * Bottom Navigation Items
  */
+@Suppress("unused")
 sealed class BottomNavItem(
     val screen: Screen,
     val title: String,
@@ -93,6 +95,7 @@ sealed class BottomNavItem(
     )
     
     companion object {
+        @Suppress("unused")
         fun getItems(): List<BottomNavItem> {
             return listOf(
                 Conversations,
