@@ -62,11 +62,14 @@ tasks.register("qualityGates") {
     group = "verification"
     description = "Run all quality checks (detekt, ktlint, lint)"
     
-    dependsOn("detekt")
-    dependsOn("ktlintCheck")
-    
-    // Add lint tasks for all Android modules
+    // Add detekt tasks for all modules that have it applied
     subprojects.forEach { subproject ->
+        subproject.pluginManager.withPlugin("io.gitlab.arturbosch.detekt") {
+            dependsOn(":${subproject.name}:detekt")
+        }
+        subproject.pluginManager.withPlugin("org.jlleitschuh.gradle.ktlint") {
+            dependsOn(":${subproject.name}:ktlintCheck")
+        }
         subproject.pluginManager.withPlugin("com.android.application") {
             dependsOn(":${subproject.name}:lintDebug")
         }
@@ -82,7 +85,16 @@ tasks.register("ciChecks") {
     description = "Run all CI checks (quality gates + assemble)"
     
     dependsOn("qualityGates")
-    dependsOn("assembleDebug")
+    
+    // Add assemble tasks for all Android modules
+    subprojects.forEach { subproject ->
+        subproject.pluginManager.withPlugin("com.android.application") {
+            dependsOn(":${subproject.name}:assembleDebug")
+        }
+        subproject.pluginManager.withPlugin("com.android.library") {
+            dependsOn(":${subproject.name}:assembleDebug")
+        }
+    }
 }
 
 tasks.register("clean", Delete::class) {
