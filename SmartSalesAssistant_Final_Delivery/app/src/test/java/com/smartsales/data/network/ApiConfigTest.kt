@@ -6,14 +6,13 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class ApiConfigTest {
-
     @Test
     fun `getGadgetBaseUrl builds http url with default port`() {
         val url = ConnectivityApiConfig.buildBaseUrl("192.168.0.12")
 
         assertEquals(
             "http://192.168.0.12:${ConnectivityApiConfig.DEFAULT_PORT}/",
-            url
+            url,
         )
     }
 

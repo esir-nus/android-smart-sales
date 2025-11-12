@@ -20,34 +20,34 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
-
     @Provides
     @Singleton
     fun provideConversationRepository(
         conversationDao: ConversationDao,
-        messageDao: MessageDao
-    ): ConversationRepository = ConversationRepository(
-        conversationDao = conversationDao,
-        messageDao = messageDao
-    )
+        messageDao: MessageDao,
+    ): ConversationRepository =
+        ConversationRepository(
+            conversationDao = conversationDao,
+            messageDao = messageDao,
+        )
 
     @Provides
     @Singleton
     fun provideDeviceRepository(
         deviceSettingDao: DeviceSettingDao,
         wifiConfigDao: WifiConfigDao,
-        @ApplicationContext context: Context
-    ): DeviceRepository = DeviceRepository(
-        deviceSettingDao = deviceSettingDao,
-        wifiConfigDao = wifiConfigDao,
-        context = context
-    )
+        @ApplicationContext context: Context,
+    ): DeviceRepository =
+        DeviceRepository(
+            deviceSettingDao = deviceSettingDao,
+            wifiConfigDao = wifiConfigDao,
+            context = context,
+        )
 
     @Provides
     @Singleton
-    fun provideExportRepository(
-        crmExportDao: CrmExportDao
-    ): ExportRepository = ExportRepository(
-        crmExportDao = crmExportDao
-    )
+    fun provideExportRepository(crmExportDao: CrmExportDao): ExportRepository =
+        ExportRepository(
+            crmExportDao = crmExportDao,
+        )
 }

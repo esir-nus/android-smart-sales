@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/main/java/com/smartsales/data/network/AiApiConfig.kt">
+        <error line="55" column="22" source="standard:property-naming" />
+        <error line="56" column="22" source="standard:property-naming" />
+        <error line="57" column="22" source="standard:property-naming" />
+        <error line="58" column="22" source="standard:property-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/api/DashscopeApi.kt">
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/api/TingwuApi.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="100" column="51" source="standard:value-parameter-comment" />
+        <error line="133" column="34" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/dashscope/MockDashscopeClient.kt">
+        <error line="1" column="1" source="standard:filename" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/model/ChatModels.kt">
+        <error line="9" column="1" source="standard:no-consecutive-comments" />
+        <error line="30" column="23" source="standard:value-parameter-comment" />
+        <error line="45" column="43" source="standard:value-parameter-comment" />
+        <error line="49" column="37" source="standard:value-parameter-comment" />
+        <error line="51" column="30" source="standard:value-parameter-comment" />
+        <error line="57" column="45" source="standard:value-parameter-comment" />
+        <error line="96" column="31" source="standard:value-parameter-comment" />
+        <error line="98" column="39" source="standard:value-parameter-comment" />
+        <error line="100" column="44" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/model/TranscriptionModels.kt">
+        <error line="9" column="1" source="standard:no-consecutive-comments" />
+        <error line="16" column="41" source="standard:value-parameter-comment" />
+        <error line="23" column="34" source="standard:value-parameter-comment" />
+        <error line="25" column="36" source="standard:value-parameter-comment" />
+        <error line="27" column="45" source="standard:value-parameter-comment" />
+        <error line="31" column="41" source="standard:value-parameter-comment" />
+        <error line="33" column="34" source="standard:value-parameter-comment" />
+        <error line="45" column="25" source="standard:value-parameter-comment" />
+        <error line="59" column="24" source="standard:value-parameter-comment" />
+        <error line="87" column="23" source="standard:value-parameter-comment" />
+        <error line="95" column="26" source="standard:value-parameter-comment" />
+        <error line="102" column="23" source="standard:value-parameter-comment" />
+        <error line="104" column="21" source="standard:value-parameter-comment" />
+        <error line="108" column="34" source="standard:value-parameter-comment" />
+        <error line="110" column="36" source="standard:value-parameter-comment" />
+        <error line="137" column="27" source="standard:value-parameter-comment" />
+    </file>
+</baseline>

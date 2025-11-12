@@ -17,15 +17,13 @@ import java.util.*
 @Entity(tableName = "device_settings")
 data class DeviceSettingEntity(
     @PrimaryKey
-    val deviceId: String,            // BLE MAC address (e.g., "00:11:22:33:44:55")
-
-    val deviceName: String,          // User-friendly device name
-    val lastConnected: Long,         // Last connection timestamp (millis)
+    val deviceId: String, // BLE MAC address (e.g., "00:11:22:33:44:55")
+    val deviceName: String, // User-friendly device name
+    val lastConnected: Long, // Last connection timestamp (millis)
     val currentImage: String? = null, // Current displayed image filename
-    val currentText: String? = null,  // Current displayed text
-    val isPaired: Boolean = true      // Whether device is currently paired
+    val currentText: String? = null, // Current displayed text
+    val isPaired: Boolean = true, // Whether device is currently paired
 ) {
-
     companion object {
         // Device name limits
         const val MAX_DEVICE_NAME_LENGTH = 50
@@ -44,7 +42,7 @@ data class DeviceSettingEntity(
         fun create(
             deviceId: String,
             deviceName: String = DEFAULT_DEVICE_NAME,
-            isPaired: Boolean = true
+            isPaired: Boolean = true,
         ): DeviceSettingEntity {
             return DeviceSettingEntity(
                 deviceId = formatMacAddress(deviceId),
@@ -52,7 +50,7 @@ data class DeviceSettingEntity(
                 lastConnected = System.currentTimeMillis(),
                 currentImage = null,
                 currentText = null,
-                isPaired = isPaired
+                isPaired = isPaired,
             )
         }
 
@@ -93,7 +91,8 @@ data class DeviceSettingEntity(
      * Check if device is currently connected (connected within timeout)
      */
     val isConnected: Boolean
-        get() = isPaired &&
+        get() =
+            isPaired &&
                 (System.currentTimeMillis() - lastConnected) < CONNECTION_TIMEOUT_MS
 
     /**
@@ -259,10 +258,10 @@ data class DeviceSettingEntity(
      */
     fun isValid(): Boolean {
         return isValidMacAddress(deviceId) &&
-                deviceName.isNotBlank() &&
-                deviceName.length <= MAX_DEVICE_NAME_LENGTH &&
-                (currentText == null || currentText.length <= MAX_TEXT_LENGTH) &&
-                (currentImage == null || currentImage.length <= MAX_IMAGE_NAME_LENGTH)
+            deviceName.isNotBlank() &&
+            deviceName.length <= MAX_DEVICE_NAME_LENGTH &&
+            (currentText == null || currentText.length <= MAX_TEXT_LENGTH) &&
+            (currentImage == null || currentImage.length <= MAX_IMAGE_NAME_LENGTH)
     }
 
     /**
@@ -305,7 +304,7 @@ data class DeviceSettingEntity(
     fun pair(): DeviceSettingEntity {
         return copy(
             isPaired = true,
-            lastConnected = System.currentTimeMillis()
+            lastConnected = System.currentTimeMillis(),
         )
     }
 
@@ -322,7 +321,7 @@ data class DeviceSettingEntity(
     fun setDisplayImage(imageName: String?): DeviceSettingEntity {
         return copy(
             currentImage = imageName?.take(MAX_IMAGE_NAME_LENGTH),
-            lastConnected = System.currentTimeMillis()
+            lastConnected = System.currentTimeMillis(),
         )
     }
 
@@ -332,7 +331,7 @@ data class DeviceSettingEntity(
     fun setDisplayText(text: String?): DeviceSettingEntity {
         return copy(
             currentText = text?.take(MAX_TEXT_LENGTH),
-            lastConnected = System.currentTimeMillis()
+            lastConnected = System.currentTimeMillis(),
         )
     }
 
@@ -343,7 +342,7 @@ data class DeviceSettingEntity(
         return copy(
             currentImage = null,
             currentText = null,
-            lastConnected = System.currentTimeMillis()
+            lastConnected = System.currentTimeMillis(),
         )
     }
 
@@ -371,7 +370,7 @@ enum class ConnectionStatus {
     RECENTLY_CONNECTED,
     DISCONNECTED,
     STALE,
-    UNPAIRED
+    UNPAIRED,
 }
 
 /**
@@ -381,5 +380,5 @@ enum class DisplayStatus {
     CLEAR,
     IMAGE_ONLY,
     TEXT_ONLY,
-    BOTH
+    BOTH,
 }

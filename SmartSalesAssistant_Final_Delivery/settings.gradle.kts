@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         maven { url = uri("${System.getProperty("user.home")}/.m2/repository") }
+        maven { url = uri("$rootDir/third_party/maven-repo") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -20,6 +21,7 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         maven { url = uri("${System.getProperty("user.home")}/.m2/repository") }
+        maven { url = uri("$rootDir/third_party/maven-repo") }
         google()
         mavenCentral()
         maven {

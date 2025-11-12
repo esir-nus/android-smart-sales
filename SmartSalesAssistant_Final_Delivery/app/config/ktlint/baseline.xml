@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/main/java/com/smartsales/ai/ui/AiAssistantScreen.kt">
+        <error line="14" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ai/ui/chat/AiChatScreen.kt">
+        <error line="57" column="5" source="standard:function-naming" />
+        <error line="121" column="5" source="standard:function-naming" />
+        <error line="195" column="13" source="standard:function-naming" />
+        <error line="224" column="13" source="standard:function-naming" />
+        <error line="245" column="13" source="standard:function-naming" />
+        <error line="271" column="13" source="standard:function-naming" />
+        <error line="296" column="13" source="standard:function-naming" />
+        <error line="307" column="13" source="standard:function-naming" />
+        <error line="324" column="13" source="standard:function-naming" />
+        <error line="381" column="13" source="standard:function-naming" />
+        <error line="400" column="121" source="standard:max-line-length" />
+        <error line="401" column="121" source="standard:max-line-length" />
+        <error line="409" column="13" source="standard:function-naming" />
+        <error line="429" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ai/ui/history/AiHistoryScreen.kt">
+        <error line="39" column="5" source="standard:function-naming" />
+        <error line="102" column="13" source="standard:function-naming" />
+        <error line="134" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ai/ui/menu/AiMenuDrawer.kt">
+        <error line="17" column="5" source="standard:function-naming" />
+        <error line="49" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ai/ui/structured/StructuredChatScreen.kt">
+        <error line="40" column="5" source="standard:function-naming" />
+        <error line="61" column="5" source="standard:function-naming" />
+        <error line="123" column="13" source="standard:function-naming" />
+        <error line="137" column="13" source="standard:function-naming" />
+        <error line="154" column="13" source="standard:function-naming" />
+        <error line="190" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ai/ui/structured/StructuredChatViewModel.kt">
+        <error line="57" column="120" source="standard:max-line-length" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/components/EmptyState.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="6" column="1" source="standard:no-wildcard-imports" />
+        <error line="19" column="5" source="standard:function-naming" />
+        <error line="58" column="5" source="standard:function-naming" />
+        <error line="85" column="5" source="standard:function-naming" />
+        <error line="104" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/components/ErrorState.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="6" column="1" source="standard:no-wildcard-imports" />
+        <error line="17" column="5" source="standard:function-naming" />
+        <error line="56" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/components/LoadingIndicator.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="15" column="5" source="standard:function-naming" />
+        <error line="41" column="5" source="standard:function-naming" />
+        <error line="65" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/components/MessageBubble.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="15" column="1" source="standard:no-wildcard-imports" />
+        <error line="25" column="5" source="standard:function-naming" />
+        <error line="91" column="13" source="standard:function-naming" />
+        <error line="123" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/navigation/NavGraph.kt">
+        <error line="25" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/navigation/Screen.kt">
+        <error line="91" column="20" source="standard:value-parameter-comment" />
+        <error line="96" column="51" source="standard:value-argument-comment" />
+        <error line="102" column="53" source="standard:value-argument-comment" />
+        <error line="108" column="53" source="standard:value-argument-comment" />
+        <error line="114" column="56" source="standard:value-argument-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/chat/ChatScreen.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="9" column="1" source="standard:no-wildcard-imports" />
+        <error line="10" column="1" source="standard:no-wildcard-imports" />
+        <error line="27" column="5" source="standard:function-naming" />
+        <error line="173" column="13" source="standard:function-naming" />
+        <error line="210" column="13" source="standard:function-naming" />
+        <error line="257" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/chat/ChatViewModel.kt">
+        <error line="16" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/conversation/ConversationListScreen.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="12" column="1" source="standard:no-wildcard-imports" />
+        <error line="13" column="1" source="standard:no-wildcard-imports" />
+        <error line="31" column="5" source="standard:function-naming" />
+        <error line="151" column="13" source="standard:function-naming" />
+        <error line="202" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/conversation/ConversationListViewModel.kt">
+        <error line="9" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/device/DevicePairingScreen.kt">
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="12" column="1" source="standard:no-wildcard-imports" />
+        <error line="13" column="1" source="standard:no-wildcard-imports" />
+        <error line="14" column="1" source="standard:no-wildcard-imports" />
+        <error line="33" column="5" source="standard:function-naming" />
+        <error line="157" column="13" source="standard:function-naming" />
+        <error line="225" column="13" source="standard:function-naming" />
+        <error line="242" column="13" source="standard:function-naming" />
+        <error line="326" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt">
+        <error line="11" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/settings/SettingsScreen.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="9" column="1" source="standard:no-wildcard-imports" />
+        <error line="10" column="1" source="standard:no-wildcard-imports" />
+        <error line="23" column="5" source="standard:function-naming" />
+        <error line="159" column="13" source="standard:function-naming" />
+        <error line="185" column="13" source="standard:function-naming" />
+        <error line="237" column="13" source="standard:function-naming" />
+        <error line="287" column="13" source="standard:function-naming" />
+        <error line="329" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/settings/SettingsViewModel.kt">
+        <error line="9" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/sync/FileSyncScreen.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="7" column="1" source="standard:no-wildcard-imports" />
+        <error line="8" column="1" source="standard:no-wildcard-imports" />
+        <error line="9" column="1" source="standard:no-wildcard-imports" />
+        <error line="26" column="5" source="standard:function-naming" />
+        <error line="166" column="13" source="standard:function-naming" />
+        <error line="212" column="13" source="standard:function-naming" />
+        <error line="263" column="13" source="standard:function-naming" />
+        <error line="287" column="13" source="standard:function-naming" />
+        <error line="381" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/screens/sync/FileSyncViewModel.kt">
+        <error line="10" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/theme/Color.kt">
+        <error line="11" column="1" source="standard:no-consecutive-comments" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/theme/Theme.kt">
+        <error line="6" column="1" source="standard:no-wildcard-imports" />
+        <error line="80" column="5" source="standard:function-naming" />
+        <error line="82" column="35" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/ui/theme/Type.kt">
+        <error line="15" column="1" source="standard:no-consecutive-comments" />
+    </file>
+</baseline>

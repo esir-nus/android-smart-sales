@@ -21,6 +21,9 @@ Even as a solo maintainer, follow the conventional commit style used in history 
 ## Configuration & Security Notes
 Secrets stay out of version control: add `DASHSCOPE_API_KEY` and `TINGWU_API_KEY` to `SmartSalesAssistant_Final_Delivery/local.properties`. Never log raw keys or transcripts; prefer masking helpers already in `BleConstants.kt`. Remove temporary debug toggles before committing snapshots you plan to keep.
 
+- See `DEPENDENCY_VERSIONING.md` for the detailed dependency/version pinning policy, shared constants, and toolchain baselines.
+- Whenever you change dependencies, SDK/JDK versions, Gradle/AGP versions, or other tooling noted in that document, explicitly call it out in your status update so the maintainer stays informed.
+
 ## China Network Considerations
 - Gradle already declares Aliyun mirrors in `settings.gradle.kts`; if sync still times out, comment out the default `google()`/`mavenCentral()` lines temporarily.
 - Keep the bundled JDK 17 (`./jdk-17.0.9+9`) and set `org.gradle.java.home=./jdk-17.0.9+9` to avoid pulling toolchains from blocked hosts.

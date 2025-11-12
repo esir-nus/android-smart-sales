@@ -8,9 +8,9 @@ import retrofit2.http.*
 
 /**
  * Gadget HTTP API Interface
- * 
+ *
  * Communication with hardware device's HTTP server
- * 
+ *
  * The device runs a local HTTP server for:
  * - File listing and download
  * - Device status queries
@@ -18,12 +18,11 @@ import retrofit2.http.*
  * - File management
  */
 interface GadgetApi {
-    
     /**
      * Get File List
-     * 
+     *
      * Retrieve list of all recorded files on device
-     * 
+     *
      * Example:
      * ```
      * val response = api.getFileList()
@@ -35,10 +34,10 @@ interface GadgetApi {
      */
     @GET(ConnectivityApiConfig.Gadget.FILE_LIST)
     suspend fun getFileList(): Response<FileListResponse>
-    
+
     /**
      * Get File List with Filters
-     * 
+     *
      * Filter files by type, date range, etc.
      */
     @GET(ConnectivityApiConfig.Gadget.FILE_LIST)
@@ -46,14 +45,14 @@ interface GadgetApi {
         @Query("type") type: String? = null, // "audio", "image"
         @Query("from") fromTimestamp: Long? = null,
         @Query("to") toTimestamp: Long? = null,
-        @Query("synced") synced: Boolean? = null
+        @Query("synced") synced: Boolean? = null,
     ): Response<FileListResponse>
-    
+
     /**
      * Download File
-     * 
+     *
      * Download a specific file from device
-     * 
+     *
      * Example:
      * ```
      * val response = api.downloadFile(fileId = "audio_123")
@@ -63,23 +62,23 @@ interface GadgetApi {
     @GET(ConnectivityApiConfig.Gadget.FILE_DOWNLOAD)
     @Streaming
     suspend fun downloadFile(
-        @Query("file_id") fileId: String
+        @Query("file_id") fileId: String,
     ): Response<ResponseBody>
-    
+
     /**
      * Download File by Path
      */
     @GET(ConnectivityApiConfig.Gadget.FILE_DOWNLOAD)
     @Streaming
     suspend fun downloadFileByPath(
-        @Query("path") filePath: String
+        @Query("path") filePath: String,
     ): Response<ResponseBody>
-    
+
     /**
      * Delete Files
-     * 
+     *
      * Delete one or more files from device
-     * 
+     *
      * Example:
      * ```
      * val request = FileDeleteRequest(
@@ -91,22 +90,22 @@ interface GadgetApi {
      */
     @HTTP(method = "DELETE", path = ConnectivityApiConfig.Gadget.FILE_DELETE, hasBody = true)
     suspend fun deleteFiles(
-        @Body request: FileDeleteRequest
+        @Body request: FileDeleteRequest,
     ): Response<FileDeleteResponse>
-    
+
     /**
      * Delete Single File
      */
     @DELETE(ConnectivityApiConfig.Gadget.FILE_DELETE)
     suspend fun deleteFile(
-        @Query("file_id") fileId: String
+        @Query("file_id") fileId: String,
     ): Response<FileDeleteResponse>
-    
+
     /**
      * Get Device Status
-     * 
+     *
      * Get current device status (battery, storage, etc.)
-     * 
+     *
      * Example:
      * ```
      * val status = api.getDeviceStatus()
@@ -116,12 +115,12 @@ interface GadgetApi {
      */
     @GET(ConnectivityApiConfig.Gadget.DEVICE_STATUS)
     suspend fun getDeviceStatus(): Response<DeviceStatusResponse>
-    
+
     /**
      * Get WiFi Status
-     * 
+     *
      * Check WiFi connection status
-     * 
+     *
      * Example:
      * ```
      * val wifi = api.getWifiStatus()
@@ -133,53 +132,53 @@ interface GadgetApi {
      */
     @GET(ConnectivityApiConfig.Gadget.WIFI_STATUS)
     suspend fun getWifiStatus(): Response<WifiStatusResponse>
-    
+
     /**
      * Ping Device
-     * 
+     *
      * Simple ping to check if device is reachable
      */
     @GET(ConnectivityApiConfig.Gadget.PING)
     suspend fun ping(): Response<Unit>
-    
+
     /**
      * Mark File as Synced
-     * 
+     *
      * Update file's sync status on device
      */
     @POST(ConnectivityApiConfig.Gadget.MARK_SYNCED)
     suspend fun markFileSynced(
-        @Query("file_id") fileId: String
+        @Query("file_id") fileId: String,
     ): Response<Unit>
 }
 
 /**
  * Gadget API Helper
- * 
+ *
  * Utility functions for working with Gadget API
  */
 object GadgetApiHelper {
-    
     /**
      * Check if device is reachable
      */
     suspend fun isDeviceReachable(
         api: GadgetApi,
-        timeoutMs: Long = 5000
+        timeoutMs: Long = 5000,
     ): Boolean {
         return try {
-            val response = kotlinx.coroutines.withTimeout(timeoutMs) {
-                api.ping()
-            }
+            val response =
+                kotlinx.coroutines.withTimeout(timeoutMs) {
+                    api.ping()
+                }
             response.isSuccessful
         } catch (e: Exception) {
             false
         }
     }
-    
+
     /**
      * Download file to local storage
-     * 
+     *
      * @param api Gadget API instance
      * @param fileId File ID on device
      * @param localPath Local file path to save
@@ -189,27 +188,27 @@ object GadgetApiHelper {
         api: GadgetApi,
         fileId: String,
         localPath: String,
-        progressCallback: ((Long, Long) -> Unit)? = null
+        progressCallback: ((Long, Long) -> Unit)? = null,
     ): Result<String> {
         return try {
             val response = api.downloadFile(fileId)
-            
+
             if (!response.isSuccessful) {
                 return Result.failure(Exception("Download failed: ${response.code()}"))
             }
-            
+
             val body = response.body() ?: return Result.failure(Exception("Empty response body"))
             val contentLength = body.contentLength()
-            
+
             val file = java.io.File(localPath)
             file.parentFile?.mkdirs()
-            
+
             file.outputStream().use { output ->
                 body.byteStream().use { input ->
                     val buffer = ByteArray(8192)
                     var bytesRead: Int
                     var totalBytesRead = 0L
-                    
+
                     while (input.read(buffer).also { bytesRead = it } != -1) {
                         output.write(buffer, 0, bytesRead)
                         totalBytesRead += bytesRead
@@ -217,57 +216,55 @@ object GadgetApiHelper {
                     }
                 }
             }
-            
+
             Result.success(localPath)
-            
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
-    
+
     /**
      * Sync all new files from device
-     * 
+     *
      * Downloads all unsynced files
      */
     suspend fun syncAllNewFiles(
         api: GadgetApi,
         localDirectory: String,
-        progressCallback: ((Int, Int) -> Unit)? = null
+        progressCallback: ((Int, Int) -> Unit)? = null,
     ): Result<List<String>> {
         return try {
             // Get file list
             val listResponse = api.getFileListFiltered(synced = false)
-            
+
             if (!listResponse.isSuccessful) {
                 return Result.failure(Exception("Failed to get file list"))
             }
-            
+
             val files = listResponse.body()?.files ?: emptyList()
             val downloadedPaths = mutableListOf<String>()
-            
+
             files.forEachIndexed { index, file ->
                 val localPath = "$localDirectory/${file.name}"
-                
+
                 val result = downloadFileToLocal(api, file.id, localPath)
-                
+
                 if (result.isSuccess) {
                     downloadedPaths.add(localPath)
-                    
+
                     // Mark as synced on device
                     api.markFileSynced(file.id)
                 }
-                
+
                 progressCallback?.invoke(index + 1, files.size)
             }
-            
+
             Result.success(downloadedPaths)
-            
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
-    
+
     /**
      * Get storage summary
      */
@@ -275,14 +272,14 @@ object GadgetApiHelper {
         return try {
             val statusResponse = api.getDeviceStatus()
             val fileListResponse = api.getFileList()
-            
+
             if (statusResponse.isSuccessful && fileListResponse.isSuccessful) {
                 val status = statusResponse.body()!!
                 val fileList = fileListResponse.body()!!
-                
+
                 val audioFiles = fileList.files.count { it.isAudio() }
                 val imageFiles = fileList.files.count { it.isImage() }
-                
+
                 StorageSummary(
                     totalSpace = status.storageTotal,
                     usedSpace = status.storageUsed,
@@ -290,7 +287,7 @@ object GadgetApiHelper {
                     fileCount = fileList.totalCount,
                     audioFileCount = audioFiles,
                     imageFileCount = imageFiles,
-                    totalFileSize = fileList.totalSize
+                    totalFileSize = fileList.totalSize,
                 )
             } else {
                 null
@@ -299,28 +296,27 @@ object GadgetApiHelper {
             null
         }
     }
-    
+
     /**
      * Calculate estimated sync time
      */
     fun estimateSyncTime(
         fileSizeBytes: Long,
-        networkSpeedBytesPerSec: Long = 1_000_000 // 1 MB/s default
+        networkSpeedBytesPerSec: Long = 1_000_000, // 1 MB/s default
     ): Long {
         return fileSizeBytes / networkSpeedBytesPerSec
     }
-    
+
     /**
      * Format sync speed
      */
     fun formatSpeed(bytesPerSecond: Long): String {
         return when {
-            bytesPerSecond < 1024 -> "${bytesPerSecond} B/s"
+            bytesPerSecond < 1024 -> "$bytesPerSecond B/s"
             bytesPerSecond < 1024 * 1024 -> "${bytesPerSecond / 1024} KB/s"
             else -> "%.2f MB/s".format(bytesPerSecond / (1024.0 * 1024.0))
         }
     }
-    
 }
 
 /**
@@ -333,12 +329,14 @@ data class StorageSummary(
     val fileCount: Int,
     val audioFileCount: Int,
     val imageFileCount: Int,
-    val totalFileSize: Long
+    val totalFileSize: Long,
 ) {
     fun getUsagePercent(): Int {
         return if (totalSpace > 0) {
             ((usedSpace.toFloat() / totalSpace) * 100).toInt()
-        } else 0
+        } else {
+            0
+        }
     }
 }
 
@@ -348,5 +346,5 @@ data class StorageSummary(
 data class ConnectivityStatus(
     val reachable: Boolean,
     val wifiConnected: Boolean,
-    val error: String?
+    val error: String?,
 )

@@ -27,7 +27,6 @@ annotation class ConnectivityGson
 @Module
 @InstallIn(SingletonComponent::class)
 object ConnectivityNetworkModule {
-
     @Provides
     @Singleton
     @ConnectivityGson
@@ -41,11 +40,11 @@ object ConnectivityNetworkModule {
     @Provides
     @Singleton
     @GadgetClient
-    fun provideGadgetOkHttpClient(
-    ): OkHttpClient {
-        val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
+    fun provideGadgetOkHttpClient(): OkHttpClient {
+        val loggingInterceptor =
+            HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
         return OkHttpClient.Builder()
             .connectTimeout(ConnectivityApiConfig.CONNECT_TIMEOUT_MS, TimeUnit.MILLISECONDS)
             .readTimeout(ConnectivityApiConfig.READ_TIMEOUT_MS, TimeUnit.MILLISECONDS)
@@ -60,7 +59,7 @@ object ConnectivityNetworkModule {
     @GadgetClient
     fun provideGadgetRetrofit(
         @GadgetClient okHttpClient: OkHttpClient,
-        @ConnectivityGson gson: Gson
+        @ConnectivityGson gson: Gson,
     ): Retrofit {
         val defaultUrl = ConnectivityApiConfig.buildBaseUrl("192.168.1.1")
 
@@ -74,7 +73,7 @@ object ConnectivityNetworkModule {
     @Provides
     @Singleton
     fun provideGadgetApi(
-        @GadgetClient retrofit: Retrofit
+        @GadgetClient retrofit: Retrofit,
     ): GadgetApi {
         return retrofit.create(GadgetApi::class.java)
     }
@@ -83,23 +82,29 @@ object ConnectivityNetworkModule {
     @Singleton
     fun provideGadgetApiFactory(
         @GadgetClient okHttpClient: OkHttpClient,
-        @ConnectivityGson gson: Gson
+        @ConnectivityGson gson: Gson,
     ): GadgetApiFactory {
         return GadgetApiFactory(okHttpClient, gson)
     }
 }
 
-class GadgetApiFactory @Inject constructor(
-    @GadgetClient private val okHttpClient: OkHttpClient,
-    @ConnectivityGson private val gson: Gson
-) {
-    fun create(ipAddress: String, port: Int = ConnectivityApiConfig.DEFAULT_PORT): GadgetApi {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(ConnectivityApiConfig.buildBaseUrl(ipAddress, port))
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
+class GadgetApiFactory
+    @Inject
+    constructor(
+        @GadgetClient private val okHttpClient: OkHttpClient,
+        @ConnectivityGson private val gson: Gson,
+    ) {
+        fun create(
+            ipAddress: String,
+            port: Int = ConnectivityApiConfig.DEFAULT_PORT,
+        ): GadgetApi {
+            val retrofit =
+                Retrofit.Builder()
+                    .baseUrl(ConnectivityApiConfig.buildBaseUrl(ipAddress, port))
+                    .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build()
 
-        return retrofit.create(GadgetApi::class.java)
+            return retrofit.create(GadgetApi::class.java)
+        }
     }
-}

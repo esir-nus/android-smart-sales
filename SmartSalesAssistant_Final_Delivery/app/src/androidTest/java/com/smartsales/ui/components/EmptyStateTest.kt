@@ -13,7 +13,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class EmptyStateTest {
-
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -24,7 +23,7 @@ class EmptyStateTest {
         composeTestRule.setContent {
             SmartSalesTheme {
                 NoConversationsEmptyState(
-                    onCreateConversation = { clicked = true }
+                    onCreateConversation = { clicked = true },
                 )
             }
         }

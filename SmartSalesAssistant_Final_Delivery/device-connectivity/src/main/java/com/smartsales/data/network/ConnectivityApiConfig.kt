@@ -4,7 +4,6 @@ package com.smartsales.data.network
  * Connectivity API configuration shared by BLE/Wi-Fi features.
  */
 object ConnectivityApiConfig {
-
     const val DEFAULT_SCHEME = "http"
     const val DEFAULT_PORT = 8000
 
@@ -22,7 +21,10 @@ object ConnectivityApiConfig {
         const val MARK_SYNCED = "api/files/mark-synced"
     }
 
-    fun buildBaseUrl(ipAddress: String, port: Int = DEFAULT_PORT): String {
+    fun buildBaseUrl(
+        ipAddress: String,
+        port: Int = DEFAULT_PORT,
+    ): String {
         return "$DEFAULT_SCHEME://$ipAddress:$port/"
     }
 }

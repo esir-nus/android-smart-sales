@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/main/java/com/smartsales/business/bluetooth/BleConstants.kt">
+        <error line="333" column="28" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/business/bluetooth/BleManager.kt">
+        <error line="24" column="1" source="standard:no-wildcard-imports" />
+        <error line="25" column="1" source="standard:no-wildcard-imports" />
+        <error line="470" column="28" source="standard:value-argument-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/AttachmentDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/ConversationDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/CrmExportDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/DeviceSettingDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/MessageDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/dao/WifiConfigDao.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/database/DatabaseModule.kt">
+        <error line="6" column="1" source="standard:no-wildcard-imports" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/database/SmartSalesDatabase.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="6" column="1" source="standard:no-wildcard-imports" />
+        <error line="7" column="1" source="standard:no-wildcard-imports" />
+        <error line="59" column="21" source="standard:property-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/AttachmentEntity.kt">
+        <error line="22" column="23" source="standard:value-parameter-comment" />
+        <error line="23" column="27" source="standard:value-parameter-comment" />
+        <error line="24" column="27" source="standard:value-parameter-comment" />
+        <error line="25" column="25" source="standard:value-parameter-comment" />
+        <error line="26" column="27" source="standard:value-parameter-comment" />
+        <error line="27" column="27" source="standard:value-parameter-comment" />
+        <error line="28" column="40" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/ConversationEntity.kt">
+        <error line="21" column="24" source="standard:value-parameter-comment" />
+        <error line="22" column="34" source="standard:value-parameter-comment" />
+        <error line="23" column="26" source="standard:value-parameter-comment" />
+        <error line="24" column="26" source="standard:value-parameter-comment" />
+        <error line="25" column="38" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/CrmExportEntity.kt">
+        <error line="22" column="31" source="standard:value-parameter-comment" />
+        <error line="23" column="29" source="standard:value-parameter-comment" />
+        <error line="24" column="27" source="standard:value-parameter-comment" />
+        <error line="25" column="27" source="standard:value-parameter-comment" />
+        <error line="26" column="25" source="standard:value-parameter-comment" />
+        <error line="75" column="42" source="standard:value-argument-comment" />
+        <error line="91" column="32" source="standard:value-argument-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/DeviceSettingEntity.kt">
+        <error line="20" column="27" source="standard:value-parameter-comment" />
+        <error line="21" column="29" source="standard:value-parameter-comment" />
+        <error line="22" column="30" source="standard:value-parameter-comment" />
+        <error line="23" column="39" source="standard:value-parameter-comment" />
+        <error line="24" column="38" source="standard:value-parameter-comment" />
+        <error line="25" column="35" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/MessageEntity.kt">
+        <error line="3" column="1" source="standard:no-wildcard-imports" />
+        <error line="34" column="23" source="standard:value-parameter-comment" />
+        <error line="35" column="26" source="standard:value-parameter-comment" />
+        <error line="36" column="26" source="standard:value-parameter-comment" />
+        <error line="37" column="38" source="standard:value-parameter-comment" />
+        <error line="38" column="35" source="standard:value-parameter-comment" />
+        <error line="276" column="23" source="standard:value-parameter-comment" />
+        <error line="277" column="23" source="standard:value-parameter-comment" />
+        <error line="278" column="23" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/entity/WifiConfigEntity.kt">
+        <error line="24" column="23" source="standard:value-parameter-comment" />
+        <error line="25" column="27" source="standard:value-parameter-comment" />
+        <error line="26" column="37" source="standard:value-parameter-comment" />
+        <error line="27" column="25" source="standard:value-parameter-comment" />
+        <error line="28" column="24" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/repository/ConversationRepository.kt">
+        <error line="137" column="27" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/local/repository/ExportRepository.kt">
+        <error line="49" column="33" source="standard:value-parameter-comment" />
+        <error line="82" column="50" source="standard:value-argument-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/api/GadgetApi.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+        <error line="7" column="1" source="standard:no-wildcard-imports" />
+        <error line="45" column="46" source="standard:value-parameter-comment" />
+        <error line="305" column="52" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/data/network/model/GadgetModels.kt">
+        <error line="9" column="1" source="standard:no-consecutive-comments" />
+        <error line="20" column="26" source="standard:value-parameter-comment" />
+        <error line="31" column="21" source="standard:value-parameter-comment" />
+        <error line="33" column="23" source="standard:value-parameter-comment" />
+        <error line="37" column="26" source="standard:value-parameter-comment" />
+        <error line="78" column="28" source="standard:value-parameter-comment" />
+        <error line="84" column="28" source="standard:value-parameter-comment" />
+        <error line="86" column="29" source="standard:value-parameter-comment" />
+        <error line="90" column="37" source="standard:value-parameter-comment" />
+        <error line="92" column="23" source="standard:value-parameter-comment" />
+        <error line="183" column="38" source="standard:value-parameter-comment" />
+        <error line="223" column="24" source="standard:value-parameter-comment" />
+    </file>
+</baseline>

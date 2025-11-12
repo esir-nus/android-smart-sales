@@ -1,12 +1,12 @@
 package com.smartsales.data.local.entity
 
+import android.util.Base64
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
-import android.util.Base64
 
 /**
  * WiFi Configuration Entity - Stores WiFi credentials
@@ -21,14 +21,12 @@ import android.util.Base64
 data class WifiConfigEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-
-    val ssid: String,                // WiFi network name
-    val password: String,            // WiFi password (should be encrypted)
-    val isDefault: Boolean = false,  // Is this the default config
-    val lastUsed: Long,              // Last used timestamp (millis)
-    val addedAt: Long                // Added timestamp (millis)
+    val ssid: String, // WiFi network name
+    val password: String, // WiFi password (should be encrypted)
+    val isDefault: Boolean = false, // Is this the default config
+    val lastUsed: Long, // Last used timestamp (millis)
+    val addedAt: Long, // Added timestamp (millis)
 ) {
-
     companion object {
         // Validation constants
         const val MAX_SSID_LENGTH = 32
@@ -44,7 +42,7 @@ data class WifiConfigEntity(
         fun create(
             ssid: String,
             password: String,
-            isDefault: Boolean = false
+            isDefault: Boolean = false,
         ): WifiConfigEntity {
             val now = System.currentTimeMillis()
             return WifiConfigEntity(
@@ -52,7 +50,7 @@ data class WifiConfigEntity(
                 password = encryptPassword(password),
                 isDefault = isDefault,
                 lastUsed = now,
-                addedAt = now
+                addedAt = now,
             )
         }
 
@@ -94,8 +92,8 @@ data class WifiConfigEntity(
          */
         fun isValidSsid(ssid: String): Boolean {
             return ssid.isNotBlank() &&
-                    ssid.length <= MAX_SSID_LENGTH &&
-                    ssid.all { it.isLetterOrDigit() || it in "-_ " }
+                ssid.length <= MAX_SSID_LENGTH &&
+                ssid.all { it.isLetterOrDigit() || it in "-_ " }
         }
 
         /**
@@ -103,7 +101,7 @@ data class WifiConfigEntity(
          */
         fun isValidPassword(password: String): Boolean {
             return password.length >= MIN_PASSWORD_LENGTH &&
-                    password.length <= MAX_PASSWORD_LENGTH
+                password.length <= MAX_PASSWORD_LENGTH
         }
     }
 
@@ -143,11 +141,12 @@ data class WifiConfigEntity(
      * Get masked SSID (for display)
      */
     val maskedSsid: String
-        get() = if (ssid.length <= 4) {
-            ssid
-        } else {
-            ssid.take(2) + "*".repeat(ssid.length - 4) + ssid.takeLast(2)
-        }
+        get() =
+            if (ssid.length <= 4) {
+                ssid
+            } else {
+                ssid.take(2) + "*".repeat(ssid.length - 4) + ssid.takeLast(2)
+            }
 
     /**
      * Get password strength indicator
@@ -203,7 +202,7 @@ data class WifiConfigEntity(
      */
     fun isValid(): Boolean {
         return isValidSsid(ssid) &&
-                isValidPassword(decryptedPassword)
+            isValidPassword(decryptedPassword)
     }
 
     /**
@@ -258,7 +257,7 @@ data class WifiConfigEntity(
     fun withNewPassword(newPassword: String): WifiConfigEntity {
         return copy(
             password = encryptPassword(newPassword),
-            lastUsed = System.currentTimeMillis()
+            lastUsed = System.currentTimeMillis(),
         )
     }
 
@@ -287,5 +286,7 @@ data class WifiConfigEntity(
  * Password strength enum
  */
 enum class PasswordStrength {
-    WEAK, MEDIUM, STRONG
+    WEAK,
+    MEDIUM,
+    STRONG,
 }

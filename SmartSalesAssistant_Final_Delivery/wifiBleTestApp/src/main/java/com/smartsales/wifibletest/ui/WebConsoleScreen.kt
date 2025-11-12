@@ -43,13 +43,15 @@ import androidx.compose.ui.viewinterop.AndroidView
 @Composable
 fun WebConsoleScreen(
     viewModel: WifiBleTestViewModel,
-    onClose: () -> Unit
+    onClose: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val webConsoleUrl = uiState.webConsoleUrl
     val webViewHolder = remember { mutableStateOf<WebView?>(null) }
     val isLoading = remember { mutableStateOf(true) }
     val context = LocalContext.current
+    val isMediaServer = uiState.isMediaServer
+    val serverType = uiState.serverType
 
     BackHandler { onClose() }
 
@@ -57,17 +59,23 @@ fun WebConsoleScreen(
         topBar = {
             TopAppBar(
                 title = {
+                    val titleText =
+                        when {
+                            webConsoleUrl == null -> "Web 控制台"
+                            isMediaServer -> "媒体管理 - $webConsoleUrl"
+                            else -> "设备控制台 - $webConsoleUrl"
+                        }
                     Text(
-                        text = webConsoleUrl ?: "Web 控制台",
+                        text = titleText,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = onClose) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "返回"
+                            contentDescription = "返回",
                         )
                     }
                 },
@@ -81,21 +89,22 @@ fun WebConsoleScreen(
                                 context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
                             }
                         },
-                        enabled = webConsoleUrl != null
+                        enabled = webConsoleUrl != null,
                     ) {
                         Icon(Icons.Filled.OpenInBrowser, contentDescription = "使用浏览器打开")
                     }
-                }
+                },
             )
-        }
+        },
     ) { padding ->
         if (webConsoleUrl.isNullOrBlank()) {
-            EmptyConsoleState(modifier = Modifier.padding(padding), onClose = onClose)
+            EmptyConsoleState(modifier = Modifier.padding(padding), onClose = onClose, isMediaServer = isMediaServer)
         } else {
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding),
             ) {
                 AndroidView(
                     modifier = Modifier.fillMaxSize(),
@@ -105,16 +114,33 @@ fun WebConsoleScreen(
                             settings.domStorageEnabled = true
                             settings.loadWithOverviewMode = true
                             settings.useWideViewPort = true
-                            webChromeClient = WebChromeClient()
-                            webViewClient = object : WebViewClient() {
-                                override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                                    isLoading.value = true
-                                }
-
-                                override fun onPageFinished(view: WebView?, url: String?) {
-                                    isLoading.value = false
-                                }
+                            settings.allowFileAccess = true
+                            settings.allowContentAccess = true
+                            settings.mediaPlaybackRequiresUserGesture = false
+                            if (isMediaServer) {
+                                // Optimize for media server UI
+                                settings.builtInZoomControls = true
+                                settings.displayZoomControls = false
+                                settings.setSupportZoom(true)
                             }
+                            webChromeClient = WebChromeClient()
+                            webViewClient =
+                                object : WebViewClient() {
+                                    override fun onPageStarted(
+                                        view: WebView?,
+                                        url: String?,
+                                        favicon: Bitmap?,
+                                    ) {
+                                        isLoading.value = true
+                                    }
+
+                                    override fun onPageFinished(
+                                        view: WebView?,
+                                        url: String?,
+                                    ) {
+                                        isLoading.value = false
+                                    }
+                                }
                             loadUrl(webConsoleUrl)
                         }.also { webViewHolder.value = it }
                     },
@@ -123,12 +149,12 @@ fun WebConsoleScreen(
                         if (webView.url != webConsoleUrl) {
                             webView.loadUrl(webConsoleUrl)
                         }
-                    }
+                    },
                 )
 
                 if (isLoading.value) {
                     CircularProgressIndicator(
-                        modifier = Modifier.align(Alignment.Center)
+                        modifier = Modifier.align(Alignment.Center),
                     )
                 }
             }
@@ -137,26 +163,40 @@ fun WebConsoleScreen(
 }
 
 @Composable
-private fun EmptyConsoleState(modifier: Modifier = Modifier, onClose: () -> Unit) {
+private fun EmptyConsoleState(
+    modifier: Modifier = Modifier,
+    onClose: () -> Unit,
+    isMediaServer: Boolean = false,
+) {
     Box(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
-                text = "没有可用的 Web 控制台链接",
-                style = MaterialTheme.typography.bodyLarge
+                text =
+                    if (isMediaServer) {
+                        "媒体服务器连接中..."
+                    } else {
+                        "没有可用的 Web 控制台链接"
+                    },
+                style = MaterialTheme.typography.bodyLarge,
             )
             Text(
-                text = "请返回上一页并输入有效的 IP/端口后重新打开。",
+                text =
+                    if (isMediaServer) {
+                        "正在加载媒体管理界面，请稍候。"
+                    } else {
+                        "请返回上一页并输入有效的 IP/端口后重新打开。"
+                    },
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             OutlinedButton(onClick = onClose) {
-                Text("返回配置")
+                Text(if (isMediaServer) "返回" else "返回配置")
             }
         }
     }

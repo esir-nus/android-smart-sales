@@ -11,7 +11,7 @@ cd SmartSalesAssistant_Final_Delivery
 The generated APK is located at `aiFeatureTestApp/build/outputs/apk/debug/aiFeatureTestApp-debug.apk`.
 
 ### Prerequisites
-- Configure `DASHSCOPE_API_KEY` and `TINGWU_API_KEY` in `local.properties` (copy from `local.properties.example`).
+- Configure `DASHSCOPE_API_KEY` **and** `DASHSCOPE_APP_KEY` in `local.properties` (copy from `local.properties.example`).
 - Provide a publicly reachable audio file URL when testing Tingwu. The default placeholder (`https://example.com/audio/sample.mp3`) must be replaced with a real asset.
 
 ## Features

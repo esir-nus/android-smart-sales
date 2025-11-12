@@ -2,92 +2,92 @@ package com.smartsales.business.bluetooth
 
 /**
  * BLE Command Enum
- * 
+ *
  * Defines all commands that can be sent to the device
  */
 enum class BleCommand(val value: Byte, val description: String) {
-    
     /**
      * Start audio recording
      */
     START_RECORDING(0x01, "Start Recording"),
-    
+
     /**
      * Stop audio recording
      */
     STOP_RECORDING(0x02, "Stop Recording"),
-    
+
     /**
      * Show image on device display
      */
     SHOW_IMAGE(0x03, "Show Image"),
-    
+
     /**
      * Show text on device display
      */
     SHOW_TEXT(0x04, "Show Text"),
-    
+
     /**
      * Clear device display
      */
     CLEAR_DISPLAY(0x05, "Clear Display"),
-    
+
     /**
      * Request device status
      */
     REQUEST_STATUS(0x06, "Request Status"),
-    
+
     /**
      * Sync files from device
      */
     START_FILE_SYNC(0x07, "Start File Sync"),
-    
+
     /**
      * Stop file sync
      */
     STOP_FILE_SYNC(0x08, "Stop File Sync"),
-    
+
     /**
      * Restart device
      */
     RESTART_DEVICE(0x09, "Restart Device"),
-    
+
     /**
      * Enter sleep mode
      */
     ENTER_SLEEP_MODE(0x0A, "Enter Sleep Mode"),
-    
+
     /**
      * Wake up device
      */
     WAKE_UP(0x0B, "Wake Up"),
-    
+
     /**
      * Factory reset
      */
-    FACTORY_RESET(0x0C, "Factory Reset");
-    
+    FACTORY_RESET(0x0C, "Factory Reset"),
+    ;
+
     /**
      * Convert command to byte array for sending
      */
     fun toByteArray(): ByteArray {
         return byteArrayOf(value)
     }
-    
+
     /**
      * Convert command to byte array with parameter
      */
     fun toByteArrayWithParam(param: Byte): ByteArray {
         return byteArrayOf(value, param)
     }
-    
+
     /**
      * Convert command to byte array with multiple parameters
      */
     fun toByteArrayWithParams(vararg params: Byte): ByteArray {
         return byteArrayOf(value, *params)
     }
-    
+
     companion object {
         /**
          * Get command from byte value
@@ -95,7 +95,7 @@ enum class BleCommand(val value: Byte, val description: String) {
         fun fromByte(byte: Byte): BleCommand? {
             return values().find { it.value == byte }
         }
-        
+
         /**
          * Check if byte is a valid command
          */
@@ -103,7 +103,7 @@ enum class BleCommand(val value: Byte, val description: String) {
             return fromByte(byte) != null
         }
     }
-    
+
     /**
      * Check if command requires parameters
      */
@@ -113,7 +113,7 @@ enum class BleCommand(val value: Byte, val description: String) {
             else -> false
         }
     }
-    
+
     /**
      * Check if command is destructive (requires confirmation)
      */
@@ -123,7 +123,7 @@ enum class BleCommand(val value: Byte, val description: String) {
             else -> false
         }
     }
-    
+
     /**
      * Get estimated execution time (milliseconds)
      */

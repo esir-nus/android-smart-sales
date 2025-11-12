@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,7 +23,7 @@ import com.smartsales.ui.components.NoConversationsEmptyState
 
 /**
  * Conversation List Screen
- * 
+ *
  * Shows all conversations grouped by time
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,57 +31,67 @@ import com.smartsales.ui.components.NoConversationsEmptyState
 fun ConversationListScreen(
     onConversationClick: (Long) -> Unit,
     onNewConversation: () -> Unit,
-    viewModel: ConversationListViewModel = hiltViewModel()
+    onOpenAiAssistant: () -> Unit,
+    viewModel: ConversationListViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var conversationToDelete by remember { mutableStateOf<ConversationEntity?>(null) }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("对话列表") },
                 actions = {
+                    IconButton(onClick = onOpenAiAssistant) {
+                        Icon(
+                            imageVector = Icons.Outlined.AutoAwesome,
+                            contentDescription = "AI 助手",
+                        )
+                    }
                     IconButton(onClick = { viewModel.refreshConversations() }) {
                         Icon(
                             imageVector = Icons.Default.Refresh,
-                            contentDescription = "刷新列表"
+                            contentDescription = "刷新列表",
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
             )
         },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = onNewConversation,
-                containerColor = MaterialTheme.colorScheme.primary
+                containerColor = MaterialTheme.colorScheme.primary,
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = "新建对话"
+                    contentDescription = "新建对话",
                 )
             }
-        }
+        },
     ) { paddingValues ->
         when (val state = uiState) {
             is ConversationListUiState.Loading -> {
                 LoadingIndicator(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues),
                 )
             }
-            
+
             is ConversationListUiState.Success -> {
                 if (state.conversations.isEmpty()) {
                     NoConversationsEmptyState(
                         onCreateConversation = onNewConversation,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(paddingValues)
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .padding(paddingValues),
                     )
                 } else {
                     ConversationList(
@@ -89,19 +100,21 @@ fun ConversationListScreen(
                         onDeleteConversation = { conversation ->
                             conversationToDelete = conversation
                         },
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(paddingValues)
+                        modifier =
+                            Modifier
+                                .fillMaxSize()
+                                .padding(paddingValues),
                     )
                 }
             }
-            
+
             is ConversationListUiState.Error -> {
                 EmptyState(
                     message = state.message,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues),
                 )
             }
         }
@@ -120,7 +133,7 @@ fun ConversationListScreen(
                     onClick = {
                         viewModel.deleteConversation(pendingDeletion.id)
                         conversationToDelete = null
-                    }
+                    },
                 ) {
                     Text("删除")
                 }
@@ -129,7 +142,7 @@ fun ConversationListScreen(
                 TextButton(onClick = { conversationToDelete = null }) {
                     Text("取消")
                 }
-            }
+            },
         )
     }
 }
@@ -139,21 +152,22 @@ private fun ConversationList(
     conversations: List<ConversationEntity>,
     onConversationClick: (Long) -> Unit,
     onDeleteConversation: (ConversationEntity) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     // Group conversations by date
-    val groupedConversations = conversations.groupBy { conversation ->
-        when {
-            conversation.isUpdatedToday -> "今天"
-            conversation.ageInDays == 1 -> "昨天"
-            conversation.ageInDays < 7 -> "本周"
-            conversation.ageInDays < 30 -> "本月"
-            else -> "更早"
+    val groupedConversations =
+        conversations.groupBy { conversation ->
+            when {
+                conversation.isUpdatedToday -> "今天"
+                conversation.ageInDays == 1 -> "昨天"
+                conversation.ageInDays < 7 -> "本周"
+                conversation.ageInDays < 30 -> "本月"
+                else -> "更早"
+            }
         }
-    }
-    
+
     val groups = listOf("今天", "昨天", "本周", "本月", "更早")
-    
+
     LazyColumn(modifier = modifier) {
         groups.forEach { group ->
             val groupConversations = groupedConversations[group]
@@ -164,19 +178,19 @@ private fun ConversationList(
                         text = group,
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(16.dp),
                     )
                 }
-                
+
                 // Conversations in group
                 items(
                     items = groupConversations,
-                    key = { it.id }
+                    key = { it.id },
                 ) { conversation ->
                     ConversationItem(
                         conversation = conversation,
                         onClick = { onConversationClick(conversation.id) },
-                        onDelete = { onDeleteConversation(conversation) }
+                        onDelete = { onDeleteConversation(conversation) },
                     )
                 }
             }
@@ -188,53 +202,57 @@ private fun ConversationList(
 private fun ConversationItem(
     conversation: ConversationEntity,
     onClick: () -> Unit,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
 ) {
     Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = onClick)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick),
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             // Status indicator
             Surface(
                 modifier = Modifier.size(40.dp),
                 shape = MaterialTheme.shapes.small,
-                color = if (conversation.isAnalyzed) {
-                    MaterialTheme.colorScheme.primaryContainer
-                } else {
-                    MaterialTheme.colorScheme.surfaceVariant
-                }
+                color =
+                    if (conversation.isAnalyzed) {
+                        MaterialTheme.colorScheme.primaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant
+                    },
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Text(
                         text = if (conversation.isAnalyzed) "✓" else "·",
                         style = MaterialTheme.typography.titleMedium,
-                        color = if (conversation.isAnalyzed) {
-                            MaterialTheme.colorScheme.onPrimaryContainer
-                        } else {
-                            MaterialTheme.colorScheme.onSurfaceVariant
-                        }
+                        color =
+                            if (conversation.isAnalyzed) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            },
                     )
                 }
             }
-            
+
             Spacer(modifier = Modifier.width(16.dp))
-            
+
             // Conversation info
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = conversation.title,
                     style = MaterialTheme.typography.titleMedium,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
                 )
-                
+
                 if (conversation.hasSummary) {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
@@ -242,15 +260,15 @@ private fun ConversationItem(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
                     )
                 }
-                
+
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = conversation.getRelativeTimeString(),
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
 
@@ -260,11 +278,11 @@ private fun ConversationItem(
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = "删除对话",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
     }
-    
+
     Divider()
 }

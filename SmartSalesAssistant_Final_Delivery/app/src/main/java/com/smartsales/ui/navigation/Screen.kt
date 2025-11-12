@@ -1,50 +1,70 @@
 package com.smartsales.ui.navigation
 
+import com.smartsales.ai.ui.AiRoutes
+
 /**
  * Navigation Screens
- * 
+ *
  * Sealed class defining all app screens
  */
 sealed class Screen(val route: String) {
-    
     /**
      * Conversation List Screen (Home)
      */
     object ConversationList : Screen("conversation_list")
-    
+
     /**
      * Chat Screen
-     * 
+     *
      * Args: conversationId (Long)
      */
     object Chat : Screen("chat/{conversationId}") {
         fun createRoute(conversationId: Long) = "chat/$conversationId"
     }
-    
+
     /**
      * Device Pairing Screen
      */
     object DevicePairing : Screen("device_pairing")
-    
+
     /**
      * File Sync Screen
      */
     object FileSync : Screen("file_sync")
-    
+
     /**
      * Settings Screen
      */
     object Settings : Screen("settings")
-    
+
     /**
      * Export Screen
-     * 
+     *
      * Args: conversationId (Long)
      */
     object Export : Screen("export/{conversationId}") {
         fun createRoute(conversationId: Long) = "export/$conversationId"
     }
-    
+
+    /**
+     * AI Chat Screen
+     */
+    object AiChat : Screen(AiRoutes.CHAT_ROUTE) {
+        fun createRoute(sessionId: String = AiRoutes.NEW_SESSION_ID): String = AiRoutes.chat(sessionId)
+    }
+
+    /**
+     * AI Structured Screen
+     */
+    object AiStructured : Screen(AiRoutes.STRUCTURED_ROUTE) {
+        fun createRoute(sessionId: String): String = AiRoutes.structured(sessionId)
+    }
+
+    /**
+     * AI History Screen
+     */
+    object AiHistory : Screen(AiRoutes.HISTORY)
+
     companion object {
         /**
          * Get all bottom navigation screens
@@ -55,7 +75,7 @@ sealed class Screen(val route: String) {
                 ConversationList,
                 DevicePairing,
                 FileSync,
-                Settings
+                Settings,
             )
         }
     }
@@ -68,32 +88,32 @@ sealed class Screen(val route: String) {
 sealed class BottomNavItem(
     val screen: Screen,
     val title: String,
-    val icon: Int // Resource ID for icon
+    val icon: Int, // Resource ID for icon
 ) {
     object Conversations : BottomNavItem(
         screen = Screen.ConversationList,
         title = "对话",
-        icon = android.R.drawable.ic_dialog_info // Replace with actual icon
+        icon = android.R.drawable.ic_dialog_info, // Replace with actual icon
     )
-    
+
     object Device : BottomNavItem(
         screen = Screen.DevicePairing,
         title = "设备",
-        icon = android.R.drawable.ic_btn_speak_now // Replace with actual icon
+        icon = android.R.drawable.ic_btn_speak_now, // Replace with actual icon
     )
-    
+
     object Sync : BottomNavItem(
         screen = Screen.FileSync,
         title = "同步",
-        icon = android.R.drawable.stat_notify_sync // Replace with actual icon
+        icon = android.R.drawable.stat_notify_sync, // Replace with actual icon
     )
-    
+
     object Settings : BottomNavItem(
         screen = Screen.Settings,
         title = "设置",
-        icon = android.R.drawable.ic_menu_preferences // Replace with actual icon
+        icon = android.R.drawable.ic_menu_preferences, // Replace with actual icon
     )
-    
+
     companion object {
         @Suppress("unused")
         fun getItems(): List<BottomNavItem> {
@@ -101,7 +121,7 @@ sealed class BottomNavItem(
                 Conversations,
                 Device,
                 Sync,
-                Settings
+                Settings,
             )
         }
     }

@@ -18,20 +18,20 @@ import com.smartsales.ui.components.NoFilesEmptyState
 
 /**
  * File Sync Screen
- * 
+ *
  * Sync files from device via WiFi
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FileSyncScreen(
     onNavigateBack: () -> Unit,
-    viewModel: FileSyncViewModel = hiltViewModel()
+    viewModel: FileSyncViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    
+
     var showDeleteDialog by remember { mutableStateOf(false) }
     var fileToDelete by remember { mutableStateOf<GadgetFile?>(null) }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -45,73 +45,75 @@ fun FileSyncScreen(
                     // Refresh button
                     IconButton(
                         onClick = { viewModel.refreshFileList() },
-                        enabled = !uiState.isLoading
+                        enabled = !uiState.isLoading,
                     ) {
                         Icon(Icons.Default.Refresh, "刷新")
                     }
-                    
+
                     // Sync all button
                     if (uiState.files.isNotEmpty()) {
                         IconButton(
                             onClick = { viewModel.syncAllFiles() },
-                            enabled = !uiState.isSyncing
+                            enabled = !uiState.isSyncing,
                         ) {
                             Icon(Icons.Default.CloudDownload, "同步全部")
                         }
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                        actionIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
             )
-        }
+        },
     ) { paddingValues ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
         ) {
             // Connection status
             ConnectionStatusBanner(
                 isConnected = uiState.isConnected,
-                onConnect = { viewModel.checkConnection() }
+                onConnect = { viewModel.checkConnection() },
             )
-            
+
             // Sync progress
             if (uiState.isSyncing) {
                 SyncProgressCard(
                     currentFile = uiState.currentSyncFile,
                     progress = uiState.syncProgress,
                     filesCompleted = uiState.filesSynced,
-                    totalFiles = uiState.totalFilesToSync
+                    totalFiles = uiState.totalFilesToSync,
                 )
             }
-            
+
             // File list
             when {
                 uiState.isLoading -> {
                     LoadingIndicator(
                         modifier = Modifier.fillMaxSize(),
-                        message = "正在加载文件列表..."
+                        message = "正在加载文件列表...",
                     )
                 }
-                
+
                 uiState.error != null -> {
                     ErrorMessage(
                         message = uiState.error!!,
-                        onRetry = { viewModel.refreshFileList() }
+                        onRetry = { viewModel.refreshFileList() },
                     )
                 }
-                
+
                 uiState.files.isEmpty() -> {
                     NoFilesEmptyState(
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
-                
+
                 else -> {
                     FileList(
                         files = uiState.files,
@@ -122,13 +124,13 @@ fun FileSyncScreen(
                         onDeleteClick = { file ->
                             fileToDelete = file
                             showDeleteDialog = true
-                        }
+                        },
                     )
                 }
             }
         }
     }
-    
+
     // Delete confirmation dialog
     if (showDeleteDialog && fileToDelete != null) {
         AlertDialog(
@@ -141,7 +143,7 @@ fun FileSyncScreen(
                         viewModel.deleteFile(fileToDelete!!)
                         showDeleteDialog = false
                         fileToDelete = null
-                    }
+                    },
                 ) {
                     Text("删除")
                 }
@@ -151,11 +153,11 @@ fun FileSyncScreen(
                     onClick = {
                         showDeleteDialog = false
                         fileToDelete = null
-                    }
+                    },
                 ) {
                     Text("取消")
                 }
-            }
+            },
         )
     }
 }
@@ -163,40 +165,41 @@ fun FileSyncScreen(
 @Composable
 private fun ConnectionStatusBanner(
     isConnected: Boolean,
-    onConnect: () -> Unit
+    onConnect: () -> Unit,
 ) {
     if (!isConnected) {
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.errorContainer
+            color = MaterialTheme.colorScheme.errorContainer,
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Default.WifiOff,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onErrorContainer
+                    tint = MaterialTheme.colorScheme.onErrorContainer,
                 )
-                
+
                 Spacer(modifier = Modifier.width(12.dp))
-                
+
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = "设备未连接",
                         style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onErrorContainer
+                        color = MaterialTheme.colorScheme.onErrorContainer,
                     )
                     Text(
                         text = "请确保设备已连接WiFi",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onErrorContainer
+                        color = MaterialTheme.colorScheme.onErrorContainer,
                     )
                 }
-                
+
                 TextButton(onClick = onConnect) {
                     Text("重试")
                 }
@@ -210,46 +213,47 @@ private fun SyncProgressCard(
     currentFile: String?,
     progress: Float,
     filesCompleted: Int,
-    totalFiles: Int
+    totalFiles: Int,
 ) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp),
         ) {
             Text(
                 text = "正在同步文件",
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
             )
-            
+
             Spacer(modifier = Modifier.height(8.dp))
-            
+
             if (currentFile != null) {
                 Text(
                     text = currentFile,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
                 )
-                
+
                 Spacer(modifier = Modifier.height(8.dp))
             }
-            
+
             LinearProgressIndicator(
                 progress = progress,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
-            
+
             Spacer(modifier = Modifier.height(8.dp))
-            
+
             Text(
                 text = "$filesCompleted / $totalFiles 文件",
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
     }
@@ -260,20 +264,20 @@ private fun FileList(
     files: List<GadgetFile>,
     syncedFiles: Set<String>,
     onDownloadClick: (GadgetFile) -> Unit,
-    onDeleteClick: (GadgetFile) -> Unit
+    onDeleteClick: (GadgetFile) -> Unit,
 ) {
     LazyColumn(
-        contentPadding = PaddingValues(vertical = 8.dp)
+        contentPadding = PaddingValues(vertical = 8.dp),
     ) {
         items(
             items = files,
-            key = { it.id }
+            key = { it.id },
         ) { file ->
             FileItem(
                 file = file,
                 isSynced = syncedFiles.contains(file.id),
                 onDownloadClick = { onDownloadClick(file) },
-                onDeleteClick = { onDeleteClick(file) }
+                onDeleteClick = { onDeleteClick(file) },
             )
         }
     }
@@ -284,122 +288,125 @@ private fun FileItem(
     file: GadgetFile,
     isSynced: Boolean,
     onDownloadClick: () -> Unit,
-    onDeleteClick: () -> Unit
+    onDeleteClick: () -> Unit,
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             // File icon
             Icon(
-                imageVector = when {
-                    file.isAudio() -> Icons.Default.AudioFile
-                    file.isImage() -> Icons.Default.Image
-                    else -> Icons.Default.InsertDriveFile
-                },
+                imageVector =
+                    when {
+                        file.isAudio() -> Icons.Default.AudioFile
+                        file.isImage() -> Icons.Default.Image
+                        else -> Icons.Default.InsertDriveFile
+                    },
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(40.dp)
+                modifier = Modifier.size(40.dp),
             )
-            
+
             Spacer(modifier = Modifier.width(16.dp))
-            
+
             // File info
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = file.name,
                     style = MaterialTheme.typography.titleSmall,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
                 )
-                
+
                 Spacer(modifier = Modifier.height(4.dp))
-                
+
                 Row(
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
                         text = file.getFormattedSize(),
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
-                    
+
                     if (isSynced) {
                         Spacer(modifier = Modifier.width(8.dp))
                         Icon(
                             imageVector = Icons.Default.CheckCircle,
                             contentDescription = "已同步",
                             tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(16.dp)
+                            modifier = Modifier.size(16.dp),
                         )
                         Text(
                             text = "已同步",
                             style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.primary
+                            color = MaterialTheme.colorScheme.primary,
                         )
                     }
                 }
             }
-            
+
             // Action buttons
             Row {
                 if (!isSynced) {
                     IconButton(onClick = onDownloadClick) {
                         Icon(
                             imageVector = Icons.Default.Download,
-                            contentDescription = "下载"
+                            contentDescription = "下载",
                         )
                     }
                 }
-                
+
                 IconButton(onClick = onDeleteClick) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = "删除",
-                        tint = MaterialTheme.colorScheme.error
+                        tint = MaterialTheme.colorScheme.error,
                     )
                 }
             }
         }
     }
-    
+
     Divider()
 }
 
 @Composable
 private fun ErrorMessage(
     message: String,
-    onRetry: () -> Unit
+    onRetry: () -> Unit,
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Icon(
             imageVector = Icons.Default.Error,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.error,
-            modifier = Modifier.size(64.dp)
+            modifier = Modifier.size(64.dp),
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Text(
             text = message,
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        
+
         Spacer(modifier = Modifier.height(24.dp))
-        
+
         Button(onClick = onRetry) {
             Text("重试")
         }

@@ -27,22 +27,26 @@ import java.util.concurrent.Executors
         AttachmentEntity::class,
         WifiConfigEntity::class,
         DeviceSettingEntity::class,
-        CrmExportEntity::class
+        CrmExportEntity::class,
     ],
     version = 1,
     exportSchema = false,
-    autoMigrations = []
+    autoMigrations = [],
 )
 @TypeConverters(Converters::class)
 abstract class SmartSalesDatabase : RoomDatabase() {
-
     // ===== DAO ABSTRACT METHODS =====
 
     abstract fun conversationDao(): ConversationDao
+
     abstract fun messageDao(): MessageDao
+
     abstract fun attachmentDao(): AttachmentDao
+
     abstract fun wifiConfigDao(): WifiConfigDao
+
     abstract fun deviceSettingDao(): DeviceSettingDao
+
     abstract fun crmExportDao(): CrmExportDao
 
     // ===== COMPANION OBJECT =====
@@ -73,7 +77,7 @@ abstract class SmartSalesDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 context.applicationContext,
                 SmartSalesDatabase::class.java,
-                DATABASE_NAME
+                DATABASE_NAME,
             )
                 .addCallback(DatabaseCallback(context))
                 .fallbackToDestructiveMigration() // Use with caution in production
@@ -96,9 +100,8 @@ abstract class SmartSalesDatabase : RoomDatabase() {
      * Database creation and open callbacks
      */
     private class DatabaseCallback(
-        private val context: Context
+        private val context: Context,
     ) : RoomDatabase.Callback() {
-
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             // Database created for the first time
@@ -125,7 +128,6 @@ abstract class SmartSalesDatabase : RoomDatabase() {
  * Type Converters for complex data types
  */
 class Converters {
-
     /**
      * Convert List<String> to String (JSON)
      */

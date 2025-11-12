@@ -4,27 +4,27 @@ import androidx.compose.ui.graphics.Color
 
 /**
  * Smart Sales Assistant - Color Palette
- * 
+ *
  * Material 3 color scheme with brand colors
  */
 
 // ===== PRIMARY COLORS =====
 
-val Primary = Color(0xFF1976D2)        // Blue
-val OnPrimary = Color(0xFFFFFFFF)      // White
+val Primary = Color(0xFF1976D2) // Blue
+val OnPrimary = Color(0xFFFFFFFF) // White
 val PrimaryContainer = Color(0xFFBBDEFB)
 val OnPrimaryContainer = Color(0xFF003C71)
 
 // ===== SECONDARY COLORS =====
 
-val Secondary = Color(0xFF4CAF50)       // Green
+val Secondary = Color(0xFF4CAF50) // Green
 val OnSecondary = Color(0xFFFFFFFF)
 val SecondaryContainer = Color(0xFFC8E6C9)
 val OnSecondaryContainer = Color(0xFF1B5E20)
 
 // ===== TERTIARY COLORS =====
 
-val Tertiary = Color(0xFFFF9800)        // Orange
+val Tertiary = Color(0xFFFF9800) // Orange
 val OnTertiary = Color(0xFFFFFFFF)
 val TertiaryContainer = Color(0xFFFFE0B2)
 val OnTertiaryContainer = Color(0xFFE65100)

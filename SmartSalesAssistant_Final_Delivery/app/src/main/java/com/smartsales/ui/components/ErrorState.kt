@@ -17,31 +17,32 @@ import androidx.compose.ui.unit.dp
 fun ErrorState(
     message: String,
     modifier: Modifier = Modifier,
-    onRetry: (() -> Unit)? = null
+    onRetry: (() -> Unit)? = null,
 ) {
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp),
+        modifier =
+            modifier
+                .fillMaxSize()
+                .padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Icon(
             imageVector = Icons.Default.Error,
             contentDescription = "错误",
             modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.error
+            tint = MaterialTheme.colorScheme.error,
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Text(
             text = message,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
-        
+
         if (onRetry != null) {
             Spacer(modifier = Modifier.height(24.dp))
             Button(onClick = onRetry) {
@@ -54,14 +55,14 @@ fun ErrorState(
 @Composable
 fun ErrorSnackbar(
     message: String,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
 ) {
     Snackbar(
         action = {
             TextButton(onClick = onDismiss) {
                 Text("关闭")
             }
-        }
+        },
     ) {
         Text(message)
     }

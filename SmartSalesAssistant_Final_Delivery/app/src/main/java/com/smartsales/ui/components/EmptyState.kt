@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 
 /**
  * Empty State Component
- * 
+ *
  * Shows when there's no data to display
  */
 @Composable
@@ -20,28 +20,29 @@ fun EmptyState(
     message: String,
     modifier: Modifier = Modifier,
     icon: @Composable (() -> Unit)? = null,
-    actionButton: @Composable (() -> Unit)? = null
+    actionButton: @Composable (() -> Unit)? = null,
 ) {
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(32.dp),
+        modifier =
+            modifier
+                .fillMaxSize()
+                .padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         // Icon
         icon?.invoke()
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         // Message
         Text(
             text = message,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
-        
+
         // Action button
         if (actionButton != null) {
             Spacer(modifier = Modifier.height(24.dp))
@@ -56,7 +57,7 @@ fun EmptyState(
 @Composable
 fun NoConversationsEmptyState(
     onCreateConversation: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     EmptyState(
         message = "还没有对话记录\n点击下方按钮开始新对话",
@@ -66,14 +67,14 @@ fun NoConversationsEmptyState(
                 imageVector = Icons.Default.Chat,
                 contentDescription = null,
                 modifier = Modifier.size(64.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         },
         actionButton = {
             Button(onClick = onCreateConversation) {
                 Text("开始新对话")
             }
-        }
+        },
     )
 }
 
@@ -83,7 +84,7 @@ fun NoConversationsEmptyState(
 @Composable
 fun NoDevicesEmptyState(
     onStartScan: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     EmptyState(
         message = "未发现设备\n请确保设备已开启并在附近",
@@ -92,7 +93,7 @@ fun NoDevicesEmptyState(
             Button(onClick = onStartScan) {
                 Text("开始扫描")
             }
-        }
+        },
     )
 }
 
@@ -100,11 +101,9 @@ fun NoDevicesEmptyState(
  * No Files Empty State
  */
 @Composable
-fun NoFilesEmptyState(
-    modifier: Modifier = Modifier
-) {
+fun NoFilesEmptyState(modifier: Modifier = Modifier) {
     EmptyState(
         message = "设备上没有待同步的文件",
-        modifier = modifier
+        modifier = modifier,
     )
 }

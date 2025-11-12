@@ -4,5 +4,5 @@ data class SavedWifiConfig(
     val wifiName: String,
     val password: String,
     val isDefault: Boolean = false,
-    val lastUsed: Long = System.currentTimeMillis()
+    val lastUsed: Long = System.currentTimeMillis(),
 )

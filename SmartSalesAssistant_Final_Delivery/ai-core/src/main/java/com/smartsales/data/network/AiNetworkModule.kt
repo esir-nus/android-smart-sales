@@ -31,7 +31,6 @@ annotation class TingwuClient
 @Module
 @InstallIn(SingletonComponent::class)
 object AiNetworkModule {
-
     @Provides
     @Singleton
     fun provideGson(): Gson {
@@ -54,7 +53,7 @@ object AiNetworkModule {
     @DashscopeClient
     fun provideDashscopeOkHttpClient(
         @ApplicationContext context: Context,
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         val apiKey = getApiKey(context, "DASHSCOPE_API_KEY")
 
@@ -73,7 +72,7 @@ object AiNetworkModule {
     @TingwuClient
     fun provideTingwuOkHttpClient(
         @ApplicationContext context: Context,
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
     ): OkHttpClient {
         val apiKey = getApiKey(context, "TINGWU_API_KEY")
 
@@ -92,7 +91,7 @@ object AiNetworkModule {
     @DashscopeClient
     fun provideDashscopeRetrofit(
         @DashscopeClient okHttpClient: OkHttpClient,
-        gson: Gson
+        gson: Gson,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(AiApiConfig.DASHSCOPE_BASE_URL)
@@ -106,7 +105,7 @@ object AiNetworkModule {
     @TingwuClient
     fun provideTingwuRetrofit(
         @TingwuClient okHttpClient: OkHttpClient,
-        gson: Gson
+        gson: Gson,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(AiApiConfig.TINGWU_BASE_URL)
@@ -118,7 +117,7 @@ object AiNetworkModule {
     @Provides
     @Singleton
     fun provideDashscopeApi(
-        @DashscopeClient retrofit: Retrofit
+        @DashscopeClient retrofit: Retrofit,
     ): DashscopeApi {
         return retrofit.create(DashscopeApi::class.java)
     }
@@ -126,12 +125,15 @@ object AiNetworkModule {
     @Provides
     @Singleton
     fun provideTingwuApi(
-        @TingwuClient retrofit: Retrofit
+        @TingwuClient retrofit: Retrofit,
     ): TingwuApi {
         return retrofit.create(TingwuApi::class.java)
     }
 
-    private fun getApiKey(context: Context, keyName: String): String {
+    private fun getApiKey(
+        context: Context,
+        keyName: String,
+    ): String {
         return try {
             val buildConfigClass = Class.forName("${context.packageName}.BuildConfig")
             val field = buildConfigClass.getField(keyName)

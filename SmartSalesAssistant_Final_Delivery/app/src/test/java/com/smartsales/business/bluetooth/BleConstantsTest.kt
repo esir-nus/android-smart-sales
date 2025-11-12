@@ -8,7 +8,6 @@ import org.junit.Test
 import kotlin.text.Charsets
 
 class BleConstantsTest {
-
     private fun ByteArray.toWifiPayloadMap(): Map<String, String> {
         val content = String(this, Charsets.UTF_8).trim()
         if (content.isEmpty()) return emptyMap()
@@ -54,7 +53,7 @@ class BleConstantsTest {
         assertEquals(11, payload[1].toInt() and 0xFF)
         assertArrayEquals(
             "Hello World".toByteArray(),
-            payload.copyOfRange(2, payload.size)
+            payload.copyOfRange(2, payload.size),
         )
     }
 
@@ -66,7 +65,7 @@ class BleConstantsTest {
 
         assertEquals(
             BleConstants.MAX_DISPLAY_TEXT_LENGTH,
-            payload[1].toInt() and 0xFF
+            payload[1].toInt() and 0xFF,
         )
     }
 
@@ -78,7 +77,7 @@ class BleConstantsTest {
         assertEquals(9, payload[1].toInt() and 0xFF)
         assertArrayEquals(
             "image.png".toByteArray(),
-            payload.copyOfRange(2, payload.size)
+            payload.copyOfRange(2, payload.size),
         )
     }
 
@@ -90,7 +89,7 @@ class BleConstantsTest {
 
         assertEquals(
             BleConstants.MAX_IMAGE_NAME_LENGTH,
-            payload[1].toInt() and 0xFF
+            payload[1].toInt() and 0xFF,
         )
     }
 
@@ -105,9 +104,10 @@ class BleConstantsTest {
 
     @Test
     fun `decodeDeviceStatus parses battery wifi and recording flags`() {
-        val status = BleConstants.decodeDeviceStatus(
-            byteArrayOf(75, 1, 0)
-        )
+        val status =
+            BleConstants.decodeDeviceStatus(
+                byteArrayOf(75, 1, 0),
+            )
 
         assertEquals(75, status.batteryLevel)
         assertTrue(status.isWifiConnected)
@@ -160,12 +160,13 @@ class BleConstantsTest {
 
     @Test
     fun `DeviceStatus summary reflects battery wifi and recording status`() {
-        val status = DeviceStatus(
-            batteryLevel = 82,
-            isWifiConnected = true,
-            isRecording = true,
-            timestamp = 123L
-        )
+        val status =
+            DeviceStatus(
+                batteryLevel = 82,
+                isWifiConnected = true,
+                isRecording = true,
+                timestamp = 123L,
+            )
 
         val summary = status.getSummary()
 

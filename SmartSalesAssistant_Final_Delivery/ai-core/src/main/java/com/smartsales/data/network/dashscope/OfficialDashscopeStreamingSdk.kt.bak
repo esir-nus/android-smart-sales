@@ -1,0 +1,118 @@
+package com.smartsales.data.network.dashscope
+
+import com.alibaba.dashscope.aigc.generation.Generation
+import com.alibaba.dashscope.aigc.generation.GenerationOutput
+import com.alibaba.dashscope.aigc.generation.GenerationParam
+import com.alibaba.dashscope.aigc.generation.GenerationResult
+import com.alibaba.dashscope.common.Message
+import com.smartsales.data.network.model.ChatMessage
+import io.reactivex.disposables.Disposable
+
+/**
+ * Concrete [DashscopeStreamingSdk] implementation backed by the official DashScope Java SDK.
+ *
+ * The SDK exposes streaming responses via RxJava's [io.reactivex.Flowable]; we adapt that into the
+ * simple listener callbacks required by [DefaultDashscopeChatClient].
+ */
+class OfficialDashscopeStreamingSdk(
+    private val generationFactory: () -> Generation = { Generation() }
+) : DashscopeStreamingSdk {
+
+    override fun startChat(
+        credentials: DashscopeCredentials,
+        payload: DashscopeChatPayload,
+        listener: DashscopeStreamingListener
+    ): DashscopeStreamingSession {
+        // Ensure the SDK can pick up the token even if env variables are not configured.
+        if (credentials.token.isNotBlank()) {
+            System.setProperty(DASHSCOPE_API_KEY_PROPERTY, credentials.token)
+        }
+
+        val generation = generationFactory()
+        val param = buildGenerationParam(credentials, payload)
+
+        var lastRequestId: String? = null
+        var lastUsageTokens: Int = 0
+
+        val disposable: Disposable = generation.streamCall(param)
+            .subscribe(
+                { result ->
+                    handleResult(result, listener)?.let { usage ->
+                        lastUsageTokens = usage
+                    }
+                    lastRequestId = result.requestId
+                },
+                { throwable ->
+                    listener.onError(throwable)
+                },
+                {
+                    listener.onCompleted(lastUsageTokens, lastRequestId)
+                }
+            )
+
+        return object : DashscopeStreamingSession {
+            override fun cancel() {
+                if (!disposable.isDisposed) {
+                    disposable.dispose()
+                }
+            }
+        }
+    }
+
+    private fun buildGenerationParam(
+        credentials: DashscopeCredentials,
+        payload: DashscopeChatPayload
+    ): GenerationParam {
+        val builder = GenerationParam.builder()
+            .apiKey(credentials.token)
+            .model(payload.model)
+            .messages(payload.input.messages.map(::toSdkMessage))
+            .resultFormat(payload.parameters.resultFormat)
+
+        payload.parameters.incrementalOutput?.let { builder.incrementalOutput(it) }
+        payload.parameters.temperature?.let { builder.temperature(it) }
+        payload.parameters.topP?.let { builder.topP(it.toDouble()) }
+        payload.parameters.topK?.let { builder.topK(it) }
+        payload.parameters.maxTokens?.let { builder.maxTokens(it) }
+        payload.parameters.enableSearch?.let { builder.enableSearch(it) }
+        payload.parameters.seed?.let { builder.seed(it) }
+        payload.parameters.repetitionPenalty?.let { builder.repetitionPenalty(it) }
+
+        return builder.build()
+    }
+
+    private fun toSdkMessage(message: ChatMessage): Message {
+        return Message.builder()
+            .role(message.role)
+            .content(message.content)
+            .build()
+    }
+
+    /**
+     * Emits chunk updates to the listener and returns the latest usage tokens if present.
+     */
+    private fun handleResult(
+        result: GenerationResult,
+        listener: DashscopeStreamingListener
+    ): Int? {
+        val textChunk = extractTextChunk(result.output)
+        if (!textChunk.isNullOrBlank()) {
+            listener.onContentChunk(textChunk)
+        }
+        return result.usage?.totalTokens
+    }
+
+    private fun extractTextChunk(output: GenerationOutput?): String? {
+        if (output == null) return null
+        return when {
+            !output.text.isNullOrBlank() -> output.text
+            !output.choices.isNullOrEmpty() -> output.choices.first().text
+            else -> null
+        }
+    }
+
+    private companion object {
+        private const val DASHSCOPE_API_KEY_PROPERTY = "DASHSCOPE_API_KEY"
+    }
+}
+

@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.13.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.13.0)" variant="all" version="8.13.0">
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="                    val deviceName = device.name ?: &quot;Unknown Device&quot;"
+        errorLine2="                                     ~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/smartsales/ui/screens/device/DevicePairingViewModel.kt"
+            line="148"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="OldTargetApi"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
+        errorLine1="        targetSdk = 35"
+        errorLine2="        ~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="17"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of Gradle than 8.13 is available: 8.14.3"
+        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/wrapper/gradle-wrapper.properties"
+            line="3"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 8.13.0 is available: 8.13.1"
+        errorLine1="agp = &quot;8.13.0&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="4"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.library than 8.13.0 is available: 8.13.1"
+        errorLine1="agp = &quot;8.13.0&quot;"
+        errorLine2="      ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="4"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of `compileSdkVersion` than 35 is available: 36"
+        errorLine1="    compileSdk = 35"
+        errorLine2="    ~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="12"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.13.1 is available: 1.17.0"
+        errorLine1="core-ktx = &quot;1.13.1&quot;"
+        errorLine2="           ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="5"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0"
+        errorLine1="junit-version = &quot;1.2.1&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="7"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0"
+        errorLine1="espresso-core = &quot;3.6.1&quot;"
+        errorLine2="                ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="8"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.0 is available: 2.9.4"
+        errorLine1="lifecycle-runtime-ktx = &quot;2.8.0&quot;"
+        errorLine2="                        ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="9"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.activity:activity-compose than 1.9.0 is available: 1.11.0"
+        errorLine1="activity-compose = &quot;1.9.0&quot;"
+        errorLine2="                   ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="10"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.compose:compose-bom than 2024.04.01 is available: 2025.11.00"
+        errorLine1="compose-bom = &quot;2024.04.01&quot;"
+        errorLine2="              ~~~~~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="11"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.hilt:hilt-navigation-compose than 1.2.0 is available: 1.3.0"
+        errorLine1="hilt-navigation-compose = &quot;1.2.0&quot;"
+        errorLine2="                          ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="16"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room than 2.6.1 is available: 2.8.3"
+        errorLine1="room = &quot;2.6.1&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="19"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.8.3"
+        errorLine1="room = &quot;2.6.1&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="19"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.8.3"
+        errorLine1="room = &quot;2.6.1&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="19"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.8.3"
+        errorLine1="room = &quot;2.6.1&quot;"
+        errorLine2="       ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="19"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.7.1"
+        errorLine1="appcompat = &quot;1.7.0&quot;"
+        errorLine2="            ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="30"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.material:material than 1.12.0 is available: 1.13.0"
+        errorLine1="material = &quot;1.12.0&quot;"
+        errorLine2="           ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="31"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.constraintlayout:constraintlayout than 2.1.4 is available: 2.2.1"
+        errorLine1="constraintlayout = &quot;2.1.4&quot;"
+        errorLine2="                   ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="32"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-compose than 2.7.5 is available: 2.9.6"
+        errorLine1="navigation-compose = &quot;2.7.5&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="33"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-testing than 2.7.5 is available: 2.9.6"
+        errorLine1="navigation-compose = &quot;2.7.5&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="33"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-compose than 2.6.2 is available: 2.9.4"
+        errorLine1="lifecycle-runtime-compose = &quot;2.6.2&quot;"
+        errorLine2="                            ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="34"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.6.2 is available: 2.9.4"
+        errorLine1="lifecycle-viewmodel-compose = &quot;2.6.2&quot;"
+        errorLine2="                              ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="35"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.6.2 is available: 2.9.4"
+        errorLine1="lifecycle-viewmodel-ktx = &quot;2.6.2&quot;"
+        errorLine2="                          ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="36"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.gms:play-services-location than 21.2.0 is available: 21.3.0"
+        errorLine1="play-services-location = &quot;21.2.0&quot;"
+        errorLine2="                         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="40"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.retrofit2:converter-gson than 2.9.0 is available: 3.0.0"
+        errorLine1="    implementation(&quot;com.squareup.retrofit2:converter-gson:2.9.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="151"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.code.gson:gson than 2.10.1 is available: 2.13.2"
+        errorLine1="    implementation(&quot;com.google.code.gson:gson:2.10.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="156"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlin.android than 1.9.24 is available: 2.2.21"
+        errorLine1="kotlin = &quot;1.9.24&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="3"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlin.plugin.compose than 1.9.24 is available: 2.2.21"
+        errorLine1="kotlin = &quot;1.9.24&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="3"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlin.plugin.serialization than 1.9.24 is available: 2.2.21"
+        errorLine1="kotlin = &quot;1.9.24&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="3"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger.hilt.android than 2.48.1 is available: 2.57.2"
+        errorLine1="hilt = &quot;2.48.1&quot;"
+        errorLine2="       ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="15"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android than 2.48.1 is available: 2.57.2"
+        errorLine1="hilt = &quot;2.48.1&quot;"
+        errorLine2="       ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="15"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.google.dagger:hilt-android-compiler than 2.48.1 is available: 2.57.2"
+        errorLine1="hilt = &quot;2.48.1&quot;"
+        errorLine2="       ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="15"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.retrofit2:converter-moshi than 2.9.0 is available: 3.0.0"
+        errorLine1="retrofit = &quot;2.9.0&quot;"
+        errorLine2="           ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="22"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.retrofit2:retrofit than 2.9.0 is available: 3.0.0"
+        errorLine1="retrofit = &quot;2.9.0&quot;"
+        errorLine2="           ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="22"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:logging-interceptor than 4.12.0 is available: 5.3.0"
+        errorLine1="okhttp = &quot;4.12.0&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="23"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:mockwebserver than 4.12.0 is available: 5.3.0"
+        errorLine1="okhttp = &quot;4.12.0&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="23"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.okhttp3:okhttp than 4.12.0 is available: 5.3.0"
+        errorLine1="okhttp = &quot;4.12.0&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="23"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.moshi:moshi than 1.15.0 is available: 1.15.2"
+        errorLine1="moshi = &quot;1.15.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="24"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.moshi:moshi-kotlin than 1.15.0 is available: 1.15.2"
+        errorLine1="moshi = &quot;1.15.0&quot;"
+        errorLine2="        ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="24"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.7.3 is available: 1.10.2"
+        errorLine1="coroutines = &quot;1.7.3&quot;"
+        errorLine2="             ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="27"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-core than 1.7.3 is available: 1.10.2"
+        errorLine1="coroutines = &quot;1.7.3&quot;"
+        errorLine2="             ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="27"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-test than 1.7.3 is available: 1.10.2"
+        errorLine1="coroutines = &quot;1.7.3&quot;"
+        errorLine2="             ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="27"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of no.nordicsemi.android:ble than 2.7.3 is available: 2.11.0"
+        errorLine1="ble = &quot;2.7.3&quot;"
+        errorLine2="      ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="39"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.tensorflow:tensorflow-lite than 2.14.0 is available: 2.17.0"
+        errorLine1="tensorflow-lite = &quot;2.14.0&quot;"
+        errorLine2="                  ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="43"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.tensorflow:tensorflow-lite-gpu than 2.14.0 is available: 2.17.0"
+        errorLine1="tensorflow-lite-gpu = &quot;2.14.0&quot;"
+        errorLine2="                      ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="44"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.tensorflow:tensorflow-lite-support than 0.4.4 is available: 0.5.0"
+        errorLine1="tensorflow-lite-support = &quot;0.4.4&quot;"
+        errorLine2="                          ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="45"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.squareup.leakcanary:leakcanary-android than 2.12 is available: 2.14"
+        errorLine1="leakcanary = &quot;2.12&quot;"
+        errorLine2="             ~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="49"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.gitlab.arturbosch.detekt than 1.23.6 is available: 1.23.8"
+        errorLine1="detekt = &quot;1.23.6&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="50"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.jlleitschuh.gradle.ktlint than 12.1.1 is available: 14.0.1"
+        errorLine1="ktlint = &quot;12.1.1&quot;"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="51"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of org.mockito.kotlin:mockito-kotlin than 5.1.0 is available: 6.1.0"
+        errorLine1="mockito-kotlin = { group = &quot;org.mockito.kotlin&quot;, name = &quot;mockito-kotlin&quot;, version = &quot;5.1.0&quot; }"
+        errorLine2="                                                                                    ~~~~~~~">
+        <location
+            file="$HOME/smart-sales/android-smart-sales/SmartSalesAssistant_Final_Delivery/gradle/libs.versions.toml"
+            line="125"
+            column="85"/>
+    </issue>
+
+    <issue
+        id="ModifierParameter"
+        message="Modifier parameter should be the first optional parameter"
+        errorLine1="    modifier: Modifier = Modifier,"
+        errorLine2="    ~~~~~~~~">
+        <location
+            file="src/main/java/com/smartsales/ai/ui/chat/AiChatScreen.kt"
+            line="412"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="InsecureBaseConfiguration"
+        message="Insecure Base Configuration"
+        errorLine1="    &lt;base-config cleartextTrafficPermitted=&quot;true&quot; />"
+        errorLine2="                                            ~~~~">
+        <location
+            file="src/main/res/xml/network_security_config.xml"
+            line="3"
+            column="45"/>
+    </issue>
+
+    <issue
+        id="KaptUsageInsteadOfKsp"
+        message="This library supports using KSP instead of kapt, which greatly improves performance. Learn more: https://developer.android.com/studio/build/migrate-to-ksp"
+        errorLine1="    kapt(libs.androidx.room.compiler)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="147"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseKtx"
+        message="Use the KTX extension function `String.toUri` instead?"
+        errorLine1="                val uri = Uri.parse(rawAttachmentPath)"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/smartsales/ai/media/DefaultMediaPreprocessor.kt"
+            line="27"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="UseTomlInstead"
+        message="Use version catalog instead"
+        errorLine1="    implementation(&quot;com.squareup.retrofit2:converter-gson:2.9.0&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="151"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="UseTomlInstead"
+        message="Use version catalog instead"
+        errorLine1="    implementation(&quot;com.google.code.gson:gson:2.10.1&quot;)"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle.kts"
+            line="156"
+            column="20"/>
+    </issue>
+
+</issues>

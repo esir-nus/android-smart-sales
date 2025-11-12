@@ -14,7 +14,6 @@ import org.junit.Before
 import org.junit.Test
 
 class AuthInterceptorTest {
-
     private lateinit var server: MockWebServer
 
     @Before
@@ -31,9 +30,10 @@ class AuthInterceptorTest {
 
     @Test
     fun `DashscopeAuthInterceptor adds bearer header`() {
-        val client = OkHttpClient.Builder()
-            .addInterceptor(DashscopeAuthInterceptor("dash-key"))
-            .build()
+        val client =
+            OkHttpClient.Builder()
+                .addInterceptor(DashscopeAuthInterceptor("dash-key"))
+                .build()
 
         client.newCall(newRequest()).execute().close()
 
@@ -43,9 +43,10 @@ class AuthInterceptorTest {
 
     @Test
     fun `TingwuAuthInterceptor adds bearer header`() {
-        val client = OkHttpClient.Builder()
-            .addInterceptor(TingwuAuthInterceptor("tingwu-key"))
-            .build()
+        val client =
+            OkHttpClient.Builder()
+                .addInterceptor(TingwuAuthInterceptor("tingwu-key"))
+                .build()
 
         client.newCall(newRequest()).execute().close()
 

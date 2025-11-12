@@ -18,14 +18,12 @@ import java.util.*
 data class ConversationEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-
-    val title: String,              // Conversation title
-    val summary: String? = null,    // AI-generated summary
-    val createdAt: Long,             // Creation timestamp (millis)
-    val updatedAt: Long,             // Last update timestamp (millis)
-    val isAnalyzed: Boolean = false  // Whether customer analysis is complete
+    val title: String, // Conversation title
+    val summary: String? = null, // AI-generated summary
+    val createdAt: Long, // Creation timestamp (millis)
+    val updatedAt: Long, // Last update timestamp (millis)
+    val isAnalyzed: Boolean = false, // Whether customer analysis is complete
 ) {
-
     companion object {
         // Default values
         const val DEFAULT_TITLE = "New Conversation"
@@ -37,7 +35,7 @@ data class ConversationEntity(
          */
         fun create(
             title: String = DEFAULT_TITLE,
-            summary: String? = null
+            summary: String? = null,
         ): ConversationEntity {
             val now = System.currentTimeMillis()
             return ConversationEntity(
@@ -45,7 +43,7 @@ data class ConversationEntity(
                 summary = summary?.take(MAX_SUMMARY_LENGTH),
                 createdAt = now,
                 updatedAt = now,
-                isAnalyzed = false
+                isAnalyzed = false,
             )
         }
 
@@ -148,8 +146,8 @@ data class ConversationEntity(
      */
     fun isValid(): Boolean {
         return title.isNotBlank() &&
-                title.length <= MAX_TITLE_LENGTH &&
-                (summary == null || summary.length <= MAX_SUMMARY_LENGTH)
+            title.length <= MAX_TITLE_LENGTH &&
+            (summary == null || summary.length <= MAX_SUMMARY_LENGTH)
     }
 
     /**
@@ -179,7 +177,7 @@ data class ConversationEntity(
     fun withSummary(newSummary: String): ConversationEntity {
         return copy(
             summary = newSummary.take(MAX_SUMMARY_LENGTH),
-            updatedAt = System.currentTimeMillis()
+            updatedAt = System.currentTimeMillis(),
         )
     }
 
@@ -189,7 +187,7 @@ data class ConversationEntity(
     fun markAnalyzed(): ConversationEntity {
         return copy(
             isAnalyzed = true,
-            updatedAt = System.currentTimeMillis()
+            updatedAt = System.currentTimeMillis(),
         )
     }
 
@@ -199,7 +197,7 @@ data class ConversationEntity(
     fun withTitle(newTitle: String): ConversationEntity {
         return copy(
             title = newTitle.take(MAX_TITLE_LENGTH),
-            updatedAt = System.currentTimeMillis()
+            updatedAt = System.currentTimeMillis(),
         )
     }
 

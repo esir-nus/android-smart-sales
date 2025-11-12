@@ -6,14 +6,14 @@ import okhttp3.Response
 
 open class AuthInterceptor(
     private val apiKey: String,
-    private val headerName: String = AiApiConfig.HEADER_AUTHORIZATION
+    private val headerName: String = AiApiConfig.HEADER_AUTHORIZATION,
 ) : Interceptor {
-
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val newRequest = originalRequest.newBuilder()
-            .header(headerName, AiApiConfig.buildBearerAuth(apiKey))
-            .build()
+        val newRequest =
+            originalRequest.newBuilder()
+                .header(headerName, AiApiConfig.buildBearerAuth(apiKey))
+                .build()
         return chain.proceed(newRequest)
     }
 }

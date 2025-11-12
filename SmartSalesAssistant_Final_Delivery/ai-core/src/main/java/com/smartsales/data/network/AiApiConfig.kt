@@ -4,7 +4,6 @@ package com.smartsales.data.network
  * API configuration for Dashscope (Qwen chat) and Tingwu services.
  */
 object AiApiConfig {
-
     const val DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/"
     const val TINGWU_BASE_URL = "https://tingwu.cn/"
 
@@ -50,4 +49,12 @@ object AiApiConfig {
     const val CONTENT_TYPE_SSE = "text/event-stream"
 
     fun buildBearerAuth(apiKey: String): String = "Bearer $apiKey"
+
+    object OSS {
+        // These values are populated from BuildConfig in the app modules
+        lateinit var ENDPOINT: String
+        lateinit var BUCKET: String
+        lateinit var ACCESS_KEY_ID: String
+        lateinit var ACCESS_KEY_SECRET: String
+    }
 }

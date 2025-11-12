@@ -19,7 +19,7 @@ import com.smartsales.ui.components.TypingIndicator
 
 /**
  * Chat Screen
- * 
+ *
  * Main conversation screen with AI chat
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -28,13 +28,13 @@ fun ChatScreen(
     conversationId: Long,
     onNavigateBack: () -> Unit,
     onExportClick: (Long) -> Unit,
-    viewModel: ChatViewModel = hiltViewModel()
+    viewModel: ChatViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val inputText by viewModel.inputText.collectAsState()
-    
+
     val showMenu = remember { mutableStateOf(false) }
-    
+
     LaunchedEffect(conversationId) {
         if (conversationId > 0) {
             viewModel.loadConversation(conversationId)
@@ -42,7 +42,7 @@ fun ChatScreen(
             viewModel.createNewConversation()
         }
     }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -50,13 +50,13 @@ fun ChatScreen(
                     Column {
                         Text(
                             text = uiState.conversationTitle,
-                            style = MaterialTheme.typography.titleMedium
+                            style = MaterialTheme.typography.titleMedium,
                         )
                         if (uiState.isAnalyzed) {
                             Text(
                                 text = "已分析",
                                 style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
                             )
                         }
                     }
@@ -65,7 +65,7 @@ fun ChatScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "返回"
+                            contentDescription = "返回",
                         )
                     }
                 },
@@ -74,13 +74,13 @@ fun ChatScreen(
                     IconButton(onClick = { showMenu.value = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
-                            contentDescription = "更多"
+                            contentDescription = "更多",
                         )
                     }
-                    
+
                     DropdownMenu(
                         expanded = showMenu.value,
-                        onDismissRequest = { showMenu.value = false }
+                        onDismissRequest = { showMenu.value = false },
                     ) {
                         DropdownMenuItem(
                             text = { Text("分析客户") },
@@ -90,9 +90,9 @@ fun ChatScreen(
                             },
                             leadingIcon = {
                                 Icon(Icons.Default.Analytics, "分析")
-                            }
+                            },
                         )
-                        
+
                         DropdownMenuItem(
                             text = { Text("导出对话") },
                             onClick = {
@@ -101,9 +101,9 @@ fun ChatScreen(
                             },
                             leadingIcon = {
                                 Icon(Icons.Default.Download, "导出")
-                            }
+                            },
                         )
-                        
+
                         DropdownMenuItem(
                             text = { Text("清空对话") },
                             onClick = {
@@ -112,16 +112,17 @@ fun ChatScreen(
                             },
                             leadingIcon = {
                                 Icon(Icons.Default.Delete, "清空")
-                            }
+                            },
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-                )
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                        actionIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                    ),
             )
         },
         bottomBar = {
@@ -130,36 +131,37 @@ fun ChatScreen(
                 onTextChange = { viewModel.updateInputText(it) },
                 onSendClick = { viewModel.sendMessage() },
                 enabled = !uiState.isSending,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
-        }
+        },
     ) { paddingValues ->
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
         ) {
             when {
                 uiState.isLoading -> {
                     LoadingIndicator(
                         modifier = Modifier.fillMaxSize(),
-                        message = "加载中..."
+                        message = "加载中...",
                     )
                 }
-                
+
                 uiState.error != null -> {
                     ErrorMessage(
                         message = uiState.error!!,
                         onRetry = { viewModel.loadConversation(conversationId) },
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
-                
+
                 else -> {
                     MessageList(
                         messages = uiState.messages,
                         isTyping = uiState.isSending,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxSize(),
                     )
                 }
             }
@@ -171,10 +173,10 @@ fun ChatScreen(
 private fun MessageList(
     messages: List<MessageEntity>,
     isTyping: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val listState = rememberLazyListState()
-    
+
     // Auto-scroll to bottom when new messages arrive
     LaunchedEffect(messages.size) {
         val lastIndex = messages.lastIndex
@@ -182,19 +184,19 @@ private fun MessageList(
             listState.animateScrollToItem(lastIndex)
         }
     }
-    
+
     LazyColumn(
         modifier = modifier,
         state = listState,
-        contentPadding = PaddingValues(vertical = 8.dp)
+        contentPadding = PaddingValues(vertical = 8.dp),
     ) {
         items(
             items = messages,
-            key = { it.id }
+            key = { it.id },
         ) { message ->
             MessageBubble(message = message)
         }
-        
+
         if (isTyping) {
             item {
                 TypingIndicator()
@@ -210,18 +212,19 @@ private fun ChatInputBar(
     onTextChange: (String) -> Unit,
     onSendClick: () -> Unit,
     enabled: Boolean,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Surface(
         modifier = modifier,
         color = MaterialTheme.colorScheme.surface,
-        tonalElevation = 3.dp
+        tonalElevation = 3.dp,
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            verticalAlignment = Alignment.Bottom
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+            verticalAlignment = Alignment.Bottom,
         ) {
             // Text input
             OutlinedTextField(
@@ -230,20 +233,20 @@ private fun ChatInputBar(
                 modifier = Modifier.weight(1f),
                 placeholder = { Text("输入消息...") },
                 enabled = enabled,
-                maxLines = 4
+                maxLines = 4,
             )
-            
+
             Spacer(modifier = Modifier.width(8.dp))
-            
+
             // Send button
             FilledIconButton(
                 onClick = onSendClick,
                 enabled = enabled && text.isNotBlank(),
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier.size(48.dp),
             ) {
                 Icon(
                     imageVector = Icons.Default.Send,
-                    contentDescription = "发送"
+                    contentDescription = "发送",
                 )
             }
         }
@@ -254,21 +257,21 @@ private fun ChatInputBar(
 private fun ErrorMessage(
     message: String,
     onRetry: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Text(
             text = message,
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.error
+            color = MaterialTheme.colorScheme.error,
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Button(onClick = onRetry) {
             Text("重试")
         }

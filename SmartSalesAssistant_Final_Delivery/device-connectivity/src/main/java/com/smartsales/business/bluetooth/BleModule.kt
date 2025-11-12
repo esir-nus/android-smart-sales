@@ -14,11 +14,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object BleModule {
-    
     @Provides
     @Singleton
     fun provideBleManager(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): BleManager {
         return BleManager(context)
     }

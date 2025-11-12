@@ -22,23 +22,21 @@ import java.util.*
             entity = ConversationEntity::class,
             parentColumns = ["id"],
             childColumns = ["conversationId"],
-            onDelete = ForeignKey.CASCADE
-        )
+            onDelete = ForeignKey.CASCADE,
+        ),
     ],
-    indices = [Index(value = ["conversationId"])]
+    indices = [Index(value = ["conversationId"])],
 )
 data class MessageEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-
     val conversationId: Long,
-    val role: String,                // "user" or "assistant"
-    val content: String,             // Text content
-    val timestamp: Long,             // Message timestamp (millis)
+    val role: String, // "user" or "assistant"
+    val content: String, // Text content
+    val timestamp: Long, // Message timestamp (millis)
     val attachments: String? = null, // JSON array: [{"type":"audio","path":"..."}]
-    val metadata: String? = null     // JSON object: {"tokens":1234,"model":"qwen-max"}
+    val metadata: String? = null, // JSON object: {"tokens":1234,"model":"qwen-max"}
 ) {
-
     companion object {
         // Role constants
         const val ROLE_USER = "user"
@@ -55,7 +53,7 @@ data class MessageEntity(
         fun createUserMessage(
             conversationId: Long,
             content: String,
-            attachments: List<AttachmentInfo>? = null
+            attachments: List<AttachmentInfo>? = null,
         ): MessageEntity {
             return MessageEntity(
                 conversationId = conversationId,
@@ -63,7 +61,7 @@ data class MessageEntity(
                 content = content.take(MAX_CONTENT_LENGTH),
                 timestamp = System.currentTimeMillis(),
                 attachments = attachments?.let { encodeAttachments(it) },
-                metadata = null
+                metadata = null,
             )
         }
 
@@ -73,7 +71,7 @@ data class MessageEntity(
         fun createAssistantMessage(
             conversationId: Long,
             content: String,
-            metadata: MessageMetadata? = null
+            metadata: MessageMetadata? = null,
         ): MessageEntity {
             return MessageEntity(
                 conversationId = conversationId,
@@ -81,7 +79,7 @@ data class MessageEntity(
                 content = content.take(MAX_CONTENT_LENGTH),
                 timestamp = System.currentTimeMillis(),
                 attachments = null,
-                metadata = metadata?.toJson()
+                metadata = metadata?.toJson(),
             )
         }
 
@@ -166,7 +164,7 @@ data class MessageEntity(
                 AttachmentInfo(
                     type = jsonObject.getString("type"),
                     path = jsonObject.getString("path"),
-                    name = jsonObject.optString("name", "")
+                    name = jsonObject.optString("name", ""),
                 )
             }
         } catch (e: Exception) {
@@ -185,7 +183,7 @@ data class MessageEntity(
             MessageMetadata(
                 tokens = jsonObject.optInt("tokens", 0),
                 model = jsonObject.optString("model", ""),
-                processingTime = jsonObject.optLong("processingTime", 0)
+                processingTime = jsonObject.optLong("processingTime", 0),
             )
         } catch (e: Exception) {
             null
@@ -247,8 +245,8 @@ data class MessageEntity(
      */
     fun isValid(): Boolean {
         return content.isNotBlank() &&
-                content.length <= MAX_CONTENT_LENGTH &&
-                role in listOf(ROLE_USER, ROLE_ASSISTANT, ROLE_SYSTEM)
+            content.length <= MAX_CONTENT_LENGTH &&
+            role in listOf(ROLE_USER, ROLE_ASSISTANT, ROLE_SYSTEM)
     }
 
     /**
@@ -275,9 +273,9 @@ data class MessageEntity(
  * Attachment info data class
  */
 data class AttachmentInfo(
-    val type: String,  // "audio", "image", "document"
-    val path: String,  // File path
-    val name: String   // File name
+    val type: String, // "audio", "image", "document"
+    val path: String, // File path
+    val name: String, // File name
 )
 
 /**
@@ -286,7 +284,7 @@ data class AttachmentInfo(
 data class MessageMetadata(
     val tokens: Int = 0,
     val model: String = "",
-    val processingTime: Long = 0
+    val processingTime: Long = 0,
 ) {
     fun toJson(): String {
         val jsonObject = JSONObject()

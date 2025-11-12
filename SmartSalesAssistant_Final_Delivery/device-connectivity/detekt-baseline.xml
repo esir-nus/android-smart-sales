@@ -1,0 +1,157 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ForbiddenComment:AttachmentEntity.kt$AttachmentEntity$// TODO: Implement audio duration extraction</ID>
+    <ID>ForbiddenComment:DatabaseModule.kt$DatabaseModule$// TODO: Add proper migrations for production</ID>
+    <ID>FunctionOnlyReturningConstant:AttachmentEntity.kt$AttachmentEntity$fun getAudioDuration(): Int?</ID>
+    <ID>FunctionOnlyReturningConstant:GadgetModels.kt$SyncProgress$fun getDownloadSpeed(): String</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$10</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$1000</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$1024</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$24</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$4</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$60</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity$7</ID>
+    <ID>MagicNumber:AttachmentEntity.kt$AttachmentEntity.Companion$1024</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$10000L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$1000L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$200L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$3000L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$5000L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand$500L</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.CLEAR_DISPLAY$0x05</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.ENTER_SLEEP_MODE$0x0A</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.FACTORY_RESET$0x0C</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.REQUEST_STATUS$0x06</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.RESTART_DEVICE$0x09</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.SHOW_IMAGE$0x03</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.SHOW_TEXT$0x04</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.START_FILE_SYNC$0x07</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.STOP_FILE_SYNC$0x08</ID>
+    <ID>MagicNumber:BleCommand.kt$BleCommand.WAKE_UP$0x0B</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$0x03</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$0x04</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$0xFF</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$16</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$3</ID>
+    <ID>MagicNumber:BleConstants.kt$BleConstants$4</ID>
+    <ID>MagicNumber:BleConstants.kt$DeviceStatus$10</ID>
+    <ID>MagicNumber:BleConstants.kt$DeviceStatus$20</ID>
+    <ID>MagicNumber:BleConstants.kt$DeviceStatus$50</ID>
+    <ID>MagicNumber:BleConstants.kt$DeviceStatus$80</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager$0x03</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager$0x04</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager$1000</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager$3</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager$4</ID>
+    <ID>MagicNumber:BleManager.kt$BleManager.&lt;no name provided&gt;$500</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity$1000</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity$24</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity$60</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity$7</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity.Companion$1000L</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity.Companion$24</ID>
+    <ID>MagicNumber:ConversationEntity.kt$ConversationEntity.Companion$60</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$1000</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$1024</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$24</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$5</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$60</ID>
+    <ID>MagicNumber:CrmExportEntity.kt$CrmExportEntity$7</ID>
+    <ID>MagicNumber:DatabaseModule.kt$DatabaseModule$4</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$1000</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$20</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$24</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$3</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$30</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$3600</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$4</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$50</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$60</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$7</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity$86400</ID>
+    <ID>MagicNumber:DeviceSettingEntity.kt$DeviceSettingEntity.Companion$12</ID>
+    <ID>MagicNumber:GadgetApi.kt$GadgetApiHelper$1024</ID>
+    <ID>MagicNumber:GadgetApi.kt$GadgetApiHelper$1024.0</ID>
+    <ID>MagicNumber:GadgetApi.kt$GadgetApiHelper$8192</ID>
+    <ID>MagicNumber:GadgetApi.kt$StorageSummary$100</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$100</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$1024</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$1024.0</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$20</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$3600</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$60</ID>
+    <ID>MagicNumber:GadgetModels.kt$DeviceStatusResponse$90</ID>
+    <ID>MagicNumber:GadgetModels.kt$GadgetFile$1024</ID>
+    <ID>MagicNumber:GadgetModels.kt$SyncProgress$100</ID>
+    <ID>MagicNumber:GadgetModels.kt$WifiStatusResponse$100</ID>
+    <ID>MagicNumber:GadgetModels.kt$WifiStatusResponse$20</ID>
+    <ID>MagicNumber:GadgetModels.kt$WifiStatusResponse$40</ID>
+    <ID>MagicNumber:GadgetModels.kt$WifiStatusResponse$60</ID>
+    <ID>MagicNumber:GadgetModels.kt$WifiStatusResponse$80</ID>
+    <ID>MagicNumber:MessageEntity.kt$MessageEntity$1000</ID>
+    <ID>MagicNumber:MessageEntity.kt$MessageEntity$3600</ID>
+    <ID>MagicNumber:MessageEntity.kt$MessageEntity$60</ID>
+    <ID>MagicNumber:MessageEntity.kt$MessageEntity$86400</ID>
+    <ID>MagicNumber:SmartSalesDatabase.kt$SmartSalesDatabase.Companion$4</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$1000</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$1000L</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$12</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$24</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$3</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$30</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$4</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$5</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$60</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$7</ID>
+    <ID>MagicNumber:WifiConfigEntity.kt$WifiConfigEntity$8</ID>
+    <ID>NestedBlockDepth:GadgetApi.kt$GadgetApiHelper$suspend fun downloadFileToLocal( api: GadgetApi, fileId: String, localPath: String, progressCallback: ((Long, Long) -&gt; Unit)? = null, ): Result&lt;String&gt;</ID>
+    <ID>ReturnCount:BleManager.kt$BleManager$private fun getCharacteristic( gatt: BluetoothGatt, selector: (BleServiceProfile) -&gt; UUID?, ): BluetoothGattCharacteristic?</ID>
+    <ID>ReturnCount:BleManager.kt$BleManager$private fun processNetworkResponse(payload: ByteArray)</ID>
+    <ID>ReturnCount:BleManager.kt$BleManager$private suspend fun writeCharacteristicPayload( gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic, data: ByteArray, writeType: Int, ): Boolean</ID>
+    <ID>ReturnCount:GadgetApi.kt$GadgetApiHelper$suspend fun downloadFileToLocal( api: GadgetApi, fileId: String, localPath: String, progressCallback: ((Long, Long) -&gt; Unit)? = null, ): Result&lt;String&gt;</ID>
+    <ID>SwallowedException:AttachmentEntity.kt$AttachmentEntity$e: Exception</ID>
+    <ID>SwallowedException:CrmExportEntity.kt$CrmExportEntity$e: Exception</ID>
+    <ID>SwallowedException:GadgetApi.kt$GadgetApiHelper$e: Exception</ID>
+    <ID>SwallowedException:MessageEntity.kt$MessageEntity$e: Exception</ID>
+    <ID>SwallowedException:WifiConfigEntity.kt$WifiConfigEntity.Companion$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AttachmentEntity.kt$AttachmentEntity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:BleManager.kt$BleManager$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ConversationRepository.kt$ConversationRepository$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:CrmExportEntity.kt$CrmExportEntity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DeviceRepository.kt$DeviceRepository$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:ExportRepository.kt$ExportRepository$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:GadgetApi.kt$GadgetApiHelper$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MessageEntity.kt$MessageEntity$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:WifiConfigEntity.kt$WifiConfigEntity.Companion$e: Exception</ID>
+    <ID>TooManyFunctions:AttachmentDao.kt$AttachmentDao</ID>
+    <ID>TooManyFunctions:AttachmentEntity.kt$AttachmentEntity</ID>
+    <ID>TooManyFunctions:BleManager.kt$BleManager</ID>
+    <ID>TooManyFunctions:ConversationDao.kt$ConversationDao</ID>
+    <ID>TooManyFunctions:ConversationRepository.kt$ConversationRepository</ID>
+    <ID>TooManyFunctions:CrmExportDao.kt$CrmExportDao</ID>
+    <ID>TooManyFunctions:CrmExportEntity.kt$CrmExportEntity</ID>
+    <ID>TooManyFunctions:DeviceRepository.kt$DeviceRepository</ID>
+    <ID>TooManyFunctions:DeviceSettingDao.kt$DeviceSettingDao</ID>
+    <ID>TooManyFunctions:DeviceSettingEntity.kt$DeviceSettingEntity</ID>
+    <ID>TooManyFunctions:MessageDao.kt$MessageDao</ID>
+    <ID>TooManyFunctions:WifiConfigDao.kt$WifiConfigDao</ID>
+    <ID>TooManyFunctions:WifiConfigEntity.kt$WifiConfigEntity</ID>
+    <ID>WildcardImport:AttachmentDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:BleManager.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:BleManager.kt$import kotlinx.coroutines.flow.*</ID>
+    <ID>WildcardImport:ConversationDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:CrmExportDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:DatabaseModule.kt$import com.smartsales.data.local.dao.*</ID>
+    <ID>WildcardImport:DeviceSettingDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:GadgetApi.kt$import com.smartsales.data.network.model.*</ID>
+    <ID>WildcardImport:GadgetApi.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:MessageDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:MessageEntity.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:SmartSalesDatabase.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:SmartSalesDatabase.kt$import com.smartsales.data.local.dao.*</ID>
+    <ID>WildcardImport:SmartSalesDatabase.kt$import com.smartsales.data.local.entity.*</ID>
+    <ID>WildcardImport:WifiConfigDao.kt$import androidx.room.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

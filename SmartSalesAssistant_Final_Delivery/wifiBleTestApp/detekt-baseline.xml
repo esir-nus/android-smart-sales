@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>FunctionNaming:NetworkSections.kt$@Composable fun BleTrafficLogSection(entries: List&lt;BleTransportLogEntry&gt;)</ID>
+    <ID>FunctionNaming:NetworkSections.kt$@Composable fun NetworkToolsSection( gadgetWifiName: String?, phoneWifiName: String?, networkMatch: Boolean?, autoDeviceIp: String, isQuerying: Boolean, onQueryNetwork: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:Theme.kt$@Composable fun WifiBleTestTheme( useDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:WebConsoleScreen.kt$@Composable private fun EmptyConsoleState( modifier: Modifier = Modifier, onClose: () -&gt; Unit, isMediaServer: Boolean = false, )</ID>
+    <ID>FunctionNaming:WebConsoleScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @SuppressLint("SetJavaScriptEnabled") @Composable fun WebConsoleScreen( viewModel: WifiBleTestViewModel, onClose: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:WifiBleTestScreen.kt$@Composable private fun Bt311DiscoverySection( isScanning: Boolean, targetDevice: BluetoothDevice?, onStartScan: () -&gt; Unit, onConnect: (BluetoothDevice) -&gt; Unit, )</ID>
+    <ID>FunctionNaming:WifiBleTestScreen.kt$@Composable private fun ConnectionStatusCard( hasPermissions: Boolean, connectionState: BleConnectionState, deviceStatus: DeviceStatus?, onStartScan: () -&gt; Unit, onStopScan: () -&gt; Unit, onDisconnect: () -&gt; Unit, onRequestPermissions: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:WifiBleTestScreen.kt$@Composable private fun WebConsoleSection( deviceIp: String, devicePort: String, webConsoleUrl: String?, errorMessage: String?, onIpChanged: (String) -&gt; Unit, onPortChanged: (String) -&gt; Unit, onOpenConsole: () -&gt; Unit, onCloseConsole: () -&gt; Unit, onOpenMediaServer: () -&gt; Unit, // ANDROID INTEGRATION: Media server button )</ID>
+    <ID>FunctionNaming:WifiBleTestScreen.kt$@Composable private fun WifiConfigSection( isSending: Boolean, configs: List&lt;SavedWifiConfig&gt;, lastReportedName: String?, onSend: (String, String) -&gt; Unit, )</ID>
+    <ID>FunctionNaming:WifiBleTestScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun WifiBleTestScreen( modifier: Modifier = Modifier, hasPermissions: Boolean, onRequestPermissions: () -&gt; Unit, onNavigateToWebConsole: () -&gt; Unit, viewModel: WifiBleTestViewModel, )</ID>
+    <ID>LongMethod:NetworkSections.kt$@Composable fun NetworkToolsSection( gadgetWifiName: String?, phoneWifiName: String?, networkMatch: Boolean?, autoDeviceIp: String, isQuerying: Boolean, onQueryNetwork: () -&gt; Unit, )</ID>
+    <ID>LongMethod:WebConsoleScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @SuppressLint("SetJavaScriptEnabled") @Composable fun WebConsoleScreen( viewModel: WifiBleTestViewModel, onClose: () -&gt; Unit, )</ID>
+    <ID>LongMethod:WifiBleTestScreen.kt$@Composable private fun WebConsoleSection( deviceIp: String, devicePort: String, webConsoleUrl: String?, errorMessage: String?, onIpChanged: (String) -&gt; Unit, onPortChanged: (String) -&gt; Unit, onOpenConsole: () -&gt; Unit, onCloseConsole: () -&gt; Unit, onOpenMediaServer: () -&gt; Unit, // ANDROID INTEGRATION: Media server button )</ID>
+    <ID>LongMethod:WifiBleTestScreen.kt$@Composable private fun WifiConfigSection( isSending: Boolean, configs: List&lt;SavedWifiConfig&gt;, lastReportedName: String?, onSend: (String, String) -&gt; Unit, )</ID>
+    <ID>LongMethod:WifiBleTestScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun WifiBleTestScreen( modifier: Modifier = Modifier, hasPermissions: Boolean, onRequestPermissions: () -&gt; Unit, onNavigateToWebConsole: () -&gt; Unit, viewModel: WifiBleTestViewModel, )</ID>
+    <ID>LongParameterList:NetworkSections.kt$( gadgetWifiName: String?, phoneWifiName: String?, networkMatch: Boolean?, autoDeviceIp: String, isQuerying: Boolean, onQueryNetwork: () -&gt; Unit, )</ID>
+    <ID>LongParameterList:WifiBleTestScreen.kt$( deviceIp: String, devicePort: String, webConsoleUrl: String?, errorMessage: String?, onIpChanged: (String) -&gt; Unit, onPortChanged: (String) -&gt; Unit, onOpenConsole: () -&gt; Unit, onCloseConsole: () -&gt; Unit, onOpenMediaServer: () -&gt; Unit, // ANDROID INTEGRATION: Media server button )</ID>
+    <ID>LongParameterList:WifiBleTestScreen.kt$( hasPermissions: Boolean, connectionState: BleConnectionState, deviceStatus: DeviceStatus?, onStartScan: () -&gt; Unit, onStopScan: () -&gt; Unit, onDisconnect: () -&gt; Unit, onRequestPermissions: () -&gt; Unit, )</ID>
+    <ID>MagicNumber:Color.kt$0xFF625b71</ID>
+    <ID>MagicNumber:Color.kt$0xFF6650a4</ID>
+    <ID>MagicNumber:Color.kt$0xFF7D5260</ID>
+    <ID>MagicNumber:NetworkSections.kt$44</ID>
+    <ID>MagicNumber:NetworkSections.kt$46</ID>
+    <ID>MagicNumber:NetworkSections.kt$8</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$120</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$16</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$20</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$200</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$3000</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$34123</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$5</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$65535</ID>
+    <ID>MagicNumber:WifiBleTestViewModel.kt$WifiBleTestViewModel$80</ID>
+    <ID>SwallowedException:WifiBleTestViewModel.kt$WifiBleTestViewModel$e: Exception</ID>
+    <ID>SwallowedException:WifiBleTestViewModel.kt$WifiBleTestViewModel$securityException: SecurityException</ID>
+    <ID>TooGenericExceptionCaught:WifiBleTestViewModel.kt$WifiBleTestViewModel$e: Exception</ID>
+    <ID>TooManyFunctions:WifiBleTestViewModel.kt$WifiBleTestViewModel : ViewModel</ID>
+    <ID>WildcardImport:WifiBleTestViewModelTest.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

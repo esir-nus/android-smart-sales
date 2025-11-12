@@ -26,17 +26,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
     private var hasPermissions by mutableStateOf(false)
 
     private val requiredPermissions: Array<String>
         get() {
-            val permissions = mutableListOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
+            val permissions =
+                mutableListOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                )
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 permissions += Manifest.permission.BLUETOOTH_SCAN
@@ -49,11 +49,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        permissionLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { results ->
-            hasPermissions = results.values.all { it }
-        }
+        permissionLauncher =
+            registerForActivityResult(
+                ActivityResultContracts.RequestMultiplePermissions(),
+            ) { results ->
+                hasPermissions = results.values.all { it }
+            }
 
         hasPermissions = arePermissionsGranted()
         if (!hasPermissions) {
@@ -68,7 +69,7 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = Destination.Dashboard.route
+                        startDestination = Destination.Dashboard.route,
                     ) {
                         composable(Destination.Dashboard.route) {
                             WifiBleTestScreen(
@@ -77,7 +78,7 @@ class MainActivity : ComponentActivity() {
                                 onNavigateToWebConsole = {
                                     navController.navigate(Destination.WebConsole.route)
                                 },
-                                viewModel = viewModel
+                                viewModel = viewModel,
                             )
                         }
                         composable(Destination.WebConsole.route) {
@@ -86,7 +87,7 @@ class MainActivity : ComponentActivity() {
                                 onClose = {
                                     viewModel.closeWebConsole()
                                     navController.popBackStack()
-                                }
+                                },
                             )
                         }
                     }
@@ -97,14 +98,14 @@ class MainActivity : ComponentActivity() {
 
     private enum class Destination(val route: String) {
         Dashboard("dashboard"),
-        WebConsole("web_console")
+        WebConsole("web_console"),
     }
 
     private fun arePermissionsGranted(): Boolean {
         return requiredPermissions.all { permission ->
             ContextCompat.checkSelfPermission(
                 this,
-                permission
+                permission,
             ) == PackageManager.PERMISSION_GRANTED
         }
     }

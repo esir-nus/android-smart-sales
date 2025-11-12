@@ -7,11 +7,10 @@ plugins {
 
 android {
     namespace = "com.smartsales.aicore"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 34
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -23,25 +22,30 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    lint {
+        baseline = file("lint-baseline.xml")
+        warningsAsErrors = true
+    }
 }
 
 dependencies {
-    api("androidx.core:core-ktx:1.12.0")
-    api("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.lifecycle.runtime.ktx)
 
-    implementation("com.google.dagger:hilt-android:2.48.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.android)
 
-    api("com.squareup.retrofit2:retrofit:2.9.0")
+    api(libs.retrofit)
     api("com.squareup.retrofit2:converter-gson:2.9.0")
-    api("com.squareup.okhttp3:okhttp:4.12.0")
-    api("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    api(libs.okhttp)
+    api(libs.okhttp.logging.interceptor)
     api("com.google.code.gson:gson:2.10.1")
 
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 }
 
 kapt {

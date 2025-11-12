@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Test Media Server UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        .api-info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196F3;
+        }
+        .upload-area {
+            text-align: center;
+            margin: 30px 0;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .btn {
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .btn-success {
+            background: #4CAF50;
+        }
+        .btn-danger {
+            background: #f44336;
+        }
+        .btn-warning {
+            background: #ff9800;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .media {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f3f5;
+            overflow: hidden;
+        }
+        .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: black;
+        }
+        .media i {
+            font-size: 48px;
+            color: #adb5bd;
+        }
+        .info {
+            padding: 12px;
+            text-align: center;
+        }
+        .name {
+            font-size: 14px;
+            color: #343a40;
+            margin-bottom: 10px;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+            grid-column: 1 / -1;
+        }
+        .status {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin: 20px 0;
+        }
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        .error {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .media {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Test Media Server UI</h1>
+            <div class="subtitle">Local testing interface for Android integration</div>
+        </header>
+
+        <div class="api-info">
+            <strong>💡 Testing Instructions:</strong><br>
+            1. Start the server: <code>python3 simple_test_server.py</code><br>
+            2. Note the IP address shown in terminal<br>
+            3. Enter this IP in the Android app (port 8000)<br>
+            4. Click "媒体管理" (Media Management) button<br>
+            5. Test file operations below
+        </div>
+
+        <div class="status" id="status">
+            <h3>🌐 Server Status</h3>
+            <div id="status-content">
+                <div class="loading">Checking server status...</div>
+            </div>
+        </div>
+
+        <div class="upload-area">
+            <h3>📤 Upload Files</h3>
+            <input type="file" id="fileInput" multiple accept="image/*,video/*" style="margin: 10px;">
+            <br>
+            <button class="btn" onclick="uploadFiles()">Upload Files</button>
+            <button class="btn btn-warning" onclick="createTestFiles()">Create Test Files</button>
+        </div>
+
+        <div class="upload-area">
+            <h3>🧪 Quick Actions</h3>
+            <button class="btn btn-success" onclick="loadFiles()">🔄 Refresh File List</button>
+            <button class="btn" onclick="testAPI()">🔍 Test API Endpoints</button>
+            <button class="btn btn-danger" onclick="clearAllFiles()">🗑️ Clear All Files</button>
+        </div>
+
+        <div id="file-section">
+            <h3>📁 Files</h3>
+            <div id="file-count" class="subtitle">Loading...</div>
+            <div id="file-grid" class="grid">
+                <div class="loading">Loading files...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SERVER_URL = window.location.origin;
+        let currentFiles = [];
+
+        // Initialize
+        window.onload = function() {
+            checkServerStatus();
+            loadFiles();
+        };
+
+        async function checkServerStatus() {
+            try {
+                const response = await fetch(`${SERVER_URL}/status`);
+                const data = await response.json();
+                
+                document.getElementById('status-content').innerHTML = `
+                    <div class="status-item">
+                        <span>Server Status:</span>
+                        <span style="color: #4CAF50;">✅ ${data.status}</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Server Type:</span>
+                        <span>${data.server}</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Media Directory:</span>
+                        <span>${data.root_directory}</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Server URL:</span>
+                        <span><a href="${SERVER_URL}" target="_blank">${SERVER_URL}</a></span>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('status-content').innerHTML = `
+                    <div class="error">
+                        ❌ Server not responding. Make sure the server is running on port 8000.<br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function loadFiles() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/files`);
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                currentFiles = data.files;
+                displayFiles(data.files);
+                
+            } catch (error) {
+                document.getElementById('file-grid').innerHTML = `
+                    <div class="error">
+                        ❌ Failed to load files: ${error.message}
+                    </div>
+                `;
+                document.getElementById('file-count').textContent = 'Error loading files';
+            }
+        }
+
+        function displayFiles(files) {
+            const grid = document.getElementById('file-grid');
+            const count = document.getElementById('file-count');
+            
+            count.textContent = `共 ${files.length} 个文件`;
+            
+            if (files.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty">
+                        <i class="fas fa-folder-open fa-3x" style="margin-bottom:16px;"></i>
+                        <p>暂无媒体文件</p>
+                        <button class="btn" onclick="createTestFiles()">创建测试文件</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = files.map(file => `
+                <div class="item">
+                    <div class="media">
+                        ${file.type === 'image' 
+                            ? `<img src="${file.url}" alt="${file.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">\n<i class="fas fa-image" style="display:none;"></i>`
+                            : file.type === 'video'
+                            ? `<video controls style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><source src="${file.url}"></video>\n<i class="fas fa-video"></i>`
+                            : '<i class="fas fa-file"></i>'
+                        }
+                    </div>
+                    <div class="info">
+                        <div class="name">${file.name}</div>
+                        <div class="actions">
+                            <button class="btn btn-download" onclick="downloadFile('${file.name}')">
+                                📥 下载
+                            </button>
+                            <button class="btn" style="background:#673ab7;" onclick="applyFile('${file.name}')">
+                                ✅ 应用
+                            </button>
+                            <button class="btn btn-danger" onclick="deleteFile('${file.name}')">
+                                🗑️ 删除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function downloadFile(filename) {
+            window.open(`${SERVER_URL}/download/${encodeURIComponent(filename)}`, '_blank');
+        }
+
+        async function deleteFile(filename) {
+            if (!confirm(`⚠️ 确定要删除文件「${filename}」吗？此操作不可恢复！`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${SERVER_URL}/delete/${encodeURIComponent(filename)}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    alert('✅ 文件已删除');
+                    loadFiles();
+                } else {
+                    const error = await response.text();
+                    alert('❌ 删除失败: ' + error);
+                }
+            } catch (error) {
+                alert('❌ 网络错误: ' + error.message);
+            }
+        }
+
+        async function applyFile(filename) {
+            try {
+                const response = await fetch(`${SERVER_URL}/apply/${encodeURIComponent(filename)}`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    alert('✅ 已应用：' + filename);
+                } else {
+                    const error = await response.text();
+                    alert('❌ 应用失败: ' + error);
+                }
+            } catch (error) {
+                alert('❌ 网络错误: ' + error.message);
+            }
+        }
+
+        async function uploadFiles() {
+            const fileInput = document.getElementById('fileInput');
+            const files = fileInput.files;
+            
+            if (files.length === 0) {
+                alert('请选择要上传的文件');
+                return;
+            }
+            
+            const formData = new FormData();
+            for (let file of files) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert(`文件 ${file.name} 超过5MB限制`);
+                    return;
+                }
+                formData.append('file', file);
+            }
+            
+            try {
+                const response = await fetch(`${SERVER_URL}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    alert('✅ 上传成功！');
+                    fileInput.value = '';
+                    loadFiles();
+                } else {
+                    const error = await response.text();
+                    alert('❌ 上传失败: ' + error);
+                }
+            } catch (error) {
+                alert('❌ 上传失败: ' + error.message);
+            }
+        }
+
+        async function createTestFiles() {
+            // Create test files by making API calls to the server
+            const testFiles = [
+                { name: 'test_image.jpg', type: 'image/jpeg', size: 1024 },
+                { name: 'test_video.mp4', type: 'video/mp4', size: 2048 },
+                { name: 'test_audio.mp3', type: 'audio/mpeg', size: 512 }
+            ];
+            
+            alert('Creating test files... (This is a simulation)');
+            
+            // In a real implementation, you would upload actual test files
+            // For now, just refresh the file list
+            setTimeout(() => {
+                loadFiles();
+                alert('✅ Test files created (simulation)');
+            }, 1000);
+        }
+
+        async function clearAllFiles() {
+            if (!confirm('⚠️ 确定要删除所有文件吗？此操作不可恢复！')) {
+                return;
+            }
+            
+            try {
+                for (let file of currentFiles) {
+                    await fetch(`${SERVER_URL}/delete/${encodeURIComponent(file.name)}`, {
+                        method: 'DELETE'
+                    });
+                }
+                alert('✅ 所有文件已删除');
+                loadFiles();
+            } catch (error) {
+                alert('❌ 删除失败: ' + error.message);
+            }
+        }
+
+        async function testAPI() {
+            const endpoints = ['/', '/api/files', '/status'];
+            let results = [];
+            
+            for (let endpoint of endpoints) {
+                try {
+                    const response = await fetch(`${SERVER_URL}${endpoint}`);
+                    const data = await response.json();
+                    results.push(`✅ ${endpoint}: OK`);
+                } catch (error) {
+                    results.push(`❌ ${endpoint}: ${error.message}`);
+                }
+            }
+            
+            alert('API Test Results:\n\n' + results.join('\n'));
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</body>
+</html>

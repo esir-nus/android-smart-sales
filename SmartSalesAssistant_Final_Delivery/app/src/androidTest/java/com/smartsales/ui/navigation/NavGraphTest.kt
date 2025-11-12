@@ -22,7 +22,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class NavGraphTest {
-
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
@@ -36,17 +35,17 @@ class NavGraphTest {
             SmartSalesTheme {
                 NavGraph(
                     navController = navController,
-                    conversationListScreen = { onConversationClick, onNewConversation ->
+                    conversationListScreen = { onConversationClick, onNewConversation, onOpenAiAssistant ->
                         Column {
                             Button(
                                 onClick = { onConversationClick(42L) },
-                                modifier = Modifier.testTag("openConversation")
+                                modifier = Modifier.testTag("openConversation"),
                             ) {
                                 Text("Open Conversation")
                             }
                             Button(
                                 onClick = onNewConversation,
-                                modifier = Modifier.testTag("newConversation")
+                                modifier = Modifier.testTag("newConversation"),
                             ) {
                                 Text("New Conversation")
                             }
@@ -56,17 +55,17 @@ class NavGraphTest {
                         Column {
                             Text(
                                 text = "Chat $conversationId",
-                                modifier = Modifier.testTag("chatTitle")
+                                modifier = Modifier.testTag("chatTitle"),
                             )
                             Button(
                                 onClick = { onExportClick(conversationId) },
-                                modifier = Modifier.testTag("exportChat")
+                                modifier = Modifier.testTag("exportChat"),
                             ) {
                                 Text("Export")
                             }
                             Button(
                                 onClick = onNavigateBack,
-                                modifier = Modifier.testTag("backFromChat")
+                                modifier = Modifier.testTag("backFromChat"),
                             ) {
                                 Text("Back")
                             }
@@ -85,16 +84,16 @@ class NavGraphTest {
                         Column {
                             Text(
                                 text = "Export $conversationId",
-                                modifier = Modifier.testTag("exportTitle")
+                                modifier = Modifier.testTag("exportTitle"),
                             )
                             Button(
                                 onClick = onNavigateBack,
-                                modifier = Modifier.testTag("backFromExport")
+                                modifier = Modifier.testTag("backFromExport"),
                             ) {
                                 Text("Back")
                             }
                         }
-                    }
+                    },
                 )
             }
         }
@@ -102,7 +101,7 @@ class NavGraphTest {
         composeRule.runOnIdle {
             assertEquals(
                 Screen.ConversationList.route,
-                navController.currentBackStackEntry?.destination?.route
+                navController.currentBackStackEntry?.destination?.route,
             )
         }
 
@@ -111,11 +110,11 @@ class NavGraphTest {
         composeRule.runOnIdle {
             assertEquals(
                 Screen.Chat.route,
-                navController.currentBackStackEntry?.destination?.route
+                navController.currentBackStackEntry?.destination?.route,
             )
             assertEquals(
                 42L,
-                navController.currentBackStackEntry?.arguments?.getLong("conversationId")
+                navController.currentBackStackEntry?.arguments?.getLong("conversationId"),
             )
         }
 
@@ -125,11 +124,11 @@ class NavGraphTest {
         composeRule.runOnIdle {
             assertEquals(
                 Screen.Export.route,
-                navController.currentBackStackEntry?.destination?.route
+                navController.currentBackStackEntry?.destination?.route,
             )
             assertEquals(
                 42L,
-                navController.currentBackStackEntry?.arguments?.getLong("conversationId")
+                navController.currentBackStackEntry?.arguments?.getLong("conversationId"),
             )
         }
 
@@ -138,7 +137,7 @@ class NavGraphTest {
         composeRule.runOnIdle {
             assertEquals(
                 Screen.Chat.route,
-                navController.currentBackStackEntry?.destination?.route
+                navController.currentBackStackEntry?.destination?.route,
             )
         }
 
@@ -148,7 +147,7 @@ class NavGraphTest {
         composeRule.runOnIdle {
             assertEquals(
                 Screen.ConversationList.route,
-                navController.currentBackStackEntry?.destination?.route
+                navController.currentBackStackEntry?.destination?.route,
             )
         }
     }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/main/java/com/smartsales/wifibletest/ui/NetworkSections.kt">
+        <error line="22" column="5" source="standard:function-naming" />
+        <error line="99" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/wifibletest/ui/WebConsoleScreen.kt">
+        <error line="44" column="5" source="standard:function-naming" />
+        <error line="166" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/wifibletest/ui/WifiBleTestScreen.kt">
+        <error line="54" column="5" source="standard:function-naming" />
+        <error line="200" column="13" source="standard:function-naming" />
+        <error line="272" column="13" source="standard:function-naming" />
+        <error line="335" column="13" source="standard:function-naming" />
+        <error line="435" column="13" source="standard:function-naming" />
+        <error line="444" column="36" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/wifibletest/ui/WifiBleTestViewModel.kt">
+        <error line="41" column="41" source="standard:value-parameter-comment" />
+        <error line="42" column="41" source="standard:value-parameter-comment" />
+    </file>
+    <file name="src/main/java/com/smartsales/wifibletest/ui/theme/Theme.kt">
+        <error line="24" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/test/java/com/smartsales/wifibletest/ui/WifiBleTestViewModelTest.kt">
+        <error line="4" column="1" source="standard:no-wildcard-imports" />
+    </file>
+</baseline>

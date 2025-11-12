@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ImplicitDefaultLocale:ChatModels.kt$ChatUsage$String.format("$%.4f", totalCost)</ID>
+    <ID>ImplicitDefaultLocale:TranscriptionModels.kt$String.format("%02d:%02d:%02d,%03d", hours, minutes, secs, millis)</ID>
+    <ID>ImplicitDefaultLocale:TranscriptionModels.kt$TranscriptionSegment$String.format("%02d:%02d", minutes, secs)</ID>
+    <ID>LongMethod:MockDashscopeChatClient.kt$MockDashscopeChatClient$override fun streamChat(payload: DashscopeChatPayload): Flow&lt;DashscopeStreamEvent&gt;</ID>
+    <ID>MagicNumber:ChatModels.kt$ChatUsage$0.000002</ID>
+    <ID>MagicNumber:DashscopeApi.kt$DashscopeApiHelper$0x4E00</ID>
+    <ID>MagicNumber:DashscopeApi.kt$DashscopeApiHelper$1.5</ID>
+    <ID>MagicNumber:DashscopeApi.kt$DashscopeApiHelper$4.0</ID>
+    <ID>MagicNumber:DashscopeApi.kt$DashscopeApiHelper$8</ID>
+    <ID>MagicNumber:MockDashscopeChatClient.kt$MockDashscopeChatClient$50</ID>
+    <ID>MagicNumber:MockDashscopeClient.kt$MockDashscopeStreamingSdk$100</ID>
+    <ID>MagicNumber:OfficialDashscopeStreamingSdk.kt$OfficialDashscopeStreamingSdk$100</ID>
+    <ID>MagicNumber:OfficialDashscopeStreamingSdk.kt$OfficialDashscopeStreamingSdk$50</ID>
+    <ID>MagicNumber:OssManager.kt$OssManager$1000</ID>
+    <ID>MagicNumber:OssManager.kt$OssManager$3600</ID>
+    <ID>MagicNumber:OssManager.kt$OssManager$8</ID>
+    <ID>MagicNumber:TingwuApi.kt$TingwuApiHelper$10</ID>
+    <ID>MagicNumber:TingwuApi.kt$TingwuApiHelper$1024.0</ID>
+    <ID>MagicNumber:TranscriptionModels.kt$1000</ID>
+    <ID>MagicNumber:TranscriptionModels.kt$3600</ID>
+    <ID>MagicNumber:TranscriptionModels.kt$60</ID>
+    <ID>MagicNumber:TranscriptionModels.kt$SpeakerStats$100</ID>
+    <ID>MagicNumber:TranscriptionModels.kt$TranscriptionSegment$60</ID>
+    <ID>MatchingDeclarationName:MockDashscopeClient.kt$MockDashscopeStreamingSdk</ID>
+    <ID>ReturnCount:DashscopeApi.kt$DashscopeApiHelper$fun validateRequest(request: ChatRequest): Result&lt;Unit&gt;</ID>
+    <ID>ReturnCount:TingwuApi.kt$TingwuApiHelper$fun validateAudioFile( filePath: String, maxSizeMB: Int = 100, ): Result&lt;Unit&gt;</ID>
+    <ID>ReturnCount:TingwuApi.kt$TingwuApiHelper$suspend fun pollTaskStatus( taskId: String, api: TingwuApi, pollInterval: Long = 5000L, timeout: Long = 300000L, // 5 minutes ): TranscriptionStatusResponse?</ID>
+    <ID>SwallowedException:OssManager.kt$OssManager$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:DashscopeChatClient.kt$DefaultDashscopeChatClient$t: Throwable</ID>
+    <ID>TooGenericExceptionCaught:OfficialDashscopeStreamingSdk.kt$OfficialDashscopeStreamingSdk$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:OssManager.kt$OssManager$e: Exception</ID>
+    <ID>UnusedParameter:MockDashscopeClient.kt$MockDashscopeStreamingSdk$prompt: String</ID>
+    <ID>UnusedParameter:MockOssClient.kt$MockOssClient$bucketName: String</ID>
+    <ID>UnusedParameter:MockOssClient.kt$MockOssClient$filePath: String</ID>
+    <ID>UnusedParameter:MockOssClient.kt$MockOssClient$objectKey: String</ID>
+    <ID>UnusedPrivateMember:OssManager.kt$OssManager$private fun getAudioContentType(extension: String): String</ID>
+    <ID>UnusedPrivateProperty:OfficialDashscopeStreamingSdk.kt$OfficialDashscopeStreamingSdk$private val generationFactory: () -&gt; Any = { Object() }</ID>
+    <ID>UnusedPrivateProperty:OfficialDashscopeStreamingSdk.kt$OfficialDashscopeStreamingSdk.Companion$private const val DASHSCOPE_API_KEY_PROPERTY = "DASHSCOPE_API_KEY"</ID>
+    <ID>UnusedPrivateProperty:OssManager.kt$OssManager$val result = ossClient.putObject(ossConfig.bucket, objectKey, localFile.path)</ID>
+    <ID>UnusedPrivateProperty:OssManager.kt$OssManager.Companion$private const val AUDIO_UPLOAD_PATH = "audio-uploads/"</ID>
+    <ID>WildcardImport:DashscopeApi.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:TingwuApi.kt$import com.smartsales.data.network.model.*</ID>
+    <ID>WildcardImport:TingwuApi.kt$import retrofit2.http.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -23,7 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
     // ===== DATABASE PROVIDER =====
 
     /**
@@ -37,28 +36,27 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): SmartSalesDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             SmartSalesDatabase::class.java,
-            SmartSalesDatabase.DATABASE_NAME
+            SmartSalesDatabase.DATABASE_NAME,
         )
             // Performance optimizations
             .setJournalMode(RoomDatabase.JournalMode.WRITE_AHEAD_LOGGING)
             .setQueryExecutor(Executors.newFixedThreadPool(4))
-
             // Migration strategy
             .fallbackToDestructiveMigration() // TODO: Add proper migrations for production
-
             // Callbacks
-            .addCallback(object : RoomDatabase.Callback() {
-                override fun onCreate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
-                    super.onCreate(db)
-                    // Database created - can add initial data here
-                }
-            })
-
+            .addCallback(
+                object : RoomDatabase.Callback() {
+                    override fun onCreate(db: androidx.sqlite.db.SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        // Database created - can add initial data here
+                    }
+                },
+            )
             .build()
     }
 
@@ -70,9 +68,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideConversationDao(
-        database: SmartSalesDatabase
-    ): ConversationDao {
+    fun provideConversationDao(database: SmartSalesDatabase): ConversationDao {
         return database.conversationDao()
     }
 
@@ -82,9 +78,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideMessageDao(
-        database: SmartSalesDatabase
-    ): MessageDao {
+    fun provideMessageDao(database: SmartSalesDatabase): MessageDao {
         return database.messageDao()
     }
 
@@ -94,9 +88,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideAttachmentDao(
-        database: SmartSalesDatabase
-    ): AttachmentDao {
+    fun provideAttachmentDao(database: SmartSalesDatabase): AttachmentDao {
         return database.attachmentDao()
     }
 
@@ -106,9 +98,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideWifiConfigDao(
-        database: SmartSalesDatabase
-    ): WifiConfigDao {
+    fun provideWifiConfigDao(database: SmartSalesDatabase): WifiConfigDao {
         return database.wifiConfigDao()
     }
 
@@ -118,9 +108,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideDeviceSettingDao(
-        database: SmartSalesDatabase
-    ): DeviceSettingDao {
+    fun provideDeviceSettingDao(database: SmartSalesDatabase): DeviceSettingDao {
         return database.deviceSettingDao()
     }
 
@@ -130,9 +118,7 @@ object DatabaseModule {
      */
     @Provides
     @Singleton
-    fun provideCrmExportDao(
-        database: SmartSalesDatabase
-    ): CrmExportDao {
+    fun provideCrmExportDao(database: SmartSalesDatabase): CrmExportDao {
         return database.crmExportDao()
     }
 }

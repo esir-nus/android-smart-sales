@@ -9,7 +9,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class BleCommandTest {
-
     @Test
     fun `toByteArray emits enum value`() {
         val command = BleCommand.START_RECORDING

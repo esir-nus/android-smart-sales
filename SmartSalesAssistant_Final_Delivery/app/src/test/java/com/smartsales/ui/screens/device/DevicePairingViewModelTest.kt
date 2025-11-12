@@ -20,7 +20,6 @@ import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DevicePairingViewModelTest {
-
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
@@ -40,28 +39,30 @@ class DevicePairingViewModelTest {
     }
 
     @Test
-    fun startScan_withoutPermission_setsErrorAndSkipsScan() = runTest {
-        whenever(bleManager.hasScanPermission()).thenReturn(false)
-        whenever(bleManager.isBluetoothEnabled()).thenReturn(true)
+    fun startScan_withoutPermission_setsErrorAndSkipsScan() =
+        runTest {
+            whenever(bleManager.hasScanPermission()).thenReturn(false)
+            whenever(bleManager.isBluetoothEnabled()).thenReturn(true)
 
-        val viewModel = createViewModel()
+            val viewModel = createViewModel()
 
-        viewModel.startScan()
+            viewModel.startScan()
 
-        assertEquals("请先授予蓝牙扫描权限", viewModel.uiState.value.error)
-        verify(bleManager, never()).startScan()
-    }
+            assertEquals("请先授予蓝牙扫描权限", viewModel.uiState.value.error)
+            verify(bleManager, never()).startScan()
+        }
 
     @Test
-    fun startScan_withPermission_invokesBleManager() = runTest {
-        whenever(bleManager.hasScanPermission()).thenReturn(true)
-        whenever(bleManager.isBluetoothEnabled()).thenReturn(true)
+    fun startScan_withPermission_invokesBleManager() =
+        runTest {
+            whenever(bleManager.hasScanPermission()).thenReturn(true)
+            whenever(bleManager.isBluetoothEnabled()).thenReturn(true)
 
-        val viewModel = createViewModel()
+            val viewModel = createViewModel()
 
-        viewModel.startScan()
+            viewModel.startScan()
 
-        verify(bleManager).startScan()
-        assertEquals(null, viewModel.uiState.value.error)
-    }
+            verify(bleManager).startScan()
+            assertEquals(null, viewModel.uiState.value.error)
+        }
 }

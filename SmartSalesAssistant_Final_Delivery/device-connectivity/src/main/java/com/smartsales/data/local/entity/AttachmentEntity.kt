@@ -18,17 +18,15 @@ import java.util.*
 data class AttachmentEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-
     val messageId: Long,
-    val type: String,                // "audio" | "image" | "document"
-    val filePath: String,            // Local file path
-    val fileName: String,            // Original file name
-    val fileSize: Long,              // File size in bytes
-    val mimeType: String,            // MIME type
-    val uploadedAt: Long,            // Upload timestamp (millis)
-    val transcription: String? = null // Audio transcription (audio files only)
+    val type: String, // "audio" | "image" | "document"
+    val filePath: String, // Local file path
+    val fileName: String, // Original file name
+    val fileSize: Long, // File size in bytes
+    val mimeType: String, // MIME type
+    val uploadedAt: Long, // Upload timestamp (millis)
+    val transcription: String? = null, // Audio transcription (audio files only)
 ) {
-
     companion object {
         // Type constants
         const val TYPE_AUDIO = "audio"
@@ -38,8 +36,8 @@ data class AttachmentEntity(
 
         // Size limits
         const val MAX_FILE_SIZE = 100 * 1024 * 1024L // 100MB
-        const val MAX_AUDIO_SIZE = 50 * 1024 * 1024L  // 50MB
-        const val MAX_IMAGE_SIZE = 10 * 1024 * 1024L  // 10MB
+        const val MAX_AUDIO_SIZE = 50 * 1024 * 1024L // 50MB
+        const val MAX_IMAGE_SIZE = 10 * 1024 * 1024L // 10MB
 
         // Common MIME types
         const val MIME_AUDIO_MP3 = "audio/mpeg"
@@ -57,7 +55,7 @@ data class AttachmentEntity(
             filePath: String,
             fileName: String,
             fileSize: Long,
-            mimeType: String = MIME_AUDIO_MP3
+            mimeType: String = MIME_AUDIO_MP3,
         ): AttachmentEntity {
             return AttachmentEntity(
                 messageId = messageId,
@@ -67,7 +65,7 @@ data class AttachmentEntity(
                 fileSize = fileSize,
                 mimeType = mimeType,
                 uploadedAt = System.currentTimeMillis(),
-                transcription = null
+                transcription = null,
             )
         }
 
@@ -79,7 +77,7 @@ data class AttachmentEntity(
             filePath: String,
             fileName: String,
             fileSize: Long,
-            mimeType: String = MIME_IMAGE_JPEG
+            mimeType: String = MIME_IMAGE_JPEG,
         ): AttachmentEntity {
             return AttachmentEntity(
                 messageId = messageId,
@@ -89,7 +87,7 @@ data class AttachmentEntity(
                 fileSize = fileSize,
                 mimeType = mimeType,
                 uploadedAt = System.currentTimeMillis(),
-                transcription = null
+                transcription = null,
             )
         }
 
@@ -270,10 +268,10 @@ data class AttachmentEntity(
      */
     fun isValid(): Boolean {
         return fileName.isNotBlank() &&
-                filePath.isNotBlank() &&
-                fileSize > 0 &&
-                mimeType.isNotBlank() &&
-                type in listOf(TYPE_AUDIO, TYPE_IMAGE, TYPE_DOCUMENT, TYPE_VIDEO)
+            filePath.isNotBlank() &&
+            fileSize > 0 &&
+            mimeType.isNotBlank() &&
+            type in listOf(TYPE_AUDIO, TYPE_IMAGE, TYPE_DOCUMENT, TYPE_VIDEO)
     }
 
     /**
