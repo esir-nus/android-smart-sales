@@ -1,42 +1,230 @@
-# Local configuration
-SmartSalesAssistant_Complete/local.properties
-SmartSalesAssistant_Final_Delivery/local.properties
-SmartSalesAssistant_Final_Delivery/jdk-17.0.9+9/
+# ============================================
+# Android / Kotlin / Gradle - Industry Standard .gitignore
+# ============================================
 
-# IDE metadata
-/.idea/
-/.vscode/
-SmartSalesAssistant_Final_Delivery/.idea/
+# ===== Local Configuration =====
+local.properties
+**/local.properties
+*.properties.bak
+
+# ===== JDK Bundles =====
+jdk-*/
+**/jdk-*/
+
+# ===== IDE Metadata =====
+.idea/
+**/.idea/
+.vscode/
+**/.vscode/
 *.iml
-.DS_Store
+*.ipr
+*.iws
+.idea_modules/
+*.swp
+*.swo
+*~
 
-# Gradle caches
+# ===== Gradle =====
 .gradle/
+**/.gradle/
 .gradle-cache/
+**/.gradle-cache/
 .gradle-user/
-SmartSalesAssistant_Final_Delivery/.gradle/
-SmartSalesAssistant_Final_Delivery/.gradle-cache/
-SmartSalesAssistant_Final_Delivery/.gradle-user/
-SmartSalesAssistant_Final_Delivery/**/.gradle/
-SmartSalesAssistant_Final_Delivery/**/.gradle-cache/
+**/.gradle-user/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+.gradletasknamecache
 
-# Build outputs (all modules)
+# ===== Build Outputs (Recursive) =====
 build/
-SmartSalesAssistant_Final_Delivery/build/
-SmartSalesAssistant_Final_Delivery/**/build/
-SmartSalesAssistant_Final_Delivery/**/.cxx/
-SmartSalesAssistant_Final_Delivery/**/captures/
-SmartSalesAssistant_Final_Delivery/**/outputs/
+**/build/
+**/.cxx/
+**/captures/
+**/outputs/
+**/intermediates/
+**/generated/
+**/reports/
+**/snapshot/
+**/tmp/
+**/kotlin/
+**/.externalNativeBuild/
 
-# Android/Compose artifacts
+# ===== Android Artifacts =====
 *.apk
 *.ap_
 *.aab
-*.aar
 *.dex
 *.class
+*.jar
+!gradle-wrapper.jar
+*.aar
+*.so
+*.bin
+*.pom
+*.module
+*.lock
 
-# Logs & temp
+# ===== Android Studio / IntelliJ =====
+.idea/
+**/.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/shelf
+.idea/.name
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+*.iml
+*.ipr
+*.iws
+
+# ===== Kotlin =====
+*.kotlin_module
+**/kotlin/
+**/kotlin-classes/
+**/kapt3/
+**/kaptGenerateStubs*/
+
+# ===== Logs & Debug =====
 *.log
-SmartSalesAssistant_Final_Delivery/debug_log
+**/debug_log/
+**/*.logcat
+**/*.log
+logs/
+**/logs/
+server.log
+server2.log
+
+# ===== Test Outputs =====
+**/test-results/
+**/test-results/
+**/androidTest-results/
+**/androidTest-results/
+**/coverage/
+**/coverage/
+**/.coverage
+**/htmlcov/
+**/.pytest_cache/
+**/__pycache__/
+**/*.pyc
+
+# ===== Temporary & Cache =====
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+**/.DS_Store
+Thumbs.db
+**/Thumbs.db
 tempsavetempsavtempsavetempsavtempsavetempsavtempsavetempsav/
+
+# ===== Third-Party Artifacts =====
+third_party/maven-repo/
+**/third_party/maven-repo/
+**/libs/
+**/lib/
+*.so
+*.bin
+*.pom
+*.module
+
+# ===== Coverage Reports =====
+**/coverage/
+**/.coverage
+**/htmlcov/
+**/.nyc_output/
+coverage.xml
+*.lcov
+
+# ===== Python (if any test scripts) =====
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+**/.pytest_cache/
+
+# ===== Node (if any build tools) =====
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# ===== Keystores & Secrets =====
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.crt
+*.pem
+secrets/
+**/secrets/
+
+# ===== Android Lint =====
+**/lint-results*.xml
+**/lint-results*.html
+**/lint-results*.txt
+!**/lint-baseline.xml
+
+# ===== Detekt / Ktlint Reports =====
+**/reports/detekt/
+**/reports/ktlint/
+**/build/reports/
+
+# ===== ProGuard =====
+proguard/
+**/proguard/
+*.pro
+!proguard-rules.pro
+!consumer-rules.pro
+
+# ===== NDK =====
+**/.externalNativeBuild/
+**/obj/
+**/.cxx/
+
+# ===== Signing =====
+*.jks
+*.keystore
+signing/
+**/signing/
+
+# ===== Miscellaneous =====
+*.orig
+*.rej
+*.patch
+.navigation/
+**/.navigation/
+.cxx/
+**/.cxx/
+.externalNativeBuild/
+**/.externalNativeBuild/
+
+# ===== Note: .md files are explicitly kept =====
+# All markdown documentation files should remain tracked
