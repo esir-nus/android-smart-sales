@@ -30,3 +30,102 @@ Secrets stay out of version control: add `DASHSCOPE_API_KEY` and `TINGWU_API_KEY
 - Create `local.properties` from `local.properties.example`, pointing `sdk.dir` to a locally installed Android SDK mirror (e.g., from Tencent Cloud).
 - Pre-cache dependencies on a fast network with `./gradlew --refresh-dependencies assembleDebug`, then carry the `.gradle-cache/` directory for offline work.
 - Configure corporate or system-wide proxies via `gradle.properties` (`systemProp.https.proxyHost`, etc.) when interacting with Play Services artifacts.
+
+
+Perfect — below are the two final deliverables you requested:
+short, production-ready, under-500-word rulesets for **`agent.md`** and **`tasklist.md`** that align with the **Vibe + TDD** principle.
+
+---
+
+## 🧭 `agent.md` — *Vibe + TDD Core Principles*  *(≈ 480 words)*
+
+**Purpose**
+Guide Android agents working on Wi-Fi, Bluetooth, and AI features to balance *creative velocity (vibe)* with *technical discipline (TDD)*.
+
+---
+
+### 1. Core Ethos
+
+* **Tests are the spec.** All behavior is proven by tests; nothing ships untested.
+* **Vibe ≠ chaos.** Rapid iteration is allowed only inside a green safety net.
+* **Small steps.** Deliver one verified behavior per commit.
+* **Refactor safely.** Only refactor on a full-green suite.
+
+---
+
+### 2. Operating Loop — Red → Green → Refactor → Ship
+
+1. **Red:** Write or select a failing test that defines intent.
+2. **Green:** Implement the minimal code to pass it.
+3. **Refactor:** Simplify structure without altering behavior.
+4. **Ship:** Commit when tests, lint, and static checks are all green.
+
+Repeat the loop continuously. Every cycle must leave the code base deployable.
+
+---
+
+### 3. Design & Architecture
+
+* **Clean + MVVM:** separate UI / Domain / Data.
+* **Hilt for DI**, **Room for DB**, **Coroutines + Flow** for concurrency.
+* **Lifecycle-aware:** cancel scans, flows, or coroutines on `onStop()`.
+* **No magic:** Explicit dependency graphs and constructor injection only.
+
+---
+
+### 4. Scope Discipline
+
+* ≤ 1 behavior / commit; ≤ ~20 LOC per change.
+* If wider impact, split into sub-steps each proven by its own test.
+* Each bug fix requires a regression test that fails before and passes after.
+
+---
+
+### 5. AI, BT, Wi-Fi Specifics
+
+* **AI:** Prefer on-device models; seed fixed; offline fallback required.
+* **Bluetooth:** Permission-gated, bounded scans, lifecycle-aware cancel.
+* **Wi-Fi:** Use modern APIs (`NetworkSpecifier`/`Suggestion`), handle captive portals gracefully.
+* **Privacy:** No PII in logs; encrypted storage only.
+
+---
+
+### 6. Network & China Constraints
+
+* Use mirrored Maven repos; failover endpoints; adaptive timeouts.
+* Assume partial connectivity; design offline-first flows.
+* Avoid hard-dependency on Google services; use optional shims.
+
+---
+
+### 7. Test Policy
+
+* **Unit → Instrumented → UI**: escalate outward only when needed.
+* Each schema migration, permission flow, or AI inference path must have a test.
+* Flaky tests = bugs; stabilize before merge.
+* Green = ready to release.
+
+---
+
+### 8. Workflow Integration
+
+* Daily: break features into test-driven micro-tasks listed in `tasklist.md`.
+* The agent reads `tasklist.md`, executes each failing test → passes → refactors → commits.
+* Never modify or remove tests unless the task explicitly begins with `TEST_CHANGE:`.
+
+---
+
+### 9. Definition of Done
+
+✅ All tests green ✅ Lint + Detekt clean ✅ Perf gates passed ✅ Commit isolated and descriptive
+
+---
+
+**Pointer:**
+
+> Granular task creation, sequencing, and execution live in [`tasklist.md`](./tasklist.md).
+
+---
+
+
+

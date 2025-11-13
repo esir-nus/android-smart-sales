@@ -114,6 +114,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:util"))
     implementation(project(":device-connectivity"))
     implementation(project(":ai-core"))
 

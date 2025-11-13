@@ -20,7 +20,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.ParcelUuid
-import android.util.Log
+import com.smartsales.core.util.logging.Loggers
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import java.nio.charset.Charset
@@ -170,7 +170,7 @@ class BleManager
                         scanResults[address] = device
                         _discoveredDevices.value = scanResults.values.toList()
 
-                        Log.d(TAG, "Target device found: $name ($address)")
+                        Loggers.debug(TAG, { "Target device found: $name ($address)" })
 
                         if (_connectionState.value is BleConnectionState.Scanning) {
                             _connectionState.value = BleConnectionState.Scanning(devicesFound = 1)
@@ -179,7 +179,7 @@ class BleManager
                 }
 
                 override fun onScanFailed(errorCode: Int) {
-                    Log.e(TAG, "Scan failed with error code: $errorCode")
+                    Loggers.error(TAG, { "Scan failed with error code: $errorCode" })
                     _connectionState.value =
                         BleConnectionState.Error(
                             "Scan failed: ${getScanErrorMessage(errorCode)}",
