@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>FunctionNaming:AiTestScreen.kt$@Composable private fun AnalysisSection( state: AiTestUiState, onGenerateSummary: () -&gt; Unit, onGenerateCustomerAnalysis: () -&gt; Unit, onGenerateMindmap: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:AiTestScreen.kt$@Composable private fun ChatMessageBubble(message: AiChatMessage)</ID>
+    <ID>FunctionNaming:AiTestScreen.kt$@Composable private fun ChatSection( state: AiTestUiState, onSystemPromptChange: (String) -&gt; Unit, onChatInputChange: (String) -&gt; Unit, onSendMessage: () -&gt; Unit, onResetChat: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:AiTestScreen.kt$@Composable private fun ReferenceSection()</ID>
+    <ID>FunctionNaming:AiTestScreen.kt$@Composable private fun TingwuSection( state: AiTestUiState, onAudioUrlChange: (String) -&gt; Unit, onSpeakerCountChange: (String) -&gt; Unit, onToggleDiarization: (Boolean) -&gt; Unit, onStartTranscription: () -&gt; Unit, onReset: () -&gt; Unit, onSelectLocalFile: () -&gt; Unit, )</ID>
+    <ID>FunctionNaming:AiTestScreen.kt$@OptIn(ExperimentalMaterial3Api::class) @Composable fun AiTestScreen( viewModel: AiTestViewModel = hiltViewModel(), onSelectLocalFile: () -&gt; Unit = {}, )</ID>
+    <ID>FunctionNaming:Theme.kt$@Composable fun AiFeatureTestAppTheme( useDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -&gt; Unit, )</ID>
+    <ID>LongMethod:AiTestScreen.kt$@Composable private fun AnalysisSection( state: AiTestUiState, onGenerateSummary: () -&gt; Unit, onGenerateCustomerAnalysis: () -&gt; Unit, onGenerateMindmap: () -&gt; Unit, )</ID>
+    <ID>LongMethod:AiTestScreen.kt$@Composable private fun ChatSection( state: AiTestUiState, onSystemPromptChange: (String) -&gt; Unit, onChatInputChange: (String) -&gt; Unit, onSendMessage: () -&gt; Unit, onResetChat: () -&gt; Unit, )</ID>
+    <ID>LongMethod:AiTestScreen.kt$@Composable private fun TingwuSection( state: AiTestUiState, onAudioUrlChange: (String) -&gt; Unit, onSpeakerCountChange: (String) -&gt; Unit, onToggleDiarization: (Boolean) -&gt; Unit, onStartTranscription: () -&gt; Unit, onReset: () -&gt; Unit, onSelectLocalFile: () -&gt; Unit, )</ID>
+    <ID>LongMethod:AiTestViewModel.kt$AiTestViewModel$fun sendChatMessage()</ID>
+    <ID>LongMethod:AiTestViewModel.kt$AiTestViewModel$private fun startTranscriptionWithUrl(fileUrl: String)</ID>
+    <ID>LongParameterList:AiTestScreen.kt$( state: AiTestUiState, onAudioUrlChange: (String) -&gt; Unit, onSpeakerCountChange: (String) -&gt; Unit, onToggleDiarization: (Boolean) -&gt; Unit, onStartTranscription: () -&gt; Unit, onReset: () -&gt; Unit, onSelectLocalFile: () -&gt; Unit, )</ID>
+    <ID>MagicNumber:AiTestViewModel.kt$AiTestViewModel$10</ID>
+    <ID>MagicNumber:AudioFilePicker.kt$AudioFilePicker.Companion$100</ID>
+    <ID>MagicNumber:AudioFilePicker.kt$AudioFilePicker.Companion$1024</ID>
+    <ID>MagicNumber:Color.kt$0xFF625b71</ID>
+    <ID>MagicNumber:Color.kt$0xFF6650a4</ID>
+    <ID>MagicNumber:Color.kt$0xFF7D5260</ID>
+    <ID>MaxLineLength:AiTestScreen.kt$color = if (isUser) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant</ID>
+    <ID>PrintStackTrace:AudioFilePicker.kt$AudioFilePicker.Companion$e</ID>
+    <ID>ReturnCount:AudioFilePicker.kt$AudioFilePicker.Companion$fun validateAudioFile(file: File): Result&lt;Unit&gt;</ID>
+    <ID>SwallowedException:AiTestViewModel.kt$AiTestViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AiTestViewModel.kt$AiTestViewModel$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:AudioFilePicker.kt$AudioFilePicker.Companion$e: Exception</ID>
+    <ID>TooManyFunctions:AiTestViewModel.kt$AiTestViewModel : ViewModel</ID>
+    <ID>UnusedPrivateProperty:AiTestViewModel.kt$AiTestViewModel$val error = uploadResult.exceptionOrNull()?.message ?: "上传失败"</ID>
+    <ID>UnusedPrivateProperty:MainActivity.kt$MainActivity$val error = validationResult.exceptionOrNull()?.message ?: "文件验证失败"</ID>
+  </CurrentIssues>
+</SmellBaseline>

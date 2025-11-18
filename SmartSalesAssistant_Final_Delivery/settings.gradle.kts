@@ -36,3 +36,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SmartSalesAssistant"
 include(":app")
+include(":aiFeatureTestApp")

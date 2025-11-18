@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<baseline version="1.0">
+    <file name="src/main/java/com/smartsales/aitest/ui/AiTestScreen.kt">
+        <error line="51" column="5" source="standard:function-naming" />
+        <error line="119" column="13" source="standard:function-naming" />
+        <error line="207" column="13" source="standard:function-naming" />
+        <error line="214" column="121" source="standard:max-line-length" />
+        <error line="232" column="13" source="standard:function-naming" />
+        <error line="400" column="13" source="standard:function-naming" />
+        <error line="527" column="13" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/aitest/ui/theme/Theme.kt">
+        <error line="24" column="5" source="standard:function-naming" />
+    </file>
+    <file name="src/main/java/com/smartsales/aitest/util/AudioFilePicker.kt">
+        <error line="17" column="31" source="standard:value-argument-comment" />
+        <error line="18" column="30" source="standard:value-argument-comment" />
+        <error line="19" column="30" source="standard:value-argument-comment" />
+        <error line="20" column="31" source="standard:value-argument-comment" />
+        <error line="21" column="30" source="standard:value-argument-comment" />
+        <error line="22" column="30" source="standard:value-argument-comment" />
+    </file>
+</baseline>

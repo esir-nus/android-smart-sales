@@ -1,0 +1,668 @@
+package com.smartsales.aitest.ui
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bluetooth
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.CloudUpload
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.smartsales.business.bluetooth.BleConnectionState
+import com.smartsales.wifibletest.ui.WifiBleTestViewModel
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AiTestScreen(
+    viewModel: AiTestViewModel = hiltViewModel(),
+    onSelectLocalFile: () -> Unit = {},
+    hasBlePermissions: Boolean = false,
+    onRequestBlePermissions: () -> Unit = {},
+) {
+    val state by viewModel.uiState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val wifiBleViewModel: WifiBleTestViewModel = hiltViewModel()
+    val wifiState by wifiBleViewModel.uiState.collectAsState()
+    val connectionState by wifiBleViewModel.connectionState.collectAsState()
+
+    LaunchedEffect(state.chatError, state.tingwuError) {
+        when {
+            state.chatError != null -> {
+                snackbarHostState.showSnackbar(state.chatError!!, duration = SnackbarDuration.Long)
+                viewModel.clearNotifications()
+            }
+            state.tingwuError != null -> {
+                snackbarHostState.showSnackbar(state.tingwuError!!, duration = SnackbarDuration.Long)
+                viewModel.clearNotifications()
+            }
+        }
+    }
+    LaunchedEffect(wifiState.infoMessage, wifiState.errorMessage, wifiState.webConsoleError) {
+        when {
+            wifiState.errorMessage != null -> {
+                snackbarHostState.showSnackbar(wifiState.errorMessage!!, duration = SnackbarDuration.Long)
+                wifiBleViewModel.clearMessages()
+            }
+            wifiState.webConsoleError != null -> {
+                snackbarHostState.showSnackbar(wifiState.webConsoleError!!, duration = SnackbarDuration.Long)
+                wifiBleViewModel.clearMessages()
+            }
+            wifiState.infoMessage != null -> {
+                snackbarHostState.showSnackbar(wifiState.infoMessage!!, duration = SnackbarDuration.Short)
+                wifiBleViewModel.clearMessages()
+            }
+        }
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text("AI 功能测试") })
+        },
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+    ) { paddingValues ->
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            IntegrationStatusCard(
+                tingwuState = state,
+                wifiState = wifiState,
+                connectionState = connectionState,
+                hasBlePermissions = hasBlePermissions,
+            )
+
+            ChatSection(
+                state = state,
+                onSystemPromptChange = viewModel::updateSystemPrompt,
+                onChatInputChange = viewModel::updateChatInput,
+                onSendMessage = viewModel::sendChatMessage,
+                onResetChat = viewModel::resetChat,
+            )
+
+            TingwuSection(
+                state = state,
+                onAudioUrlChange = viewModel::updateAudioUrl,
+                onSpeakerCountChange = viewModel::updateSpeakerCount,
+                onToggleDiarization = viewModel::toggleDiarization,
+                onStartTranscription = viewModel::startTranscription,
+                onReset = viewModel::resetTranscription,
+                onSelectLocalFile = onSelectLocalFile,
+            )
+
+            WifiBleToolkitSection(
+                state = wifiState,
+                connectionState = connectionState,
+                hasPermissions = hasBlePermissions,
+                onRequestPermissions = onRequestBlePermissions,
+                onStartScan = wifiBleViewModel::startScan,
+                onStopScan = wifiBleViewModel::stopScan,
+                onConnect = wifiBleViewModel::connect,
+                onDisconnect = wifiBleViewModel::disconnect,
+                onSendWifi = wifiBleViewModel::sendWifiConfig,
+                onDeviceIpChange = wifiBleViewModel::onDeviceIpChanged,
+                onDevicePortChange = wifiBleViewModel::onDevicePortChanged,
+                onQueryNetwork = wifiBleViewModel::queryNetworkInfo,
+                onOpenConsole = wifiBleViewModel::openWebConsole,
+                onOpenMediaServer = wifiBleViewModel::openMediaServer,
+                onCloseConsole = wifiBleViewModel::closeWebConsole,
+            )
+
+            // Analysis Results Section
+            if (state.rawTranscriptionData != null) {
+                AnalysisSection(
+                    state = state,
+                    onGenerateSummary = viewModel::generateConversationSummary,
+                    onGenerateCustomerAnalysis = viewModel::generateCustomerAnalysis,
+                    onGenerateMindmap = viewModel::generateMindmapAnalysis,
+                )
+            }
+
+            ReferenceSection()
+        }
+    }
+}
+
+@Composable
+private fun IntegrationStatusCard(
+    tingwuState: AiTestUiState,
+    wifiState: com.smartsales.wifibletest.ui.WifiBleTestUiState,
+    connectionState: BleConnectionState,
+    hasBlePermissions: Boolean,
+) {
+    Card {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = "功能概览",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+            StatusRow(
+                icon = Icons.Filled.CloudUpload,
+                title = "Tingwu 转写",
+                status =
+                    when {
+                        tingwuState.isTingwuProcessing -> "处理中..."
+                        tingwuState.tingwuResultText != null -> "最近完成任务：${tingwuState.tingwuTaskId ?: "-"}"
+                        tingwuState.tingwuError != null -> "错误：${tingwuState.tingwuError}"
+                        else -> "等待音频上传"
+                    },
+            )
+            StatusRow(
+                icon = Icons.Filled.Bluetooth,
+                title = "WiFi / BLE",
+                status =
+                    when {
+                        !hasBlePermissions -> "缺少权限，请先授权"
+                        connectionState is BleConnectionState.Ready ->
+                            "已连接 ${connectionState.device.name ?: connectionState.device.address}"
+                        wifiState.isScanning -> "扫描 BT311 中..."
+                        wifiState.webConsoleUrl != null -> "Web 控制台可用"
+                        else -> "待扫描/连接"
+                    },
+            )
+        }
+    }
+}
+
+@Composable
+private fun StatusRow(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    status: String,
+) {
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+        Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
+        Column {
+            Text(title, style = MaterialTheme.typography.labelLarge)
+            Text(status, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
+}
+
+@Composable
+private fun ChatSection(
+    state: AiTestUiState,
+    onSystemPromptChange: (String) -> Unit,
+    onChatInputChange: (String) -> Unit,
+    onSendMessage: () -> Unit,
+    onResetChat: () -> Unit,
+) {
+    Card {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = "Qwen 聊天测试",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            OutlinedTextField(
+                value = state.systemPrompt,
+                onValueChange = onSystemPromptChange,
+                label = { Text("系统提示词") },
+                minLines = 2,
+                maxLines = 4,
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            HorizontalDivider()
+
+            val scrollState = rememberScrollState()
+            Box(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 120.dp, max = 260.dp)
+                        .verticalScroll(scrollState),
+            ) {
+                if (state.chatMessages.isEmpty()) {
+                    Text(
+                        text = "暂无对话，输入内容开始聊天。",
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                } else {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        state.chatMessages.forEach { message ->
+                            ChatMessageBubble(message = message)
+                        }
+                    }
+                }
+            }
+
+            if (state.isChatLoading) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+
+            OutlinedTextField(
+                value = state.chatInput,
+                onValueChange = onChatInputChange,
+                label = { Text("发送消息") },
+                modifier = Modifier.fillMaxWidth(),
+                minLines = 2,
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Button(
+                    onClick = onSendMessage,
+                    enabled = !state.isChatLoading && state.chatInput.isNotBlank(),
+                ) {
+                    Text("发送")
+                }
+                TextButton(onClick = onResetChat) {
+                    Icon(Icons.Filled.Refresh, contentDescription = null)
+                    Spacer(Modifier.width(4.dp))
+                    Text("清空会话")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ChatMessageBubble(message: AiChatMessage) {
+    val isUser = message.role == "user"
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = if (isUser) Arrangement.End else Arrangement.Start,
+    ) {
+        Surface(
+            color = if (isUser) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
+            shape = MaterialTheme.shapes.medium,
+            tonalElevation = 2.dp,
+        ) {
+            Column(modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
+                Text(
+                    text = if (isUser) "我" else "Dashscope",
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Medium,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(text = message.content, style = MaterialTheme.typography.bodyMedium)
+            }
+        }
+    }
+}
+
+@Composable
+private fun TingwuSection(
+    state: AiTestUiState,
+    onAudioUrlChange: (String) -> Unit,
+    onSpeakerCountChange: (String) -> Unit,
+    onToggleDiarization: (Boolean) -> Unit,
+    onStartTranscription: () -> Unit,
+    onReset: () -> Unit,
+    onSelectLocalFile: () -> Unit,
+) {
+    Card {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = "Tingwu 转写测试",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            // Audio input mode selection
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Button(
+                    onClick = { /* URL mode is default */ },
+                    modifier = Modifier.weight(1f),
+                    enabled = state.audioInputMode == com.smartsales.aitest.ui.AudioInputMode.LOCAL_FILE,
+                ) {
+                    Text("URL输入")
+                }
+                Button(
+                    onClick = onSelectLocalFile,
+                    modifier = Modifier.weight(1f),
+                    enabled = state.audioInputMode == com.smartsales.aitest.ui.AudioInputMode.URL,
+                ) {
+                    Text("本地文件")
+                }
+            }
+
+            if (state.audioInputMode == com.smartsales.aitest.ui.AudioInputMode.URL) {
+                OutlinedTextField(
+                    value = state.tingwuAudioUrl,
+                    onValueChange = onAudioUrlChange,
+                    label = { Text("音频文件 URL") },
+                    modifier = Modifier.fillMaxWidth(),
+                    minLines = 2,
+                    maxLines = 4,
+                )
+            } else {
+                // Show selected local file info
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.small,
+                ) {
+                    Row(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = "已选择本地文件",
+                                style = MaterialTheme.typography.labelMedium,
+                                fontWeight = FontWeight.Medium,
+                            )
+                            Text(
+                                text = state.selectedAudioFile?.name ?: "未选择文件",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        if (state.selectedAudioFile != null) {
+                            Icon(
+                                imageVector = Icons.Default.CheckCircle,
+                                contentDescription = "已选择",
+                                tint = MaterialTheme.colorScheme.primary,
+                            )
+                        }
+                    }
+                }
+            }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedTextField(
+                    value = state.tingwuSpeakerCount,
+                    onValueChange = onSpeakerCountChange,
+                    label = { Text("说话人数量") },
+                    modifier = Modifier.weight(1f),
+                )
+
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Text("角色分离", style = MaterialTheme.typography.labelSmall)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Switch(
+                            checked = state.diarizationEnabled,
+                            onCheckedChange = onToggleDiarization,
+                            colors = SwitchDefaults.colors(),
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(if (state.diarizationEnabled) "已开启" else "已关闭")
+                    }
+                }
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Button(
+                    onClick = onStartTranscription,
+                    enabled = !state.isTingwuProcessing && state.tingwuAudioUrl.isNotBlank(),
+                ) {
+                    Text("开始转写")
+                }
+                OutlinedButton(onClick = onReset) {
+                    Text("重置任务")
+                }
+            }
+
+            if (state.isTingwuProcessing) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+
+            state.tingwuStatusMessage?.let { message ->
+                Text(
+                    text = message,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+
+            state.tingwuTaskId?.let {
+                Text("任务 ID: $it", style = MaterialTheme.typography.bodySmall)
+            }
+
+            state.tingwuResultText?.let { result ->
+                HorizontalDivider()
+                Text("转写结果", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Medium)
+                Surface(
+                    tonalElevation = 1.dp,
+                    shape = MaterialTheme.shapes.small,
+                ) {
+                    Text(
+                        text = result,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun AnalysisSection(
+    state: AiTestUiState,
+    onGenerateSummary: () -> Unit,
+    onGenerateCustomerAnalysis: () -> Unit,
+    onGenerateMindmap: () -> Unit,
+) {
+    Card {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(
+                text = "AI 分析功能",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            // Analysis action buttons
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Button(
+                    onClick = onGenerateSummary,
+                    modifier = Modifier.weight(1f),
+                    enabled = !state.isAnalysisLoading,
+                ) {
+                    Text("生成摘要")
+                }
+                Button(
+                    onClick = onGenerateCustomerAnalysis,
+                    modifier = Modifier.weight(1f),
+                    enabled = !state.isAnalysisLoading,
+                ) {
+                    Text("客户分析")
+                }
+                Button(
+                    onClick = onGenerateMindmap,
+                    modifier = Modifier.weight(1f),
+                    enabled = !state.isAnalysisLoading,
+                ) {
+                    Text("思维导图")
+                }
+            }
+
+            if (state.isAnalysisLoading) {
+                LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            }
+
+            state.analysisError?.let { error ->
+                Text(
+                    text = error,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+
+            // Summary Result
+            state.conversationSummary?.let { summary ->
+                HorizontalDivider()
+                Text(
+                    text = "对话摘要",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Medium,
+                )
+                Surface(
+                    tonalElevation = 1.dp,
+                    shape = MaterialTheme.shapes.small,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = summary,
+                        modifier = Modifier.padding(12.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+
+            // Customer Analysis Result
+            state.customerAnalysis?.let { analysis ->
+                HorizontalDivider()
+                Text(
+                    text = "客户信息分析",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Medium,
+                )
+                Surface(
+                    tonalElevation = 1.dp,
+                    shape = MaterialTheme.shapes.small,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = analysis,
+                        modifier = Modifier.padding(12.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+
+            // Mindmap Result
+            state.mindmapAnalysis?.let { mindmap ->
+                HorizontalDivider()
+                Text(
+                    text = "思维导图",
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Medium,
+                )
+                Surface(
+                    tonalElevation = 1.dp,
+                    shape = MaterialTheme.shapes.small,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        text = mindmap,
+                        modifier = Modifier.padding(12.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ReferenceSection() {
+    Card {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                text = "使用提示",
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = "1. 请在 local.properties 中配置 DASHSCOPE_API_KEY 与 TINGWU_API_KEY。",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Text(
+                text = "2. 音频 URL 需可直接访问，建议使用 5 分钟以内的 MP3 文件。",
+                style = MaterialTheme.typography.bodySmall,
+            )
+            Text(
+                text = "3. 参考仓库 sample_code.md 获取更多阿里云调用示例。",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
+    }
+}
