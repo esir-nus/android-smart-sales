@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tingwu Test</string>
+    <string name="tingwu_test_title">Tingwu 离线转写测试</string>
+    <string name="tingwu_test_description">填写 OSS / HTTPS 音频 URL，与官方 SDK 一致地请求 Tingwu HTTP API。</string>
+    <string name="submit_task">提交转写任务</string>
+    <string name="task_key_hint">示例：demo_meeting_001</string>
+</resources>
